@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 12:28:21 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/15 23:41:32 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 00:01:59 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,7 @@ static int		init_tunnels(t_antfarm *atf, t_list *alst)
 	alst = alst->next;
 	while (alst)
 	{
-		if (is_comment(L1))
-		{
-			alst = alst->next;
-			continue ;
-		}
-		if (!add_tunnel(atf, L1))
+		if (!is_comment(L1) && !add_tunnel(atf, L1))
 		{ft_printf("here_xa1\n");	return (0);}
 		alst = alst->next;
 	}
