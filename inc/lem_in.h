@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 16:14:17 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/13 21:14:42 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/15 23:34:05 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <stdbool.h>
+# include <limits.h>
 
 # define ONLY_DISPLAY_SOLUTION	2
 # define DISPLAY_PATHS			4

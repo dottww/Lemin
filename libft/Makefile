@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/15 18:50:19 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/15 23:10:09 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ LIB_FILES = ft_tolower\
 		ft_strsub\
 		ft_strjoin\
 		ft_strtrim\
-		ft_strspli_c\
+		ft_strsplit_c\
 		ft_strsplit_wd\
 		ft_itoa\
 		ft_putchar\

@@ -1,0 +1,17 @@
+#start
+#end
+#end
+#end
+#end
+#end
+#start
+1
+##end
+end 2 2
+##start
+##start
+start 0 0
+A 1 1
+start-A
+A-end
+start-end
