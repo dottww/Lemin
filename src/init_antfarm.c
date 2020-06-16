@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 12:28:21 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/16 00:01:59 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 02:49:49 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ static void		init_antfarm_values(t_antfarm *atf)
 	atf->ants = NULL;
 }
 
-static int		init_tunnels(t_antfarm *atf, t_list *alst)
+static int		init_links(t_antfarm *atf, t_list *alst)
 {
-	if (!alst || !add_tunnel(atf, L1))
-	// {ft_printf("here_x0\n");	return (0);}
-		return (0);
+	if (!alst || !add_link(atf, L1))
+	{ft_printf("init_link0\n");	return (0);}
+		// return (0);
 	alst = alst->next;
 	while (alst)
 	{
-		if (!is_comment(L1) && !add_tunnel(atf, L1))
-		{ft_printf("here_xa1\n");	return (0);}
+		if (!is_comment(L1) && !add_link(atf, L1))
+		{ft_printf("init_link1\n");	return (0);}
 		alst = alst->next;
 	}
 	return (1);
@@ -68,8 +68,8 @@ int				register_rooms(t_antfarm *atf, t_list *alst)
 	while (atf->ant_qty && alst && the_rooms(L1))
 	{
 		if (!add_room(atf, &alst))
-		{ft_printf("here_ia2={%s}\n",L1);return (0);}// return (0);
+		{ft_printf("here_rr2={%s}\n",L1);return (0);}// return (0);
 		alst = alst->next;
 	}
-	return ((!atf->start || !atf->end) ? 0 : init_tunnels(atf, alst));
+	return ((!atf->start || !atf->end) ? 0 : init_links(atf, alst));
 }

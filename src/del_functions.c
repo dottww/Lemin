@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 19:12:54 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/15 23:45:20 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 00:05:15 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		del_room(void *content, size_t size)
 	if (content && size)
 	{
 		ft_strdel(&room->name);
-		ft_lstdel(&room->tunnels, del_steps);
+		ft_lstdel(&room->links, del_steps);
 		free(content);
 	}
 }

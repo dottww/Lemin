@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:55:42 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/12 07:18:34 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 00:05:09 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 static void		complete_path(t_list *path, t_list *room)
 {
-	t_list	*tunnel;
+	t_list	*link;
 	t_list	*next_room;
 	int		path_id;
 
 	path_id = ((t_path *)path->content)->id;
-	tunnel = ((t_room *)room->content)->tunnels;
+	link = ((t_room *)room->content)->links;
 	if (((t_room *)room->content)->end == 1)
 		((t_path *)path->content)->complete = true;
-	while (tunnel)
+	while (link)
 	{
-		if (((t_tunnel *)tunnel->content)->usage == -1)
+		if (((t_link *)link->content)->usage == -1)
 		{
 			((t_path *)path->content)->len++;
-			next_room = ((t_tunnel *)tunnel->content)->room;
+			next_room = ((t_link *)link->content)->room;
 			((t_room *)room->content)->new_next = next_room;
 			((t_room *)room->content)->new_path_id = path_id;
 			complete_path(path, next_room);
 			return ;
 		}
-		tunnel = tunnel->next;
+		link = link->next;
 	}
 }
 

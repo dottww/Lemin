@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 16:14:17 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/15 23:34:05 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 00:37:44 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "libft.h"
 # include <stdbool.h>
-# include <limits.h>
 
 # define ONLY_DISPLAY_SOLUTION	2
 # define DISPLAY_PATHS			4
@@ -38,13 +37,12 @@ typedef struct			s_room
 	t_list				*next;
 	t_list				*new_next;
 	t_list				*previous;
-	t_list				*tunnels;
+	t_list				*links;
 }						t_room;
 
 typedef struct			s_antfarm
 {
 	unsigned int		ant_qty;
-	// unsigned int		room_qty;
 	unsigned long		rounds;
 	unsigned int		option;
 	int					id;
@@ -54,11 +52,11 @@ typedef struct			s_antfarm
 	t_list				*ants;
 }						t_antfarm;
 
-typedef struct			s_tunnel
+typedef struct			s_link
 {
 	int					usage;
 	t_list				*room;
-}						t_tunnel;
+}						t_link;
 
 typedef struct			s_path
 {
@@ -96,7 +94,7 @@ int						init_ants(t_antfarm *antfarm);
 ** ------------------------------ ADD ------------------------------------------
 */
 int						add_room(t_antfarm *antfarm, t_list **alst);
-int						add_tunnel(t_antfarm *antfarm, char *line);
+int						add_link(t_antfarm *antfarm, char *line);
 int						add_step(t_list **steps, t_list *room);
 int						add_path(t_list **paths);
 int						add_ant(int id, t_antfarm *antfarm);
@@ -111,7 +109,7 @@ unsigned long			test_solution(t_antfarm *antfarm, t_list *paths
 void					update_data(t_antfarm *antfarm, unsigned long rounds
 						, t_list **paths);
 void					complete_paths(t_list **paths);
-void					set_tunnels_usage(t_list *end, t_list **queue);
+void					set_links_usage(t_list *end, t_list **queue);
 int						init_queue(t_list **queue, t_list *start);
 int						complete_queue(t_list *queue, t_list *end);
 bool					going_to_deviate(t_list *current, t_list *room);

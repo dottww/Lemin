@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 11:58:24 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/15 22:14:12 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 00:05:10 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 bool		start_linked_to_end(t_list *start, t_list *end)
 {
-	t_list	*tunnel;
+	t_list	*link;
 	t_list	*dest_room;
 
-	tunnel = ((t_room *)start->content)->tunnels;
-	while (tunnel)
+	link = ((t_room *)start->content)->links;
+	while (link)
 	{
-		dest_room = ((t_tunnel *)tunnel->content)->room;
+		dest_room = ((t_link *)link->content)->room;
 		if (dest_room == end)
 			return (true);
-		tunnel = tunnel->next;
+		link = link->next;
 	}
 	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:19:06 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/12 07:18:34 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 00:05:12 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int		add_to_queue(t_list **queue, t_list *room, t_list *current)
 	return (1);
 }
 
-static bool		tunnel_is_usable(t_list *current, t_list *tunnel, t_list *end)
+static bool		link_is_usable(t_list *current, t_list *link, t_list *end)
 {
 	t_list		*room;
 	t_room		*dest;
@@ -34,9 +34,9 @@ static bool		tunnel_is_usable(t_list *current, t_list *tunnel, t_list *end)
 	int			usage;
 
 	src = (t_room *)current->content;
-	room = ((t_tunnel *)tunnel->content)->room;
+	room = ((t_link *)link->content)->room;
 	dest = (t_room *)room->content;
-	usage = ((t_tunnel *)tunnel->content)->usage;
+	usage = ((t_link *)link->content)->usage;
 	if (usage != -1 && dest->end != 0 && src->path_id != dest->path_id
 	&& !dest->visited && dest->path_id != 0 && going_to_deviate(current, room))
 		return (deviation_reaches_end(room, end));
@@ -46,18 +46,18 @@ static bool		tunnel_is_usable(t_list *current, t_list *tunnel, t_list *end)
 
 int				complete_queue(t_list *queue, t_list *end)
 {
-	t_list	*tunnel;
+	t_list	*link;
 	t_list	*room;
 	t_list	*current;
 
 	current = ((t_queue *)queue->content)->room;
-	tunnel = ((t_room *)current->content)->tunnels;
-	while (tunnel)
+	link = ((t_room *)current->content)->links;
+	while (link)
 	{
-		room = ((t_tunnel *)tunnel->content)->room;
-		if (!tunnel_is_usable(current, tunnel, end))
+		room = ((t_link *)link->content)->room;
+		if (!link_is_usable(current, link, end))
 		{
-			tunnel = tunnel->next;
+			link = link->next;
 			continue ;
 		}
 		if (!add_to_queue(&queue, room, current))
@@ -66,7 +66,7 @@ int				complete_queue(t_list *queue, t_list *end)
 			return (1);
 		if (going_to_deviate(current, room))
 			((t_room *)room->content)->deviation = true;
-		tunnel = tunnel->next;
+		link = link->next;
 	}
 	if (((t_room *)current->content)->deviation == true)
 		((t_room *)current->content)->deviation = false;

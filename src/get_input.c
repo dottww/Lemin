@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 12:46:37 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/15 23:01:45 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 03:04:07 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,14 @@ int				get_input(t_list **alst)
 	char				*gnl;
 	t_list				*new_list;
 	t_input				new_input;
-
 	gnl = NULL;
 	while (get_next_line(0, &gnl) > 0)
 	{
 		if (!(new_input.line = ft_strdup(gnl))
 		|| !(new_list = ft_lstnew(&new_input, sizeof(t_input))))
 		{
-			ft_putendl(gnl);
 			new_input.line ? ft_strdel(&new_input.line) : 0;
 			gnl ? ft_strdel(&gnl) : 0;
-			ft_putstr("err0\n");
 			return (0);
 		}
 		ft_lstappend(alst, new_list);

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:08:07 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/15 23:49:27 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 01:24:40 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,14 @@ static void		init_pointer_to_end(t_antfarm *atf, t_list *ptr, int end)
 		atf->end = ptr;
 }
 
-static int		init_room(t_room *room, char **tab)
+static int		set_room_val(t_room *room, char **tab)
 {
-	if (!tab[0] || !tab[1] || !tab[2]
-		|| !ft_atoi_int(tab[1], &room->x) || !ft_atoi_int(tab[2], &room->y))
+	if (!ft_atoi_int(tab[1], &room->x) || !ft_atoi_int(tab[2], &room->y))
 		return (0);
 	if (!(room->name = ft_strdup(tab[0])))
 		return (0);
 	room->path_id = 0;
-	room->tunnels = NULL;
+	room->links = NULL;
 	room->next = NULL;
 	room->previous = NULL;
 	room->new_next = NULL;
@@ -102,8 +101,8 @@ int				add_room(t_antfarm *ath, t_list **alst)
 	else if ((L2)[0] == '#')
 		return (1);
 	if (!(tab = ft_split_whitespaces(L2, (ft_wd(L2) == 3) ? 3 : 0)))
-		{ft_printf("here_ar1={%s}\n",L2);return (0);}
-	if (!init_room(&room, tab))
+		return (0);
+	if (!(tab[0] && tab[1] && tab[2] && !tab[3]) || !set_room_val(&room, tab))
 		return (ret_strtab_free(tab, 0));
 	if (!room_repeat(ath, tab) || !(new = ft_lstnew(&room, sizeof(t_room))))
 	{
@@ -114,10 +113,3 @@ int				add_room(t_antfarm *ath, t_list **alst)
 	ft_lstappend(&ath->rooms, new);
 	return (ret_strtab_free(tab, 1));
 }
-
-// int add_room()
-// {
-//   check_room_validity()
-//   init_room()
-//   append_to_rooms_list()
-// }

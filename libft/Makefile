@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/15 23:10:09 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/16 01:30:09 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,6 @@ LIB_FILES = ft_tolower\
 		ft_lstlen\
 		ft_lstappend\
 		ft_atoull\
-		ft_isinteger\
 		ft_iswhitespace\
 		ft_split_whitespaces\
 		ft_lstprepend\

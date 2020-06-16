@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:41 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/12 07:18:34 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 00:05:19 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ static void		reset_visited_rooms(t_list *dev_room
 	((t_room *)end->content)->deviation = false;
 }
 
-static t_list	*get_previous_room(t_list *tunnel)
+static t_list	*get_previous_room(t_list *link)
 {
-	while (tunnel)
+	while (link)
 	{
-		if (((t_tunnel *)tunnel->content)->usage == 1)
-			return (((t_tunnel *)tunnel->content)->room);
-		tunnel = tunnel->next;
+		if (((t_link *)link->content)->usage == 1)
+			return (((t_link *)link->content)->room);
+		link = link->next;
 	}
 	return (NULL);
 }
@@ -49,14 +49,14 @@ static t_list	*get_previous_room(t_list *tunnel)
 bool			deviation_reaches_end(t_list *deviation_room, t_list *end)
 {
 	t_list	*prev_room;
-	t_list	*tunnels;
+	t_list	*links;
 	t_list	*queue;
 	bool	ret;
 
 	queue = NULL;
 	prev_room = NULL;
-	tunnels = ((t_room *)deviation_room->content)->tunnels;
-	if (!(prev_room = get_previous_room(tunnels)))
+	links = ((t_room *)deviation_room->content)->links;
+	if (!(prev_room = get_previous_room(links)))
 		return (false);
 	if (((t_room *)prev_room->content)->end == 0)
 		return (false);
@@ -79,22 +79,22 @@ bool			going_to_deviate(t_list *current, t_list *room)
 {
 	t_room	*src;
 	t_room	*dest;
-	t_list	*tunnel;
-	int		tunnel_used;
+	t_list	*link;
+	int		link_used;
 
-	tunnel_used = 0;
+	link_used = 0;
 	src = (t_room *)current->content;
 	dest = (t_room *)room->content;
-	tunnel = dest->tunnels;
-	while (tunnel)
+	link = dest->links;
+	while (link)
 	{
-		if (((t_tunnel *)tunnel->content)->usage == 1)
+		if (((t_link *)link->content)->usage == 1)
 		{
-			tunnel_used = 1;
+			link_used = 1;
 			break ;
 		}
-		tunnel = tunnel->next;
+		link = link->next;
 	}
-	return (!src->deviation && tunnel_used
+	return (!src->deviation && link_used
 	&& src->path_id != dest->path_id && dest->path_id != 0);
 }

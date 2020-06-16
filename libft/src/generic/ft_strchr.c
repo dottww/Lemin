@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 14:25:09 by weilin            #+#    #+#             */
-/*   Updated: 2018/11/19 17:55:18 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 02:11:54 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
+	if(!s)
+		return (NULL);
 	while (*s)
 	{
 		if (*s == (char)c)

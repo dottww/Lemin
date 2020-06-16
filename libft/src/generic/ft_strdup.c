@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/17 13:18:51 by weilin            #+#    #+#             */
-/*   Updated: 2020/03/05 20:21:37 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 02:15:02 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char		*ft_strdup(const char *src)
 	int		i;
 	char	*dup;
 
-	if (!(dup = (char*)malloc(sizeof(char) * (ft_strlen(src) + 1))))
+	if (!src || !(dup = (char*)malloc(sizeof(char) * (ft_strlen(src) + 1))))
 		return (NULL);
 	i = 0;
 	while (src[i])

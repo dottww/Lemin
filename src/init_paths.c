@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 13:53:37 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/09 02:46:05 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 00:05:17 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ static int	init_path(t_list **paths, t_list *room)
 int			init_paths(t_list **paths, t_list *start, unsigned int option)
 {
 	t_list		*room;
-	t_list		*tunnel;
+	t_list		*link;
 
 	room = start;
-	tunnel = ((t_room *)(room->content))->tunnels;
-	while (tunnel)
+	link = ((t_room *)(room->content))->links;
+	while (link)
 	{
-		if (((t_tunnel *)tunnel->content)->usage == -1)
+		if (((t_link *)link->content)->usage == -1)
 		{
-			if (!init_path(paths, ((t_tunnel *)tunnel->content)->room))
+			if (!init_path(paths, ((t_link *)link->content)->room))
 				return (0);
 		}
-		tunnel = tunnel->next;
+		link = link->next;
 	}
 	if (option & DISPLAY_PATHS)
 	{

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 19:27:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/10 17:47:29 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 03:01:21 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_return_line(char **s, char **line, const int fd, int rd)
 	int			len;
 	int			slen;
 
-	if (s[fd][0] != '\0' && (n = ft_strchr(s[fd], '\n')))
+	if (s[fd] && s[fd][0] != '\0' && (n = ft_strchr(s[fd], '\n')))
 	{
 		len = n - s[fd];
 		slen = ft_strlen(s[fd]);
@@ -26,7 +26,7 @@ static int	ft_return_line(char **s, char **line, const int fd, int rd)
 		s[fd] = ft_strreset(s[fd], ft_strsub(s[fd], len + 1, slen - len - 1));
 		return (1);
 	}
-	else if (s[fd][0] != '\0')
+	else if (s[fd] && s[fd][0] != '\0')
 	{
 		*line = ft_strdup(s[fd]);
 		ft_strdel(&s[fd]);
@@ -37,7 +37,7 @@ static int	ft_return_line(char **s, char **line, const int fd, int rd)
 		}
 		return (1);
 	}
-	ft_strdel(&s[fd]);
+	s[fd] ? ft_strdel(&s[fd]) : 0;
 	return (0);
 }
 
@@ -47,11 +47,13 @@ int			get_next_line(const int fd, char **line)
 	int			rd;
 	char		*buff;
 
+	rd = 0;
 	if (fd < 0 || !line || read(fd, NULL, 0) < 0 || BUFF_SIZE < 1 ||
 		!(buff = ft_strnew(BUFF_SIZE)))
 		return (-1);
 	while ((rd = read(fd, buff, BUFF_SIZE)) > 0)
 	{
+		buff[rd] = '\0';
 		if (s[fd])
 			s[fd] = ft_strreset(s[fd], ft_strjoin(s[fd], buff));
 		else

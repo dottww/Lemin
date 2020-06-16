@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:04:21 by bwan-nan          #+#    #+#              #
-#    Updated: 2020/06/15 18:46:34 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/16 00:05:22 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ SRC += is_comment.c
 
 SRC += lem_in.c
 SRC += get_input.c
-SRC += add_tunnels.c
+SRC += add_links.c
 SRC += init_antfarm.c
 SRC += add_rooms.c
 SRC += find_paths.c
@@ -69,7 +69,7 @@ SRC += add_ants.c
 SRC += update_queue.c
 SRC += deviation.c
 SRC += complete_paths.c
-SRC += update_tunnels.c
+SRC += update_links.c
 SRC += test_solution.c
 SRC += print_solution.c
 SRC += start_linked_to_end.c

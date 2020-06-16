@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/15 19:09:03 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/16 00:57:24 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ LEM_IN = lem-in
 LEM_IN_FILES += lem_in
 LEM_IN_FILES += get_input
 LEM_IN_FILES += add_rooms
-LEM_IN_FILES += add_tunnels
+LEM_IN_FILES += add_links
 LEM_IN_FILES += init_antfarm
 LEM_IN_FILES += find_paths
 LEM_IN_FILES += init_paths
@@ -24,7 +24,7 @@ LEM_IN_FILES += add_ants
 LEM_IN_FILES += update_queue
 LEM_IN_FILES += deviation
 LEM_IN_FILES += complete_paths
-LEM_IN_FILES += update_tunnels
+LEM_IN_FILES += update_links
 LEM_IN_FILES += test_solution
 LEM_IN_FILES += print_solution
 LEM_IN_FILES += start_linked_to_end

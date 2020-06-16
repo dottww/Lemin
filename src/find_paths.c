@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 12:46:19 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/15 22:14:12 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/16 00:05:13 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static bool		find_paths(t_antfarm *atf, t_list **paths)
 	{
 		previous_paths = *paths;
 		*paths = NULL;
-		set_tunnels_usage(atf->end, &queue);
+		set_links_usage(atf->end, &queue);
 		if (!init_paths(paths, atf->start, atf->option))
 			return (false);
 		complete_paths(paths);
