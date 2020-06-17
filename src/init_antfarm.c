@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 12:28:21 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/16 02:49:49 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/17 16:39:30 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static int		init_ant_qty(t_antfarm *atf, t_list **alst)
 		*alst = (*alst)->next;
 	if (*alst && ft_isnumber(L2) == 1)
 	{
-		atf->ant_qty = ft_atoull(L2);
+		// atf->ant_qty = INT_MAX; //need decide how many MAX ANT ok
+		atf->ant_qty = ft_atoull(L2);// fix later with atoXXXX
 		*alst = (*alst)->next;
 		return ((atf->ant_qty > 0) && *alst);
 	}
@@ -27,9 +28,9 @@ static int		init_ant_qty(t_antfarm *atf, t_list **alst)
 
 static int		the_rooms(char *line)
 {
-	if (line[0] == '#')
+	if (line[0] == '#')//command/ or comment
 		return (1);
-	else if (ft_strchr(line, '-'))
+	else if (ft_strchr(line, '-')) //is a link
 		return (0);
 	return (1);
 }

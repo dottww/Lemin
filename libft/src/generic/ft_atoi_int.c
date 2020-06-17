@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 17:55:33 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/13 19:52:41 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/17 16:53:52 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_atoi_int(const char *str, int *num)
 
 	nbr = 0;
 	sign = 1;
-	if (!str)
+	if (!str || !num)
 		return (0);
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
