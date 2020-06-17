@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/14 14:38:19 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/15 22:18:15 by weilin           ###   ########.fr       */
+/*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
+/*   Updated: 2020/06/18 00:02:18 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,12 @@ int		main(int ac, char **av)
 	if (!atf.option)
 		print_input(alst);
 	print_output(&atf, paths);
+	system("leaks lem-in");
+	// char t='t';
+	// bool try=true;
+	// int tryint=(int)true;
+	// ft_printf("szofchar=%zu\n",sizeof(t));
+	// ft_printf("szofbool=%zu\n",sizeof(try));
+	// ft_printf("szofint=%zu\n",sizeof(tryint));
 	return (print_and_free(&atf, &alst, &paths, NULL));
 }

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:08:07 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/17 17:00:00 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/17 23:24:47 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ static int		mark_start_end(t_room *room, t_list **alst)
 	return (*alst != NULL);
 }
 
-static void		init_pointer_to_end(t_antfarm *atf, t_list *ptr, int end)
+static void		init_pointer_to_end(t_antfarm *atf, t_list *lst, int end)
 {
 	if (end == 0)
-		atf->start = ptr;
+		atf->start = lst;
 	else
-		atf->end = ptr;
+		atf->end = lst;
 }
 
 static int		set_room_val(t_room *room, char **tab)

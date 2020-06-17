@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/24 12:46:37 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/16 04:37:47 by weilin           ###   ########.fr       */
+/*   Created: 2020/06/08 16:35:44 by weilin            #+#    #+#             */
+/*   Updated: 2020/06/17 23:27:39 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static int		check_input(t_list *alst)
 
 int				get_input(t_list **alst)
 {
+// char *abc=ft_strdup("HELLO\n");
+// abc[0]='A';
 	char				*gnl;
 	t_list				*new_list;
 	t_input				new_input;
