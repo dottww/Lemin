@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 16:14:17 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/16 00:37:44 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/17 17:56:19 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct			s_room
 	int					end;
 	int					path_id;
 	int					ant_id;
-	unsigned int		population;
+	 int		population;
 	int					new_path_id;
 	bool				deviation;
 	bool				visited;
@@ -42,7 +42,7 @@ typedef struct			s_room
 
 typedef struct			s_antfarm
 {
-	unsigned int		ant_qty;
+	int					ant_qty;
 	unsigned long		rounds;
 	unsigned int		option;
 	int					id;

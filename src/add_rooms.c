@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:08:07 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/17 17:00:00 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/18 21:45:35 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static int		room_repeat(t_antfarm *atf, char **tab)
 	t_list	*elem;
 	t_room	*tmp;
 
-	// if (!(tab[0] && tab[1] && tab[2] && !tab[3]))
-	// 	return (0);
 	elem = atf->rooms;
 	while (elem)
 	{

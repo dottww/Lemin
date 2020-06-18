@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 12:49:21 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/15 22:14:12 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/17 17:56:27 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void		move_ants_forward(t_antfarm *atf, t_list *paths)
 
 static void		move_all_ants(t_antfarm *atf)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	while (++i < atf->ant_qty)
