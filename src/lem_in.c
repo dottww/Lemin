@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/15 23:33:36 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/18 21:50:26 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,18 @@ int		main(int ac, char **av)
 	// (void)ac;
 	// (void)av;
 	get_option(&atf, ac, av);
-	// if (!(get_paths(&atf, atf.start, atf.end, &paths)))
-	// 	return (print_and_free(&atf, &alst, &paths, "ERROR3"));
-	// init_ants(&atf);
-	// if (!atf.option)
-	// 	print_input(alst);
-	// print_output(&atf, paths);
+	if (!(get_paths(&atf, atf.start, atf.end, &paths)))
+		return (print_and_free(&atf, &alst, &paths, "ERROR3"));
+	init_ants(&atf);
+	if (!atf.option)
+		print_input(alst);
+	print_output(&atf, paths);
+	system("leaks lem-in");
+	// char t='t';
+	// bool try=true;
+	// int tryint=(int)true;
+	// ft_printf("szofchar=%zu\n",sizeof(t));
+	// ft_printf("szofbool=%zu\n",sizeof(try));
+	// ft_printf("szofint=%zu\n",sizeof(tryint));
 	return (print_and_free(&atf, &alst, &paths, NULL));
 }

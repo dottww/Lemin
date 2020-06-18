@@ -1,5 +1,6 @@
 *.txt
 obj/
+lem-in
 
 # Prerequisites
 *.d

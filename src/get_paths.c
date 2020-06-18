@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_paths.c                                       :+:      :+:    :+:   */
+/*   get_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/31 12:46:19 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/16 00:05:13 by weilin           ###   ########.fr       */
+/*   Created: 2020/06/17 22:25:22 by weilin            #+#    #+#             */
+/*   Updated: 2020/06/17 23:31:37 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <limits.h>
 
 bool			bfs(t_list *start, t_list *end, t_list **queue)
 {
 	t_list	*elem;
-	t_list	*room;
+	// t_list	*list_tmproom;
 	bool	found_augmented_path;
 
 	found_augmented_path = false;
@@ -26,7 +25,7 @@ bool			bfs(t_list *start, t_list *end, t_list **queue)
 	elem = *queue;
 	while (elem)
 	{
-		room = ((t_queue *)elem->content)->room;
+		// list_tmproom = ((t_queue *)elem->content)->room;
 		if (!complete_queue(elem, end))
 			return (false);
 		if (((t_room *)end->content)->visited)

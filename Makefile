@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/16 08:12:59 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/17 23:27:04 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,11 @@ LEM_IN_FILES += get_input
 LEM_IN_FILES += add_rooms
 LEM_IN_FILES += add_links
 LEM_IN_FILES += init_antfarm
-LEM_IN_FILES += find_paths
+LEM_IN_FILES += get_paths
 LEM_IN_FILES += init_paths
 LEM_IN_FILES += init_ants
 LEM_IN_FILES += add_ants
-LEM_IN_FILES += update_queue
+LEM_IN_FILES += tools_queue
 LEM_IN_FILES += deviation
 LEM_IN_FILES += complete_paths
 LEM_IN_FILES += update_links
@@ -48,6 +48,7 @@ INCS += $(LINC_DIR)get_next_line.h
 
 CC = clang
 FLAGS = -Wall -Wextra -Werror -g -I$(INC_DIR) -I$(LINC_DIR)
+LEAKS = -fsanitize=address
 RM = rm -rf
 
 LEM_IN_SRC = $(addprefix $(SRC_DIR),$(addsuffix .c,$(LEM_IN_FILES)))
@@ -60,6 +61,9 @@ all: $(LEM_IN)
 
 $(LEM_IN): $(LIBFT) $(CCH_DIR) $(LEM_IN_OBJ) $(INCS)
 	$(CC) $(FLAGS) -o $@ $< $(LEM_IN_OBJ) -L $(LIB_DIR) -lft
+
+debug: $(LIBFT) $(CCH_DIR) $(LEM_IN_OBJ) $(INCS)
+	$(CC) $(FLAGS) $(LEAKS) -o $@ $< $(LEM_IN_OBJ) -L $(LIB_DIR) -lft
 
 $(LIBFT): force
 	@make -C libft all
