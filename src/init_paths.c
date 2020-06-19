@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 13:53:37 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/16 00:05:17 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 01:54:43 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int			init_paths(t_list **paths, t_list *start, unsigned int option)
 	}
 	if (option & DISPLAY_PATHS)
 	{
-		ft_printf("{ul}{bold}Initialized %d path%s{nc}"
-		, ft_lstcount(*paths)
-		, ft_lstcount(*paths) > 1 ? "s:\n" : ":\n");
+		ft_printf("{ul}{bold}Initialized %lu path%s{nc}"
+		, ft_lstlen(*paths)
+		, ft_lstlen(*paths) > 1 ? "s:\n" : ":\n");
 	}
 	return (1);
 }

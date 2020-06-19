@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:01:32 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/16 04:23:58 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 03:13:10 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static void		set_usage(t_list *src, t_list *dest, bool is_previous)
 		((t_link *)link->content)->usage = 0;
 }
 
-void			set_links_usage(t_list *end, t_list **queue)
+void			set_links_usage(t_list *end, t_list **route)
 {
 	t_list	*room;
 	t_list	*previous;
 
-	ft_lstdel(queue, del_steps);
+	ft_lstdel(route, ft_delcontent);
 	room = end;
 	while (room)
 	{

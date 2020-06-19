@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:50:36 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/16 01:30:38 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 02:39:05 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,13 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+// void				ft_delcontent(void *content, size_t size);
 void				ft_lstdel(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_lstappend(t_list **alst, t_list *new);
 void				ft_lstprepend(t_list **alst, t_list *new);
-size_t				ft_lstlen(t_list *lst); // del
-int					ft_lstcount(t_list *lst);
+size_t				ft_lstlen(t_list *lst);
 void				ft_lst_mergesort(t_list **source,
 					int (*cmp)(void *, void *));
 void				ft_lstrev(t_list **alst);

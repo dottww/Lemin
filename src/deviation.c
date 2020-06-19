@@ -6,24 +6,24 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:41 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/16 00:05:19 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 02:39:48 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 static void		reset_visited_rooms(t_list *dev_room
-		, t_list *prev_room, t_list *queue, t_list *end)
+		, t_list *prev_room, t_list *route, t_list *end)
 {
 	t_list	*room;
 
-	while (queue)
+	while (route)
 	{
-		room = ((t_queue *)queue->content)->room;
+		room = ((t_route *)route->content)->room;
 		((t_room *)room->content)->visited = false;
 		((t_room *)room->content)->deviation = false;
 		((t_room *)room->content)->previous = NULL;
-		queue = queue->next;
+		route = route->next;
 	}
 	((t_room *)dev_room->content)->visited = false;
 	((t_room *)prev_room->content)->visited = false;
@@ -50,10 +50,10 @@ bool			deviation_reaches_end(t_list *deviation_room, t_list *end)
 {
 	t_list	*prev_room;
 	t_list	*links;
-	t_list	*queue;
+	t_list	*route;
 	bool	ret;
 
-	queue = NULL;
+	route = NULL;
 	prev_room = NULL;
 	links = ((t_room *)deviation_room->content)->links;
 	if (!(prev_room = get_previous_room(links)))
@@ -66,11 +66,11 @@ bool			deviation_reaches_end(t_list *deviation_room, t_list *end)
 	{
 		((t_room *)deviation_room->content)->visited = true;
 		((t_room *)prev_room->content)->visited = true;
-		ret = bfs(prev_room, end, &queue);
+		ret = bfs(prev_room, end, &route);
 		if (!ret)
 			((t_room *)deviation_room->content)->dead_end = true;
-		reset_visited_rooms(deviation_room, prev_room, queue, end);
-		ft_lstdel(&queue, del_steps);
+		reset_visited_rooms(deviation_room, prev_room, route, end);
+		ft_lstdel(&route, ft_delcontent);
 	}
 	return (ret);
 }

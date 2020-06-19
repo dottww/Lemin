@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:35:44 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/18 21:49:11 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 00:29:34 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ static int		check_input(t_list *alst)
 
 int				get_input(t_list **alst)
 {
-// char *abc=ft_strdup("HELLO\n");
-// abc[0]='A';
 	char				*gnl;
 	t_list				*new_list;
 	t_input				new_input;

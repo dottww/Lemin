@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:43:17 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/15 22:14:12 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 01:54:18 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ unsigned long	test_solution(t_antfarm *atf, t_list *paths
 	{
 		used_path = get_longest_path(used_path, ant_qty);
 		increment_sent_values(used_path);
-		ant_qty -= ft_lstcount(used_path);
+		ant_qty -= ft_lstlen(used_path);
 		rounds++;
 	}
 	rounds += ((t_path *)used_path->content)->len - 1;

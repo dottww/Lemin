@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/18 21:50:26 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 01:17:34 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ int		main(int ac, char **av)
 	if (!atf.option)
 		print_input(alst);
 	print_output(&atf, paths);
-	system("leaks lem-in");
+	// system("leaks lem-in");
 	// char t='t';
 	// bool try=true;
 	// int tryint=(int)true;
+	// int8_t i8t=(int8_t)true;
 	// ft_printf("szofchar=%zu\n",sizeof(t));
 	// ft_printf("szofbool=%zu\n",sizeof(try));
 	// ft_printf("szofint=%zu\n",sizeof(tryint));
+	// ft_printf("szofint=%lu\n",sizeof(i8t));
 	return (print_and_free(&atf, &alst, &paths, NULL));
 }

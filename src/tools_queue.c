@@ -6,21 +6,21 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/17 23:57:16 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 03:21:00 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static int		add_to_queue(t_list **queue, t_list *room, t_list *current)
+static int		add_to_route(t_list **route, t_list *room, t_list *current)
 {
-	t_queue		new;
-	t_list		*node;
+	t_route		new;
+	t_list		*new_node;
 
-	if (!(node = ft_lstnew(&new, sizeof(t_list))))
+	if (!(new_node = ft_lstnew(&new, sizeof(t_route))))
 		return (0);
-	((t_queue *)node->content)->room = room;
-	ft_lstappend(queue, node);
+	((t_route *)new_node->content)->room = room;
+	ft_lstappend(route, new_node);
 	((t_room *)room->content)->previous = current;
 	((t_room *)room->content)->visited = true;
 	return (1);
@@ -36,33 +36,33 @@ static bool		link_is_usable(t_list *current, t_list *link, t_list *end)
 	ori = (t_room *)current->content;
 	room = ((t_link *)link->content)->room;
 	dest = (t_room *)room->content;
-	usage = ((t_link *)link->content)->usage;
+	usage = ((t_link *)link->content)->usage;//fromhere
 	if (usage != -1 && dest->end != 0 && ori->path_id != dest->path_id
 	&& !dest->visited && dest->path_id != 0 && going_to_deviate(current, room))
 		return (deviation_reaches_end(room, end));
 	return (!dest->visited && usage != -1 && dest->end != 0
-	&& !(ori->deviation && usage == 0));
+	&& !(ori->deviation && usage == 0));//tohere
 }
 
-int				complete_queue(t_list *queue, t_list *end)
+int				complete_route(t_list *route, t_list *end)
 {
 	t_list	*link;
-	t_list	*room;
+	t_list	*target;
 	t_list	*current;
 
-	current = ((t_queue *)queue->content)->room;
+	current = ((t_route *)route->content)->room;
 	link = ((t_room *)current->content)->links;
 	while (link)
 	{
-		room = ((t_link *)link->content)->room;
-		if (link_is_usable(current, link, end))
+		target = ((t_link *)link->content)->room;
+		if (link_is_usable(current, link, end)) //check path_id
 		{
-			if (!add_to_queue(&queue, room, current))
+			if (!add_to_route(&route, target, current))
 				return (0);
-			if (((t_room *)room->content)->end == 1)
+			if (((t_room *)target->content)->end == 1)
 				return (1);
-			if (going_to_deviate(current, room))
-				((t_room *)room->content)->deviation = true;
+			if (going_to_deviate(current, target))
+				((t_room *)target->content)->deviation = true;
 		}
 		link = link->next;
 	}
@@ -71,12 +71,16 @@ int				complete_queue(t_list *queue, t_list *end)
 	return (1);
 }
 
-int				init_queue(t_list **queue, t_list *start)
-{
-	t_queue		new_queue;
+/*
+** routes are all possible routes
+*/
 
-	if (!(*queue = ft_lstnew(&new_queue, sizeof(t_queue))))
+int				init_route(t_list **route, t_list *start)
+{
+	t_route		new_route;
+
+	if (!(*route = ft_lstnew(&new_route, sizeof(t_route))))
 		return (0);
-	((t_queue *)(*queue)->content)->room = start;
+	((t_route *)(*route)->content)->room = start;
 	return (1);
 }

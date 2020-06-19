@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/16 01:30:09 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/19 01:55:13 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,14 +95,12 @@ LIB_FILES = ft_tolower\
 		ft_iswhitespace\
 		ft_split_whitespaces\
 		ft_lstprepend\
-		ft_lstcount\
 		ft_lst_mergesort\
 		ft_lstrev\
 		ft_atoi_int\
 		ret_strtab_free
 		
 #ft_split_whitespaces might be slow
-#ft_lstlen del
 #re-check ft_lst_mergesort
 #re-check ft_lstrev
 

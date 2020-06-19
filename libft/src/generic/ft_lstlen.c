@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:55:02 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/09 02:52:42 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 01:53:41 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 size_t	ft_lstlen(t_list *lst)
 {
-	t_list *tmp;
 	size_t len;
 
 	len = 0;
-	tmp = lst;
-	while (tmp)
+	while (lst)
 	{
-		tmp = tmp->next;
+		lst = lst->next;
 		len++;
 	}
 	return (len);

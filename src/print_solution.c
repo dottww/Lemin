@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 12:49:21 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/18 21:49:28 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 02:17:13 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void		move_ants_from_start(t_list *ant, t_antfarm *atf
+static void		move_ants_from_start(t_list *ant_troop, t_antfarm *atf
 				, t_list *paths)
 {
 	t_list	*path;
@@ -21,51 +21,49 @@ static void		move_ants_from_start(t_list *ant, t_antfarm *atf
 
 	path = paths;
 	is_nexted = 1;
-	while (ant && path && ((t_path *)path->content)->sent > 0)
+	while (ant_troop && path && ((t_path *)path->content)->sent > 0)
 	{
 		dest_room = ((t_path *)path->content)->room->content;
-		((t_room *)atf->start->content)->population--;
+		STARTROOM->population--;
 		dest_room->population++;
-		dest_room->ant_id = ((t_room *)atf->start->content)->ant_id++;
+		dest_room->ant_id = STARTROOM->ant_id++;
 		if (!path->next || ((t_path *)path->next->content)->sent == 0)
 			is_nexted = 0;
 		ft_printf("L%d-%s%s", dest_room->ant_id,
 		dest_room->name, is_nexted ? " " : "");
-		((t_ant *)ant->content)->position = dest_room;
+		ANT = dest_room;
 		((t_path *)path->content)->sent--;
 		path = path->next;
-		ant = ant->next;
+		ant_troop = ant_troop->next;
 	}
 	ft_putchar('\n');
 }
 
 static void		move_ants_forward(t_antfarm *atf, t_list *paths)
 {
-	t_list	*ant;
+	t_list	*ant_troop;
 	t_room	*position;
 	int		is_nexted;
 
-	ant = atf->ants;
-	position = ((t_ant *)ant->content)->position;
-	while (ant && ((t_ant *)ant->content)->position->end != 0)
+	ant_troop = atf->ants;
+	position = ANT;
+	while (ant_troop && ANT->end != 0)
 	{
-		position = ((t_ant *)ant->content)->position;
+		position = ANT;
 		if (position && position->next && (is_nexted = 1))
 		{
 			position->population--;
-			((t_room *)position->next->content)->population++;
-			((t_room *)position->next->content)->ant_id = position->ant_id;
-			if (!ant->next || (((t_ant *)ant->next->content)->position->end == 0
-			&& ((t_room *)atf->start->content)->population == 0))
+			NEXTROOM->population++;
+			NEXTROOM->ant_id = position->ant_id;
+			if (!ant_troop->next || NEXTANT->end == 0 && STARTROOM->population == 0))
 				is_nexted = 0;
-			ft_printf("L%d-%s%s", position->ant_id,
-			((t_room *)position->next->content)->name, is_nexted ? " " : "");
+			ft_printf("L%d-%s%s", position->ant_id,	NEXTROOM->name, is_nexted ? " " : "");
 			position->ant_id = 0;
-			((t_ant *)ant->content)->position = position->next->content;
+			ANT = NEXTROOM;
 		}
-		ant = ant->next;
+		ant_troop = ant_troop->next;
 	}
-	move_ants_from_start(ant, atf, paths);
+	move_ants_from_start(ant_troop, atf, paths);
 }
 
 static void		move_all_ants(t_antfarm *atf)
@@ -84,13 +82,13 @@ void			print_output(t_antfarm *atf, t_list *paths)
 	t_path	*path;
 
 	path = paths->content;
-	((t_room *)atf->start->content)->population = atf->ant_qty;
-	((t_room *)atf->start->content)->ant_id = 1;
+	STARTROOM->population = atf->ant_qty;
+	STARTROOM->ant_id = 1;
 	if (!(atf->option & ONLY_DISPLAY_SOLUTION))
 		ft_putchar('\n');
-	((t_room *)atf->start->content)->population = atf->ant_qty;
-	((t_room *)atf->start->content)->ant_id = 1;
-	if (ft_lstcount(paths) == 1 && path->len == 1)
+	STARTROOM->population = atf->ant_qty;
+	STARTROOM->ant_id = 1;
+	if (ft_lstlen(paths) == 1 && path->len == 1)
 	{
 		move_all_ants(atf);
 		return ;

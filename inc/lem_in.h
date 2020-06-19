@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:49:34 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/18 21:49:48 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 03:24:32 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # define DISPLAY_PATHS			4
 # define L1 ((t_input *)(alst->content))->line
 # define L2 ((t_input *)((*alst)->content))->line
+# define STARTROOM ((t_room *)atf->start->content)
+# define ENDROOM ((t_room *)atf->end->content)
+# define NEXTROOM ((t_room *)position->next->content)
+# define ANT ((t_ant *)ant_troop->content)->position
+# define NEXTANT (((t_ant *)ant_troop->next->content)->position
+
 
 typedef struct			s_room
 {
@@ -73,10 +79,10 @@ typedef struct			s_ant
 	t_room				*position;
 }						t_ant;
 
-typedef struct			s_queue
+typedef struct			s_route
 {
 	t_list				*room;
-}						t_queue;
+}						t_route;
 
 typedef struct			s_input
 {
@@ -103,15 +109,15 @@ int						add_ant(int id, t_antfarm *antfarm);
 */
 bool					get_paths(t_antfarm *antfarm, t_list *start
 						, t_list *end, t_list **paths);
-bool					bfs(t_list *start, t_list *end, t_list **queue);
+bool					bfs(t_list *start, t_list *end, t_list **route);
 unsigned long			test_solution(t_antfarm *antfarm, t_list *paths
 						, unsigned int ant_qty);
 void					update_data(t_antfarm *antfarm, unsigned long rounds
 						, t_list **paths);
 void					complete_paths(t_list **paths);
-void					set_links_usage(t_list *end, t_list **queue);
-int						init_queue(t_list **queue, t_list *start);
-int						complete_queue(t_list *queue, t_list *end);
+void					set_links_usage(t_list *end, t_list **route);
+int						init_route(t_list **route, t_list *start);
+int						complete_route(t_list *route, t_list *end);
 bool					going_to_deviate(t_list *current, t_list *room);
 bool					deviation_reaches_end(t_list *deviation_room
 						, t_list *end);
@@ -135,8 +141,8 @@ void					del_path(void *content, size_t size);
 int						get_input(t_list **alst);
 int						is_comment(char *line);
 int						is_start_end(char *line);
-void					del_steps(void *content, size_t size);
+void					ft_delcontent(void *content, size_t size);
 void					del_room(void *content, size_t size);
 void					del_input(void *content, size_t size);
-// void					del_queue_elem(void *content, size_t size);
+// void					del_route_elem(void *content, size_t size);
 #endif

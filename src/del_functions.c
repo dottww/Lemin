@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:57:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/18 21:49:03 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 02:39:48 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		del_steps(void *content, size_t size)
+void		ft_delcontent(void *content, size_t size)
 {
 	if (content && size)
 		free(content);
@@ -26,7 +26,7 @@ void		del_room(void *content, size_t size)
 	if (content && size)
 	{
 		ft_strdel(&room->name);
-		ft_lstdel(&room->links, del_steps);
+		ft_lstdel(&room->links, ft_delcontent);
 		free(content);
 	}
 }
@@ -45,6 +45,6 @@ void		del_input(void *content, size_t size)
 
 void		del_lists(t_list **a, t_list **b)
 {
-	ft_lstdel(a, del_steps);
-	ft_lstdel(b, del_steps);
+	ft_lstdel(a, ft_delcontent);
+	ft_lstdel(b, ft_delcontent);
 }

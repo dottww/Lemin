@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:55:42 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/16 00:05:09 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 01:59:30 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void		complete_path(t_list *path, t_list *room)
+static void		elem_complete_path(t_list *path, t_list *room)
 {
 	t_list	*link;
 	t_list	*next_room;
@@ -30,7 +30,7 @@ static void		complete_path(t_list *path, t_list *room)
 			next_room = ((t_link *)link->content)->room;
 			((t_room *)room->content)->new_next = next_room;
 			((t_room *)room->content)->new_path_id = path_id;
-			complete_path(path, next_room);
+			elem_complete_path(path, next_room);
 			return ;
 		}
 		link = link->next;
@@ -56,7 +56,7 @@ void			complete_paths(t_list **paths)
 	while (elem)
 	{
 		room = ((t_path *)elem->content)->room;
-		complete_path(elem, room);
+		elem_complete_path(elem, room);
 		elem = elem->next;
 	}
 	ft_lst_mergesort(paths, sort_by_len);
