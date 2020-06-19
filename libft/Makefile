@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/19 01:55:13 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/19 11:50:32 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ LIB_FILES = ft_tolower\
 		ft_count_if\
 		ft_print_words_tables\
 		ft_wd\
-		ft_wd_c\
+		ft_wdc\
 		ft_wd_num\
 		ft_count_c\
 		ft_strreset\
@@ -98,9 +98,11 @@ LIB_FILES = ft_tolower\
 		ft_lst_mergesort\
 		ft_lstrev\
 		ft_atoi_int\
-		ret_strtab_free
+		ret_strtab_free\
+		ft_delcontent
 		
 #ft_split_whitespaces might be slow
+#ft_lstlen del
 #re-check ft_lst_mergesort
 #re-check ft_lstrev
 

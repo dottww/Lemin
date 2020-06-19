@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:50:36 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 02:39:05 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 11:50:23 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <limits.h>
 # include "ft_printf.h"
 # include "get_next_line.h"
+
+# define TRUE		1
+# define FALSE		0
+# define SUCCESS	0
+# define FAILURE	-1
+# define STOP		-42
+# define CLEANUP	-42
 
 typedef struct		s_list
 {
@@ -78,6 +85,7 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
+char				**ft_strsplit(char const *s, char c);//repeated, remove later
 char				**ft_strsplit_c(char const *s, char c);
 char				**ft_strsplit_wd(char const *s, char c, int wd);
 char				**ft_split_whitespaces(const char *str, int wd);
@@ -92,8 +100,8 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-// void				ft_delcontent(void *content, size_t size);
 void				ft_lstdel(t_list **alst, void (*del)(void*, size_t));
+void				ft_delcontent(void *content, size_t size);
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_lstappend(t_list **alst, t_list *new);
@@ -111,7 +119,7 @@ int					ft_count_if(char **tab, int (*f)(char*));
 int					ft_count_c(char *s, char c);
 void				ft_print_words_tables(char **tab);
 int					ft_wd(const char *src);
-int					ft_wd_c(char const *s, char c);
+int					ft_wdc(char const *s, char c);
 int					ft_wd_num(char const *s, char c);
 char				*ft_strreset(char *s1, char *s2);
 
