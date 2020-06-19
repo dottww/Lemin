@@ -18,8 +18,7 @@
 		"externalConsole": false,
 		"setupCommands": [
 			{
-// "text": "settings set target.input-path src/m/example"
-"text": "settings set target.input-path src/m/empty"
+"text": "settings set target.input-path maps/valid/map_size_1000"
 			}
 		],
 		"MIMode": "lldb",

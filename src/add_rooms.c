@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:08:07 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/18 21:48:55 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 17:26:56 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int		mark_start_end(t_room *room, t_list **alst)
 		else
 		{
 			t[0] = 1;
-			room->end = 0;
+			room->s_t = 0;
 			*alst = (*alst)->next;
 		}
 	}
@@ -51,7 +51,7 @@ static int		mark_start_end(t_room *room, t_list **alst)
 		else
 		{
 			t[1] = 1;
-			room->end = 1;
+			room->s_t = 1;
 			*alst = (*alst)->next;
 		}
 	}
@@ -72,7 +72,6 @@ static int		set_room_val(t_room *room, char **tab)
 		return (0);
 	if (!(room->name = ft_strdup(tab[0])))
 		return (0);
-	room->path_id = 0;
 	room->links = NULL;
 	room->next = NULL;
 	room->previous = NULL;
@@ -93,7 +92,7 @@ int				add_room(t_antfarm *ath, t_list **alst)
 	t_room			room;
 	t_list			*new_list;
 
-	room.end = -1;
+	room.s_t = -1;
 	if (!mark_start_end(&room, alst))
 		return (0);
 	else if ((L2)[0] == '#')
@@ -107,7 +106,7 @@ int				add_room(t_antfarm *ath, t_list **alst)
 		ft_strdel(&room.name);
 		return (ret_strtab_free(tab, 0));
 	}
-	(room.end != -1) ? init_pointer_to_end(ath, new_list, room.end) : 0;
+	(room.s_t != -1) ? init_pointer_to_end(ath, new_list, room.s_t) : 0;
 	ft_lstappend(&ath->rooms, new_list);
 	return (ret_strtab_free(tab, 1));
 }

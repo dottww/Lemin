@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/17 23:27:04 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/19 18:05:25 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ LEM_IN_FILES += print_paths
 LEM_IN_FILES += print_input
 LEM_IN_FILES += del_functions
 LEM_IN_FILES += is_comment
+LEM_IN_FILES += bfs
 
 CCH_DIR = cache/
 SRC_DIR = src/
@@ -46,7 +47,8 @@ INCS += $(LINC_DIR)libft.h
 INCS += $(LINC_DIR)ft_printf.h 
 INCS += $(LINC_DIR)get_next_line.h
 
-CC = clang
+# CC = clang
+CC = gcc
 FLAGS = -Wall -Wextra -Werror -g -I$(INC_DIR) -I$(LINC_DIR)
 LEAKS = -fsanitize=address
 RM = rm -rf

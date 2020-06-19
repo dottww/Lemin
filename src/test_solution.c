@@ -6,13 +6,13 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:43:17 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/19 01:54:18 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 16:21:09 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void			update_data(t_antfarm *atf, unsigned long rounds
+void			printpath_update_data(t_antfarm *atf, unsigned long rounds
 				, t_list **paths)
 {
 	t_list	*room;

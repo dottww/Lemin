@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:55:42 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/19 01:59:30 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 13:43:50 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		elem_complete_path(t_list *path, t_list *room)
 
 	path_id = ((t_path *)path->content)->id;
 	link = ((t_room *)room->content)->links;
-	if (((t_room *)room->content)->end == 1)
+	if (((t_room *)room->content)->s_t == 1)
 		((t_path *)path->content)->complete = true;
 	while (link)
 	{

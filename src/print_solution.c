@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 12:49:21 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/19 02:17:13 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 13:44:00 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void		move_ants_forward(t_antfarm *atf, t_list *paths)
 
 	ant_troop = atf->ants;
 	position = ANT;
-	while (ant_troop && ANT->end != 0)
+	while (ant_troop && ANT->s_t != 0)
 	{
 		position = ANT;
 		if (position && position->next && (is_nexted = 1))
@@ -55,7 +55,7 @@ static void		move_ants_forward(t_antfarm *atf, t_list *paths)
 			position->population--;
 			NEXTROOM->population++;
 			NEXTROOM->ant_id = position->ant_id;
-			if (!ant_troop->next || NEXTANT->end == 0 && STARTROOM->population == 0))
+			if (!ant_troop->next || NEXTANT->s_t == 0 && STARTROOM->population == 0))
 				is_nexted = 0;
 			ft_printf("L%d-%s%s", position->ant_id,	NEXTROOM->name, is_nexted ? " " : "");
 			position->ant_id = 0;

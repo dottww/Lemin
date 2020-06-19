@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 03:21:00 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 17:16:27 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,38 +36,64 @@ static bool		link_is_usable(t_list *current, t_list *link, t_list *end)
 	ori = (t_room *)current->content;
 	room = ((t_link *)link->content)->room;
 	dest = (t_room *)room->content;
-	usage = ((t_link *)link->content)->usage;//fromhere
-	if (usage != -1 && dest->end != 0 && ori->path_id != dest->path_id
+	usage = ((t_link *)link->content)->usage;//wei
+	if (usage != -1 && dest->s_t != 0 && ori->path_id != dest->path_id
 	&& !dest->visited && dest->path_id != 0 && going_to_deviate(current, room))
 		return (deviation_reaches_end(room, end));
-	return (!dest->visited && usage != -1 && dest->end != 0
-	&& !(ori->deviation && usage == 0));//tohere
+	return (!dest->visited && usage != -1 && dest->s_t != 0
+	&& !(ori->deviation && usage == 0));
 }
+
+// static void		print_rts(t_list *room)
+// {
+// 	// if(0)
+// 	{while (room)
+// 	{
+// 		ft_printf("%s%s"
+// 		, ((t_room *)room->content)->name
+// 		, ((t_room *)room->content)->next ? "-" : "");
+// 		room = ((t_room *)room->content)->next;
+// 	}}
+// }
+
+// static void		print_rt(t_list *rt)
+// {
+// 	t_list	*room;
+
+// 	// if(0)
+// 	{while (rt)
+// 	{
+// 		room = ((t_route *)rt->content)->room;
+// 		print_rts(room);
+// 		rt = rt->next;
+// 	}}
+// 	ft_putchar('\n');
+// }
 
 int				complete_route(t_list *route, t_list *end)
 {
 	t_list	*link;
-	t_list	*target;
-	t_list	*current;
+	t_list	*target_room;
+	t_list	*current_room;
 
-	current = ((t_route *)route->content)->room;
-	link = ((t_room *)current->content)->links;
+	current_room = ((t_route *)route->content)->room;
+	link = ((t_room *)current_room->content)->links;
 	while (link)
 	{
-		target = ((t_link *)link->content)->room;
-		if (link_is_usable(current, link, end)) //check path_id
+		target_room = ((t_link *)link->content)->room;
+		if (link_is_usable(current_room, link, end)) //check path_id
 		{
-			if (!add_to_route(&route, target, current))
+			if (!add_to_route(&route, target_room, current_room))
 				return (0);
-			if (((t_room *)target->content)->end == 1)
+			if (((t_room *)target_room->content)->s_t == 1)
 				return (1);
-			if (going_to_deviate(current, target))
-				((t_room *)target->content)->deviation = true;
+			if (going_to_deviate(current_room, target_room))
+				((t_room *)target_room->content)->deviation = true;
 		}
 		link = link->next;
 	}
-	if (((t_room *)current->content)->deviation == true)
-		((t_room *)current->content)->deviation = false;
+	if (((t_room *)current_room->content)->deviation == true)
+		((t_room *)current_room->content)->deviation = false;
 	return (1);
 }
 
@@ -75,12 +101,4 @@ int				complete_route(t_list *route, t_list *end)
 ** routes are all possible routes
 */
 
-int				init_route(t_list **route, t_list *start)
-{
-	t_route		new_route;
 
-	if (!(*route = ft_lstnew(&new_route, sizeof(t_route))))
-		return (0);
-	((t_route *)(*route)->content)->room = start;
-	return (1);
-}

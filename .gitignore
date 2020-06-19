@@ -1,6 +1,8 @@
 *.txt
 obj/
 lem-in
+.map_err/
+.diff*
 
 # Prerequisites
 *.d

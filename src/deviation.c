@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:41 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/19 02:39:48 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 13:43:44 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool			deviation_reaches_end(t_list *deviation_room, t_list *end)
 	links = ((t_room *)deviation_room->content)->links;
 	if (!(prev_room = get_previous_room(links)))
 		return (false);
-	if (((t_room *)prev_room->content)->end == 0)
+	if (((t_room *)prev_room->content)->s_t == 0)
 		return (false);
 	ret = false;
 	if (((t_room *)prev_room->content)->visited == false

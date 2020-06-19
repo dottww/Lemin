@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:56:12 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 02:39:48 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 17:55:40 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			free_input(t_list **alst, char *exit_msg)
 	return (exit_msg ? -1 : 0);
 }
 
-int			print_and_free(t_antfarm *atf, t_list **input
+int			print_and_free(t_antfarm *atf, t_list **alst
 			, t_list **paths, char *msg)
 {
 	if (atf->rooms)
@@ -28,5 +28,5 @@ int			print_and_free(t_antfarm *atf, t_list **input
 	if (atf->ants)
 		ft_lstdel(&atf->ants, ft_delcontent);
 	ft_lstdel(paths, ft_delcontent);
-	return (free_input(input, msg));
+	return (free_input(alst, msg));
 }

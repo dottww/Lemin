@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:01:12 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/18 21:48:32 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/19 17:47:35 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	create_link(t_list *room1, t_list *room2)
 	new_link.usage = 0;
 	new_link.room = NULL;
 	if (link_already_exists(origin_room->links, room2))
-		return (0);
+		return (-1);
 	if (!(tlist_of_a_link = ft_lstnew(&new_link, sizeof(t_link))))
 		return (0);
 	((t_link *)tlist_of_a_link->content)->room = room2;
@@ -84,9 +84,9 @@ static int	link_checker(t_antfarm *atf, char **tab)
 	head = atf->rooms;
 	if (!tab[0] || !tab[1] || tab[2]
 		|| !rooms_exist(head, &room1, &room2, tab))
-		// return (0);
-	{ft_printf("link_checker1\n");	return (0);}
-	return (create_link(room1, room2) && create_link(room2, room1));
+		return (0);
+	// {ft_printf("link_checker1\n");	return (0);}
+	return (create_link(room1, room2) * create_link(room2, room1));
 }
 
 int			add_link(t_antfarm *atf, char *line)
@@ -97,9 +97,10 @@ int			add_link(t_antfarm *atf, char *line)
 	if (line[0] == '#')
 		return (1);
 	if (ft_count_c(line, '-') != 1 || !(tab = ft_strsplit_c(line, '-')))
-	{ft_printf("addlink2\n");	return (0);}
+	// {ft_printf("addlink2\n");	return (0);}
+		return (0);
 	if (!link_checker(atf, tab))
-	{ft_printf("addlink3\n");	return (ret_strtab_free(tab, 0));}
-		// return (ret_strtab_free(tab, 0));
+	// {ft_printf("addlink3\n");	return (ret_strtab_free(tab, 0));}
+		return (ret_strtab_free(tab, 0));
 	return (ret_strtab_free(tab, 1));
 }
