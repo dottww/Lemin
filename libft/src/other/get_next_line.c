@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 19:27:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/16 03:01:21 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 15:24:30 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_return_line(char **s, char **line, const int fd, int rd)
 		slen = ft_strlen(s[fd]);
 		*line = ft_strsub(s[fd], 0, len);
 		s[fd] = ft_strreset(s[fd], ft_strsub(s[fd], len + 1, slen - len - 1));
-		return (1);
+		return (s[fd] != NULL ? 1 : -1);
 	}
 	else if (s[fd] && s[fd][0] != '\0')
 	{

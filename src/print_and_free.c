@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:56:12 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 17:55:40 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 14:43:38 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ int			free_input(t_list **alst, char *exit_msg)
 {
 	ft_lstdel(alst, del_input);
 	if (exit_msg)
-		ft_putendl(exit_msg);
-	return (exit_msg ? -1 : 0);
+	{
+		write(2, exit_msg, ft_strlen(exit_msg));
+		ft_putchar('\n');
+	}
+	return (exit_msg ? 1 : 0);
 }
 
 int			print_and_free(t_antfarm *atf, t_list **alst

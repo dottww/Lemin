@@ -29,7 +29,7 @@ run_test()
 	local name=`echo $@ | cut -d';' -f1`
 	local map=`echo $@ | cut -d';' -f2`
 
-	printf "%-50s" "$name"
+	printf "%-50s" "$map"
 	if [ -f "${MAP_PATH}/${map}" ];then
 		if [ "$VALGRIND" -eq 1 ];then
 			printf "with valgrind :      "

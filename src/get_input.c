@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:35:44 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 00:29:34 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 14:58:12 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ static int		check_input(t_list *alst)
 			t[1] += is_legal_terminal(alst);
 		else if (ft_isnumber(L1) == 1)
 			ant = ft_atoull(L1);
-		else if (!is_comment(L1) && ant &&
-					!(((ft_wd(L1) == 1) && ft_count_c(L1, '-') == 1)
-						|| ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2)))
+		// else if (!is_comment(L1) && ant &&
+		else if ((is_comment(L1) && !ant) || (!is_comment(L1) && ant
+					&& !(((ft_wd(L1) == 1) && ft_count_c(L1, '-') == 1)
+					|| ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2))))
 			return (0);
 		alst = alst->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 17:38:11 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 14:57:20 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,16 @@ int		main(int ac, char **av)
 	alst = NULL;
 	paths = NULL;
 	if (!get_input(&alst))
+		// return (free_input(&alst, "ERROR"));
 		return (free_input(&alst, "ERROR1"));
 	if (!register_rooms(&atf, alst))
+		// return (print_and_free(&atf, &alst, &paths, "ERROR"));
 		return (print_and_free(&atf, &alst, &paths, "ERROR2"));
 	// (void)ac;
 	// (void)av;
 	get_option(&atf, ac, av);
 	if (!(get_paths(&atf, atf.start, atf.end, &paths)))
+		// return (print_and_free(&atf, &alst, &paths, "ERROR"));
 		return (print_and_free(&atf, &alst, &paths, "ERROR3"));
 	init_ants(&atf);
 	if (!atf.option)

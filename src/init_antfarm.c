@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 17:47:18 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 14:54:39 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ static int		init_links(t_antfarm *atf, t_list *alst)
 	alst = alst->next;
 	while (alst)
 	{
-		if (!is_comment(L1) && !add_link(atf, L1))
-			// return (0);
-		{ft_printf("init_link1={%s}\n", L1);	return (0);}
+		if (is_start_end(L1) || (!is_comment(L1) && !add_link(atf, L1)))
+			return (0);
+		// {ft_printf("init_link1={%s}\n", L1);	return (0);}
 		alst = alst->next;
 	}
 	return (1);

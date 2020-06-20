@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strreset.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 15:04:37 by weilin            #+#    #+#             */
-/*   Updated: 2019/01/07 15:29:40 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 15:13:56 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 char	*ft_strreset(char *s1, char *s2)
 {
+	if (s1 && !s2)
+	{	
+		ft_strdel(&s1);
+		return (NULL);
+	}
 	if (!s1 || !s2)
 		return (NULL);
 	ft_strdel(&s1);
