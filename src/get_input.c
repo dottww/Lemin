@@ -6,20 +6,27 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:35:44 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/20 17:33:17 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 17:52:38 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static int	okint(t_list *alst)
+//just a function to test time diff if do atoi when parsing
+int	okint(t_list *alst)
 {
 	char			**tab;
-int x;
+	int x;
+	int y;
+	
 	if (!(tab = ft_split_whitespaces(L1, (ft_wd(L1) == 3) ? 3 : 0)))
 		return (0);
-	if (!ft_atoi_int(tab[1], &x) || !ft_atoi_int(tab[2], &x))
+	if (!ft_atoi_int(tab[1], &x) || !ft_atoi_int(tab[2], &y))
+	{
+		ft_strtab_free(tab);
 		return (0);
+	}
+	ft_strtab_free(tab);
 	return (1);
 }
 
@@ -64,9 +71,11 @@ int				get_input(t_list **alst)
 	char				*gnl;
 	t_list				*new_list;
 	t_input				new_input;
+	int					ret;
 
 	gnl = NULL;
-	while (get_next_line(0, &gnl) > 0)
+	ret = 0 ;
+	while ((ret = get_next_line(0, &gnl)) > 0)
 	{
 		if (!(new_input.line = ft_strdup(gnl))
 		|| !(new_list = ft_lstnew(&new_input, sizeof(t_input))))
@@ -78,5 +87,6 @@ int				get_input(t_list **alst)
 		ft_lstappend(alst, new_list);
 		gnl ? ft_strdel(&gnl) : 0;
 	}
-	return (check_input(*alst));
+	gnl ? ft_strdel(&gnl) : 0;
+	return ((ret == -1) ? 0 : check_input(*alst));
 }
