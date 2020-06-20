@@ -6,11 +6,22 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:35:44 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/20 14:58:12 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 17:33:17 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+static int	okint(t_list *alst)
+{
+	char			**tab;
+int x;
+	if (!(tab = ft_split_whitespaces(L1, (ft_wd(L1) == 3) ? 3 : 0)))
+		return (0);
+	if (!ft_atoi_int(tab[1], &x) || !ft_atoi_int(tab[2], &x))
+		return (0);
+	return (1);
+}
 
 int	is_legal_terminal(t_list *alst)
 {
@@ -38,10 +49,10 @@ static int		check_input(t_list *alst)
 			t[1] += is_legal_terminal(alst);
 		else if (ft_isnumber(L1) == 1)
 			ant = ft_atoull(L1);
-		// else if (!is_comment(L1) && ant &&
 		else if ((is_comment(L1) && !ant) || (!is_comment(L1) && ant
 					&& !(((ft_wd(L1) == 1) && ft_count_c(L1, '-') == 1)
 					|| ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2))))
+					// || ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2 && okint(alst)))))
 			return (0);
 		alst = alst->next;
 	}
@@ -53,6 +64,7 @@ int				get_input(t_list **alst)
 	char				*gnl;
 	t_list				*new_list;
 	t_input				new_input;
+
 	gnl = NULL;
 	while (get_next_line(0, &gnl) > 0)
 	{

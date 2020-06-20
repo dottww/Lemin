@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/20 14:28:58 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 17:23:41 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int				malloc_route(t_list **route, t_list *start)
 	return (1);
 }
 
+//temporary funtion to print out all routes
 static void		print_routes(t_list *room)
 {
 	// if(0)
@@ -34,6 +35,7 @@ static void		print_routes(t_list *room)
 	}}
 }
 
+//temporary funtion to print out all routes, can delete later
 void		print_route(t_list *rt)
 {
 	t_list	*room;

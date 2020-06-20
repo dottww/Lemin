@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:25:22 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 18:04:44 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 17:08:34 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static bool		find_paths(t_antfarm *atf, t_list **paths)
 	t_list			*previous_paths;
 
 	route = NULL;
-	while (bfs(atf->start, atf->end, &route))
+	while (bfs(atf->start, atf->end, &route)) //find all possible routes
 	{
 		print_route(route);
 		previous_paths = *paths;
