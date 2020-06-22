@@ -6,11 +6,29 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:35:44 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/21 17:04:39 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 10:24:27 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+//just a function to test time diff if do atoi when parsing
+int	okint(t_list *alst)
+{
+	char			**tab;
+	int x;
+	int y;
+	
+	if (!(tab = ft_split_whitespaces(L1, (ft_wd(L1) == 3) ? 3 : 0)))
+		return (0);
+	if (!ft_atoi_int(tab[1], &x) || !ft_atoi_int(tab[2], &y))
+	{
+		ft_strtab_free(tab);
+		return (0);
+	}
+	ft_strtab_free(tab);
+	return (1);
+}
 
 /*
 ** Description:
@@ -58,10 +76,10 @@ static int		check_input(t_list *alst)
 			t[1] += is_legal_terminal(alst);
 		else if (ft_isnumber(L1) == 1)
 			ant = ft_atoull(L1);
-		// else if (!is_comment(L1) && ant &&
 		else if ((is_comment(L1) && !ant) || (!is_comment(L1) && ant
 					&& !(((ft_wd(L1) == 1) && ft_count_c(L1, '-') == 1) // one 'word' with one '-'
 					|| ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2)))) // or 3 words with 2 spaces
+					// || ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2 && okint(alst)))))
 			return (0);
 		alst = alst->next;
 	}
@@ -80,8 +98,11 @@ int				get_input(t_list **alst)
 	char				*gnl;
 	t_list				*new_list;
 	t_input				new_input;
+	int					ret;
+
 	gnl = NULL;
-	while (get_next_line(0, &gnl) > 0)
+	ret = 0 ;
+	while ((ret = get_next_line(0, &gnl)) > 0)
 	{
 		if (!(new_input.line = ft_strdup(gnl))
 		|| !(new_list = ft_lstnew(&new_input, sizeof(t_input))))
@@ -93,5 +114,6 @@ int				get_input(t_list **alst)
 		ft_lstappend(alst, new_list);
 		gnl ? ft_strdel(&gnl) : 0;
 	}
-	return (check_input(*alst));
+	gnl ? ft_strdel(&gnl) : 0;
+	return ((ret == -1) ? 0 : check_input(*alst));
 }

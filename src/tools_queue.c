@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 17:16:27 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 17:52:49 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ static bool		link_is_usable(t_list *current, t_list *link, t_list *end)
 	return (!dest->visited && usage != -1 && dest->s_t != 0
 	&& !(ori->deviation && usage == 0));
 }
+
+// (t_room *)RoomA->link: (t_room *)B , usage default:0
+
+// Start-"A-B"-C-End
+// RoomA->link:A-B: -1
+// RoomB->link:B-A: 1
+
 
 // static void		print_rts(t_list *room)
 // {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:25:22 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 18:04:44 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/20 17:46:38 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static bool		find_paths(t_antfarm *atf, t_list **paths)
 	t_list			*previous_paths;
 
 	route = NULL;
-	while (bfs(atf->start, atf->end, &route))
+	while (bfs(atf->start, atf->end, &route)) //find all possible routes
 	{
 		print_route(route);
 		previous_paths = *paths;
 		*paths = NULL;
 		set_links_usage(atf->end, &route);
-		if (!init_paths(paths, atf->start, atf->option))
+		if (!init_paths(paths, atf->start, atf->option)) //unique id: path_id created on the fly
 			return (false);
 		complete_paths(paths);
 		ret = test_solution(atf, *paths, atf->ant_qty);

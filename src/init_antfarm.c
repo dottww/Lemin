@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/21 20:02:17 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 10:20:52 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void		init_antfarm_values(t_antfarm *atf)
 	atf->rooms = NULL;
 	atf->start = NULL;
 	atf->end = NULL;
-	atf->rounds = LONG_MAX;
+	atf->rounds = LONG_MAX; //pending
 	atf->id = 0;
 	atf->option = 0;
 	atf->ants = NULL;
