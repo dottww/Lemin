@@ -3,20 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:35:44 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/20 14:58:12 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/21 17:04:39 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** Description:
+**	Check the line after '##start' or '##end'
+**	Function check if there is 2 spaces in the line and there is no '-'
+**	within the line (if it may be a edge)
+*/
 
 int	is_legal_terminal(t_list *alst)
 {
 	alst = alst->next;
 	return ((ft_count_c(L1, ' ') == 2 && !ft_strchr(L1, '-')) ? 1 : 0);
 }
+
+/*
+** Description:
+**	Some check on the line stock in input linked list.
+**	The check are:
+**	-if line is different of NULL, not empty, and does not start by 'L'
+**	-if line is '#start' or '##end', and the following line could be a room
+**	-if the line is a number of type unsigned long long (for the number of ants)
+**	- 
+** Return:
+**	1: if all the input lines passed the basic tests
+**	0: if there is an error
+*/
 
 static int		check_input(t_list *alst)
 {
@@ -40,13 +60,20 @@ static int		check_input(t_list *alst)
 			ant = ft_atoull(L1);
 		// else if (!is_comment(L1) && ant &&
 		else if ((is_comment(L1) && !ant) || (!is_comment(L1) && ant
-					&& !(((ft_wd(L1) == 1) && ft_count_c(L1, '-') == 1)
-					|| ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2))))
+					&& !(((ft_wd(L1) == 1) && ft_count_c(L1, '-') == 1) // one 'word' with one '-'
+					|| ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2)))) // or 3 words with 2 spaces
 			return (0);
 		alst = alst->next;
 	}
 	return ((t[0] == 1 && t[1] == 1 && ant) ? 1 : 0);
 }
+
+/*
+** Description:
+**	Read of the input in standard input (STDIN via '<') line by line
+**	Each lines is stock in a link (create on the fly) added to input
+**	
+*/
 
 int				get_input(t_list **alst)
 {

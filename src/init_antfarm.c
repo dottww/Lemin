@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   init_antfarm.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/20 14:54:39 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/21 20:02:17 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** Description:
+**	Function skip the link in the list input(alst) that are comments.
+**	When the content of the link is not a comment, it is supposedly a number
+**	(for the number of ants). Thus we stock the number in ant_qty. If this is
+**	not a number in the end, nothing is stock in ant_qty.
+** Return:
+**	1: the number of ants is stocked in ant_qty and the number is a positive int
+**	0: otherwise
+*/
 
 static int		init_ant_qty(t_antfarm *atf, t_list **alst)
 {
@@ -25,14 +36,31 @@ static int		init_ant_qty(t_antfarm *atf, t_list **alst)
 	return (0);
 }
 
+/*
+** Description:
+**	Check if the line (content of the input list)
+**	is either a comment or command and if the line does not have a '-'
+**	within (if there is a '-', the line is either a edge description or a
+**	wrong formated input line)
+** Return:
+**	0: if the line is a possible link/edge description or a wrong formated line
+**	1: otherwise (a room, a command or a comment)
+*/
+
 static int		the_rooms(char *line)
 {
 	if (line[0] == '#') //command or comment
 		return (1);
-	else if (ft_strchr(line, '-')) //is a link
+	else if (ft_strchr(line, '-')) //is a link/edge
 		return (0);
 	return (1);
 }
+
+/*
+** Description:
+**	Initialization of all the inner variables of t_antfarm struct var
+**	except ant_qty which is initialized by another function just after
+*/
 
 static void		init_antfarm_values(t_antfarm *atf)
 {
@@ -44,6 +72,12 @@ static void		init_antfarm_values(t_antfarm *atf)
 	atf->option = 0;
 	atf->ants = NULL;
 }
+
+/*
+** Description:
+**	
+**
+*/
 
 static int		init_links(t_antfarm *atf, t_list *alst)
 {
@@ -60,6 +94,21 @@ static int		init_links(t_antfarm *atf, t_list *alst)
 	}
 	return (1);
 }
+
+/*
+** Parameters:
+**	t_antfarm *atf: struct variable representing the graph
+**	t_list *alst: list where each link content is a string/line from input
+** Description:
+**	Initialization of t_antfarm *atf.
+**	The list of input is roamed one time, comment are always skipped,
+**	after possible comments a positive integer is expected and stock in
+**	ant_qty
+**	Then rooms, commands and comments are expected (rooms are stocked in
+**	atf->rooms), pointers atf->start/end are set.
+**	Comments and commands others than start/end are ignored.
+**	
+*/
 
 int				register_rooms(t_antfarm *atf, t_list *alst)
 {
