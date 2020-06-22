@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 13:13:10 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 17:25:53 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ bool			bfs(t_list *start, t_list *end, t_list **route)
 		return (false);
 	((t_room *)start->content)->visited = true; // Why setting visited status variable of start ? multiple bfs will be done, and will begins at start 
 	elem = *route;
-	while (elem)
+	while (elem) //LOOP I: SA, SB
 	{
 		// list_tmproom = ((t_route *)elem->content)->room;
 		if (!complete_route(elem, end)) //find possible route to end

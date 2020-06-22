@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 16:50:36 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 18:12:11 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static bool		link_is_usable(t_list *current, t_list *curr_link, t_list *end)
 	if (usage != -1 && dest->s_t != 0 && src->path_id != dest->path_id //pas bon sens && !ISSTART(dest) && !PATH(src, dest)
 	&& !dest->visited && dest->path_id != 0 && going_to_deviate(current, adj_room)) // && !VISITED(dest) && PATH(dest) && 
 		return (deviation_reaches_end(adj_room, end));
-	return (!dest->visited && usage != -1 && dest->s_t != 0 // !VISITED(dest) && pas bon sens && !ISSTART(dest)
-	&& !(src->deviation && usage == 0)); // !([[DV(src)]] && !LINK(src, dest))
+	return (!dest->visited && usage != -1 && dest->s_t != 0 // 1!VISITED(dest) && 1pas bon sens && 1!ISSTART(dest)
+	&& !(src->deviation && usage == 0)); // 1!(0[[0DV(src)]] && 1!LINK(0src, dest))
 }
 
 // (t_room *)RoomA->link: (t_room *)B , usage default:0
@@ -106,7 +106,7 @@ int				complete_route(t_list *route, t_list *end)
 
 	current_room = ((t_route *)route->content)->room; // pointer on the room encapsulated in type t_list
 	link = ((t_room *)current_room->content)->links; // pointer on the list links of the current room, the pointer is an encapsulate list of t_link in t_list struct var (if I understand)
-	while (link)
+	while (link) // A, B
 	{
 		target_room = ((t_link *)link->content)->room;
 		if (link_is_usable(current_room, link, end)) //check path_id

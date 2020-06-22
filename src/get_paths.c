@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:25:22 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/20 17:46:38 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 18:19:46 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool		find_paths(t_antfarm *atf, t_list **paths)
 	route = NULL;
 	while (bfs(atf->start, atf->end, &route)) //list out all possible routes and complying to rules
 	{
-		print_route(route);
+		// print_route(route);
 		previous_paths = *paths;
 		*paths = NULL;
 		set_links_usage(atf->end, &route);

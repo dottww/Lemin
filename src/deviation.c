@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:41 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/22 16:50:37 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 18:09:28 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ bool			going_to_deviate(t_list *current, t_list *adj_room)
 		}
 		link_dest = link_dest->next;
 	}// src->deviation are initialized to false, not changed at first
-	return (!src->deviation && link_used // !DV(src) && LINK(src, dest) && PATH(dest) && !PATH(src && dest) 
-	&& dest->path_id != 0 && src->path_id != dest->path_id); // [[DV(src)]]
+	return (!src->deviation && link_used // ![[DV(src)]] && LINK(src, dest) && PATH(dest) && !PATH(src && dest) 
+	&& dest->path_id != 0 && src->path_id != dest->path_id);
 }

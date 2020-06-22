@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_paths.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:25:22 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/20 17:43:47 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/22 17:56:19 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static int	init_path(t_list **paths, t_list *room)
+static int	init_path_sub(t_list **paths, t_list *room)
 {
 	t_list		*new_path;
 	t_path		path;
@@ -41,7 +41,7 @@ int			init_paths(t_list **paths, t_list *start, unsigned int option)
 	{
 		if (((t_link *)link->content)->usage == -1)
 		{
-			if (!init_path(paths, ((t_link *)link->content)->room))
+			if (!init_path_sub(paths, ((t_link *)link->content)->room))
 				return (0);
 		}
 		link = link->next;
