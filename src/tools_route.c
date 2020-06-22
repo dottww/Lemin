@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_route.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 18:12:11 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 19:11:45 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,16 @@ int				complete_route(t_list *route, t_list *end)
 
 	current_room = ((t_route *)route->content)->room; // pointer on the room encapsulated in type t_list
 	link = ((t_room *)current_room->content)->links; // pointer on the list links of the current room, the pointer is an encapsulate list of t_link in t_list struct var (if I understand)
+
+char *currname=(char *)((t_room *)((t_route *)route->content)->room->content)->name;
+char *tarname=(char *)((t_room *)((t_link *)link->content)->room->content)->name;
+if(0){currname=NULL;tarname=NULL;}
+int tmp=0;
 	while (link) // A, B
 	{
 		target_room = ((t_link *)link->content)->room;
-		if (link_is_usable(current_room, link, end)) //check path_id
+		// if (link_is_usable(current_room, link, end)) //check path_id
+		if ((tmp=(link_is_usable(current_room, link, end)))!=0) //check path_id
 		{
 			if (!add_to_route(&route, target_room, current_room))
 				return (0);
@@ -124,6 +130,8 @@ int				complete_route(t_list *route, t_list *end)
 		((t_room *)current_room->content)->deviation = false;
 	return (1);
 }
+// (char *)((t_room *)((t_route *)(route->next)->content)->room->next)->name
+
 
 /*
 ** routes are all possible routes

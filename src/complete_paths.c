@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:55:42 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/19 13:43:50 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/22 20:37:26 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ static void		elem_complete_path(t_list *path, t_list *room)
 	{
 		if (((t_link *)link->content)->usage == -1)
 		{
+			// ft_printf("-------path[%s],len=%d\n"
+			// ,(char *)((t_room *)((t_link *)link->content)->room->content)->name
+			// ,((t_path *)path->content)->len);
 			((t_path *)path->content)->len++;
 			next_room = ((t_link *)link->content)->room;
 			((t_room *)room->content)->new_next = next_room;

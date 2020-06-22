@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:25:22 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 18:19:46 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 20:47:36 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,13 @@ static bool		find_paths(t_antfarm *atf, t_list **paths)
 			return (false);
 		complete_paths(paths);
 		ret = test_solution(atf, *paths, atf->ant_qty);
+		// ft_printf("0path_len=%d\n",((t_path *)(*paths)->content)->len);
 		if (ret >= atf->rounds || ret == 0)
 		{
+			// ft_printf(
+			// "-------------ret >= atf->rounds || ret == 0\nret = {%lu} atf->rounds = {%lu}\npaths="
+			// , ret, atf->rounds);
+			// print_paths(*paths);
 			ft_lstdel(paths, ft_delcontent);
 			*paths = previous_paths;
 			break ;

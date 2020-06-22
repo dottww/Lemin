@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_paths.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:25:22 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 17:56:19 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 20:32:56 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			init_paths(t_list **paths, t_list *start, unsigned int option)
 	}
 	if (option & DISPLAY_PATHS)
 	{
-		ft_printf("{ul}{bold}Initialized %lu path%s{nc}"
+		ft_printf("Initialized %lu path%s"
 		, ft_lstlen(*paths)
 		, ft_lstlen(*paths) > 1 ? "s:\n" : ":\n");
 	}
