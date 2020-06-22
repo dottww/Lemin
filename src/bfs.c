@@ -3,18 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/20 17:52:44 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/22 13:13:10 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
+/*
+** Description:
+**	Allocation memory of the 
+** Return:
+**	1: no mem allocation issue for the link new_route route
+**	0: if mem allocation issue for the link
+*/
+
 static int				malloc_route(t_list **route, t_list *start)
 {
-	t_route		new_route;
+	t_route		new_route; // no initialization of new_route, thus in lstnew, random value will be given to the inner variable of route no ?
 
 	if (!(*route = ft_lstnew(&new_route, sizeof(t_route))))
 		return (0);
@@ -54,6 +62,14 @@ void		print_route(t_list *rt)
 	}
 }
 
+/*
+** Description:
+**
+** Return:
+**	TRUE  : 
+**	FALSE : 
+*/
+
 bool			bfs(t_list *start, t_list *end, t_list **route)
 {
 	t_list	*elem;
@@ -63,7 +79,7 @@ bool			bfs(t_list *start, t_list *end, t_list **route)
 	found_augmented_path = false;
 	if (!malloc_route(route, start))
 		return (false);
-	((t_room *)start->content)->visited = true;
+	((t_room *)start->content)->visited = true; // Why setting visited status variable of start ? multiple bfs will be done, and will begins at start 
 	elem = *route;
 	while (elem)
 	{

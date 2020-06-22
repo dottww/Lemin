@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:49:34 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/20 17:52:42 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/22 13:46:50 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct			s_room
 	int					s_t;
 	int					path_id;
 	int					ant_id;
-	 int		population;
+	int					population;
 	int					new_path_id;
 	bool				deviation;
 	bool				visited;
@@ -58,12 +58,19 @@ typedef struct			s_antfarm
 	t_list				*ants;
 }						t_antfarm;
 
-typedef struct			s_link
+typedef struct			s_link // What the point !?!? link is encapsulated in t_list and room also thus 2 lyers of encapsulation !!
 {
 	int					usage;
 	t_list				*room;
 }						t_link;
 
+/*
+** id = index to distinguish the different path 
+** sent = number of ants which will take the path
+** len = number of link/edge constituting the path
+** complete = boolean var, 
+** room
+*/
 typedef struct			s_path
 {
 	int					id;

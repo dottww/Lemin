@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deviation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:41 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/19 13:43:44 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/22 16:50:37 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,37 @@ bool			deviation_reaches_end(t_list *deviation_room, t_list *end)
 	return (ret);
 }
 
-bool			going_to_deviate(t_list *current, t_list *room)
+/*
+** Description:
+**	I do not understand the objective of this function, what does the concept of deviation mean ?
+** Return:
+**	True if:
+**		src->deviation is false
+**		+ link_used = 1
+**		+ src->path_id different from dest->path_id
+**		+ dest->path_id different from 0 ()
+*/
+
+bool			going_to_deviate(t_list *current, t_list *adj_room)
 {
 	t_room	*src;
 	t_room	*dest;
-	t_list	*link;
+	t_list	*link_dest;
 	int		link_used;
 
 	link_used = 0;
-	src = (t_room *)current->content;
-	dest = (t_room *)room->content;
-	link = dest->links;
-	while (link)
+	src = (t_room *)current->content; // access to the source room (opening of the encapsulation)
+	dest = (t_room *)adj_room->content; // access to the destination room (opening of the encapsulation)
+	link_dest = dest->links; //
+	while (link_dest)
 	{
-		if (((t_link *)link->content)->usage == 1)
+		if (((t_link *)link_dest->content)->usage == 1) // dest already visited by src/curr
 		{
 			link_used = 1;
 			break ;
 		}
-		link = link->next;
-	}
-	return (!src->deviation && link_used
-	&& src->path_id != dest->path_id && dest->path_id != 0);
+		link_dest = link_dest->next;
+	}// src->deviation are initialized to false, not changed at first
+	return (!src->deviation && link_used // !DV(src) && LINK(src, dest) && PATH(dest) && !PATH(src && dest) 
+	&& dest->path_id != 0 && src->path_id != dest->path_id); // [[DV(src)]]
 }

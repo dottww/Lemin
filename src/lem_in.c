@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 10:20:25 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 16:30:33 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		main(int ac, char **av)
 		print_input(alst);
 	print_output(&atf, paths);
 	}
-	system("leaks lem-in");
+	// system("leaks lem-in");
 	// char t='t';
 	// bool try=true;
 	// int tryint=(int)true;

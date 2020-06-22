@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   start_linked_to_end.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 11:58:24 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/16 00:05:10 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/22 12:44:16 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** Description:
+**	The function check if the room start has the room end as a neighbor.
+** Return:
+**	TRUE  : start and end are connnected
+**	FALSE : end is not a neighbor of start
+*/
 
 bool		start_linked_to_end(t_list *start, t_list *end)
 {
@@ -27,6 +35,14 @@ bool		start_linked_to_end(t_list *start, t_list *end)
 	}
 	return (false);
 }
+
+/*
+** Description:
+**	Initialized the link path corresponding to the path between start and end
+** Return:
+**	TRUE  : If no mem allocation during the path initialization
+**	FALSE : memory allocation issue (lstnew)
+*/
 
 bool		init_the_only_path(t_list **paths, t_antfarm *atf)
 {

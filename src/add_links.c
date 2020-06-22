@@ -6,11 +6,17 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:01:12 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 10:24:47 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 12:14:04 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** Description:
+**	
+**
+*/
 
 static int	link_already_exists(t_list *origin, t_list *dest)
 {

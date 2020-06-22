@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
+#    By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/19 18:05:25 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/22 16:48:52 by mdavid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LEM_IN_FILES += get_paths
 LEM_IN_FILES += init_paths
 LEM_IN_FILES += init_ants
 LEM_IN_FILES += add_ants
-LEM_IN_FILES += tools_queue
+LEM_IN_FILES += tools_route
 LEM_IN_FILES += deviation
 LEM_IN_FILES += complete_paths
 LEM_IN_FILES += update_links

@@ -19,7 +19,7 @@ static bool		find_paths(t_antfarm *atf, t_list **paths)
 	t_list			*previous_paths;
 
 	route = NULL;
-	while (bfs(atf->start, atf->end, &route)) //find all possible routes
+	while (bfs(atf->start, atf->end, &route)) //list out all possible routes and complying to rules
 	{
 		print_route(route);
 		previous_paths = *paths;
@@ -41,6 +41,16 @@ static bool		find_paths(t_antfarm *atf, t_list **paths)
 	ft_lstdel(&route, ft_delcontent);
 	return (atf->rounds != LONG_MAX && ret != 0);
 }
+
+/*
+** Description:
+**	Check if the room start has the room end as a neighbor.
+**	If so, only one path is constructed.
+**	Otherwise, function 'find_paths()' is called to find multiple paths
+** Return:
+**	TRUE  : if no mem allocation issue in init_the_only_path or .....
+**	FLASE : if mem allocation in init_the_only_path or ......
+*/
 
 bool			get_paths(t_antfarm *atf, t_list *start, t_list *end
 			, t_list **paths)
