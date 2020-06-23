@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 17:25:53 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/23 14:32:35 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ bool			bfs(t_list *start, t_list *end, t_list **route)
 	while (elem) //LOOP I: SA, SB
 	{
 		// list_tmproom = ((t_route *)elem->content)->room;
-		if (!complete_route(elem, end)) //find possible route to end
+		if (!complete_route(elem, end)) //construct the queue of rooms, putting them in the queue of room elem under condition of usability
 			return (false);
 		if (((t_room *)end->content)->visited)
 		{

@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:49:34 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 13:46:50 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/23 17:01:37 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ typedef struct			s_room
 	int					path_id;
 	int					ant_id;
 	int					population;
-	int					new_path_id;
-	bool				deviation;
-	bool				visited;
+	int					new_path_id; //PATH
+	bool				deviation;//BFS route
+	bool				visited;//BFS route
 	bool				dead_end;
 	t_list				*next;
-	t_list				*new_next;
-	t_list				*previous;
+	t_list				*new_next; //PATH
+	t_list				*previous; //BFS route
 	t_list				*links;
 }						t_room;
 
@@ -137,7 +137,7 @@ void					print_paths(t_list *paths);
 void					print_steps(t_list *steps);
 void					print_output(t_antfarm *antfarm, t_list *paths);
 void					print_input(t_list *alst);
-void		print_route(t_list *rt);
+void		print_route(t_list *rt);//DEL LATER
 
 /*
 ** ---------------------------- TOOLS ------------------------------------------

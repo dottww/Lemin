@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   complete_paths.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:55:42 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/19 13:43:50 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/23 18:00:15 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void		elem_complete_path(t_list *path, t_list *room)
+static void		elem_complete_path(t_list *path, t_list *room) // reconstruction of path based on usage of link (follow the -1)
 {
 	t_list	*link;
 	t_list	*next_room;
@@ -52,10 +52,10 @@ void			complete_paths(t_list **paths)
 	t_list	*room;
 	t_list	*elem;
 
-	elem = *paths;
+	elem = *paths; // pointer on paths list
 	while (elem)
 	{
-		room = ((t_path *)elem->content)->room;
+		room = ((t_path *)elem->content)->room; // catching the first room of the path under processing
 		elem_complete_path(elem, room);
 		elem = elem->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:33:41 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/22 18:09:28 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/23 14:41:19 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ bool			going_to_deviate(t_list *current, t_list *adj_room)
 	link_dest = dest->links; //
 	while (link_dest)
 	{
-		if (((t_link *)link_dest->content)->usage == 1) // dest already visited by src/curr
+		if (((t_link *)link_dest->content)->usage == 1) // dest already visited by src
 		{
 			link_used = 1;
 			break ;

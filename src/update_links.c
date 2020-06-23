@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_links.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 14:01:32 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/19 14:01:55 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/23 15:08:00 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ static void		set_usage(t_list *src, t_list *dest, bool is_previous)
 		((t_link *)link->content)->usage = 0;
 }
 
+/*
+** Description:
+**	After a successful BFS, route (queue of rooms) is free/destroyed here,
+**	plus the function update the usage of the links of the rooms constituting
+**	the path:
+**		usage of the link is set to -1 in the direction "start -> end",
+**		usage of the link is set to -1 in the direction "end -> start"
+*/
+
 void			set_links_usage(t_list *end, t_list **route)
 {
 	t_list	*room;
@@ -54,8 +63,8 @@ void			set_links_usage(t_list *end, t_list **route)
 		previous = ((t_room *)room->content)->previous;
 		if (previous)
 		{
-			set_usage(previous, room, true);//wei
-			set_usage(room, previous, false);//wei
+			set_usage(previous, room, true);
+			set_usage(room, previous, false);
 		}
 		room = ((t_room *)room->content)->previous;
 	}

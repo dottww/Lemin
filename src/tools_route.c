@@ -6,11 +6,18 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 18:12:11 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/23 14:35:36 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** Description:
+**	Append a link containing the dest room.
+**	In the dest room are noted the origin room where it comes from and the
+**	flag visited is changed to TRUE
+*/
 
 static int		add_to_route(t_list **route, t_list *target_room, t_list *current)
 {
@@ -29,12 +36,12 @@ static int		add_to_route(t_list **route, t_list *target_room, t_list *current)
 /*
 ** Decription:
 **
-** 1st return:
-**	if usage != -1
-**	+ dest room is not the end
-**	+ path index of the current room different from the path index of the dest room
-**	+ the dest room has not be visited yet
-**	+ the path index of the dest room != 0 (meaning ?)
+** if with the 1st return:
+**	if usage != -1 => usage is 0/1 meaning either the link/edge not used yet or going in opposite direction than a path taking this linke/edge
+**	+ dest != 0 => room is not the end
+**	+ src->path_id != dest->path_id => src and dest constituting the edge are from 2 differents paths and dest room are on a path
+**	+ dest->path_id != 0            => either src and dest are in 2 differents paths or src not in any path and dest already in a path
+**	+ !dest->visited => the dest room has not be visited yet
 **	+ going_to_deviate is TRUE = 
 ** Return:
 **	
@@ -93,7 +100,10 @@ static bool		link_is_usable(t_list *current, t_list *curr_link, t_list *end)
 
 /*
 ** Description:
-**
+**	Function check the usability of the neighbors (var link in the fct)
+**	of the room in parameter route.
+**	If the neighbor is usable, it is added to the queue, and it parent is noted within.
+**	
 ** Return:
 **	
 */
