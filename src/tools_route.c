@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/23 14:35:36 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/23 20:16:48 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ int				complete_route(t_list *route, t_list *end)
 	while (link) // A, B
 	{
 		target_room = ((t_link *)link->content)->room;
-		if (link_is_usable(current_room, link, end)) //check path_id
+		// if (link_is_usable(current_room, link, end)) //check path_id
+		if ((tmp=(link_is_usable(current_room, link, end)))!=0) //check path_id
 		{
 			if (!add_to_route(&route, target_room, current_room))
 				return (0);
@@ -134,6 +135,8 @@ int				complete_route(t_list *route, t_list *end)
 		((t_room *)current_room->content)->deviation = false;
 	return (1);
 }
+// (char *)((t_room *)((t_route *)(route->next)->content)->room->next)->name
+
 
 /*
 ** routes are all possible routes

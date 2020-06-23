@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:25:22 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/23 18:13:04 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/23 20:17:46 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ static bool		find_paths(t_antfarm *atf, t_list **paths)
 		ret = test_solution(atf, *paths, atf->ant_qty);
 		if (ret >= atf->rounds || ret == 0) // control sequence, if ret is bigger to LONG_MAX (stocked in atf->rounds)
 		{
+			// ft_printf(
+			// "-------------ret >= atf->rounds || ret == 0\nret = {%lu} atf->rounds = {%lu}\npaths="
+			// , ret, atf->rounds);
+			// print_paths(*paths);
 			ft_lstdel(paths, ft_delcontent);
 			*paths = previous_paths;
 			break ;

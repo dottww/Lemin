@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:43:17 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/19 16:21:09 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/22 20:33:20 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static t_list	*get_longest_path(t_list *path, unsigned int ant_qty)
 	head = path;
 	path_len = ((t_path *)path->content)->len;
 	ant_qty_out = 0;
-	path = path->next;
+	path = path->next; // skip start_room
 	while (path)
 	{
-		ant_qty_out += path_len - ((t_path *)path->content)->len + 1;
+		ant_qty_out += path_len - ((t_path *)path->content)->len + 1; // relation PATH/ANT
 		path = path->next;
 	}
 	if (ant_qty_out < ant_qty)
@@ -88,12 +88,13 @@ unsigned long	test_solution(t_antfarm *atf, t_list *paths
 	{
 		if (rounds >= atf->rounds)
 			ft_printf(
-			"This solution would take {red}%ld rounds{nc}\n"
+			"This solution would take %ld rounds\n"
 			, rounds);
 		else
 			ft_printf(
-			"This solution would take {green}%ld rounds{nc}\n"
+			"This solution would take %ld rounds\n"
 			, rounds);
 	}
+		// ft_printf("1path_len=%d--------\n",((t_path *)(paths)->content)->len);
 	return (rounds);
 }

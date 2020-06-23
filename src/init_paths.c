@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:25:22 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/23 17:29:22 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/23 20:17:05 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			init_paths(t_list **paths, t_list *start, unsigned int option)
 	}
 	if (option & DISPLAY_PATHS)
 	{
-		ft_printf("{ul}{bold}Initialized %lu path%s{nc}"
+		ft_printf("Initialized %lu path%s"
 		, ft_lstlen(*paths)
 		, ft_lstlen(*paths) > 1 ? "s:\n" : ":\n");
 	}

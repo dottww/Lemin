@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_linked_to_end.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 11:58:24 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/22 12:44:16 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/22 20:33:40 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ bool		init_the_only_path(t_list **paths, t_antfarm *atf)
 		return (false);
 	if (atf->option & DISPLAY_PATHS)
 	{
-		ft_printf("{ul}{bold}Initialized 1 path:{nc}\n");
-		ft_printf("{green}# 1:{nc} End\n");
+		ft_printf("Initialized 1 path:\n");
+		ft_printf("# 1: End\n");
 	}
 	ft_lstprepend(paths, new_path);
 	return (true);
