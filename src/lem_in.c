@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/25 23:29:17 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 01:04:42 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ void	get_options(t_antfarm *atf, int ac, char **av)
 **	get_path		: algorithm of multi-paths finding based on BFS
 **	print_antfarm		: print of the input
 **	print_ant_moves	: print of the ouput/solution (description of ants action)
+** ___Description___:
+**	get_input		: parsing with basic tests on the format of input
+**	register_rooms	: construction of the struct vatiable which contain
+**					  the graph
+**	get_paths		: algorithm of multi-paths finding based on BFS
+**	print_input		: print of the input
+**	print_output	: print of the ouput/solution (description of ants action)
 */
 
 int		main(int ac, char **av)
