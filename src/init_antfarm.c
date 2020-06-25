@@ -6,19 +6,19 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/25 13:53:48 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 18:32:07 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
-** Description:
+** ___Description___:
 **	Function skip the link in the list input(alst) that are comments.
 **	When the content of the link is not a comment, it is supposedly a number
 **	(for the number of ants). Thus we stock the number in ant_qty. If this is
 **	not a number in the end, nothing is stock in ant_qty.
-** Return:
+** ___Return___:
 **	1: the number of ants is stocked in ant_qty and the number is a positive int
 **	0: otherwise
 */
@@ -38,12 +38,12 @@ static int		init_ant_qty(t_antfarm *atf, t_list **alst)
 }
 
 /*
-** Description:
+** ___Description___:
 **	Check if the line (content of the input list)
 **	is either a comment or command and if the line does not have a '-'
 **	within (if there is a '-', the line is either a edge description or a
 **	wrong formated input line)
-** Return:
+** ___Return___:
 **	0: if the line is a possible link/edge description or a wrong formated line
 **	1: otherwise (a room, a command or a comment)
 */
@@ -58,7 +58,7 @@ static int		the_rooms(char *line)
 }
 
 /*
-** Description:
+** ___Description___:
 **	Initialization of all the inner variables of t_antfarm struct var
 **	except ant_qty which is initialized by another function just after
 */
@@ -97,10 +97,10 @@ static int		init_links(t_antfarm *atf, t_list *alst)
 }
 
 /*
-** Parameters:
+** ___Parameters___:
 **	t_antfarm *atf: struct variable representing the graph
 **	t_list *alst: list where each link content is a string/line from input
-** Description:
+** ___Description___:
 **	Initialization of t_antfarm *atf.
 **	The list of input is roamed one time, comment are always skipped,
 **	after possible comments a positive integer is expected and stock in
@@ -108,7 +108,6 @@ static int		init_links(t_antfarm *atf, t_list *alst)
 **	Then rooms, commands and comments are expected (rooms are stocked in
 **	atf->rooms), pointers atf->start/end are set.
 **	Comments and commands others than start/end are ignored.
-**	
 */
 
 int				register_rooms(t_antfarm *atf, t_list *alst)

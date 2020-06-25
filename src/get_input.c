@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:35:44 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 10:24:27 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 18:31:19 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	okint(t_list *alst)
 }
 
 /*
-** Description:
+** ___Description___:
 **	Check the line after '##start' or '##end'
 **	Function check if there is 2 spaces in the line and there is no '-'
 **	within the line (if it may be a edge)
@@ -44,14 +44,14 @@ int	is_legal_terminal(t_list *alst)
 }
 
 /*
-** Description:
+** ___Description___:
 **	Some check on the line stock in input linked list.
 **	The check are:
 **	-if line is different of NULL, not empty, and does not start by 'L'
 **	-if line is '#start' or '##end', and the following line could be a room
 **	-if the line is a number of type unsigned long long (for the number of ants)
 **	- 
-** Return:
+** ___Return___:
 **	1: if all the input lines passed the basic tests
 **	0: if there is an error
 */
@@ -87,7 +87,7 @@ static int		check_input(t_list *alst)
 }
 
 /*
-** Description:
+** ___Description___:
 **	Read of the input in standard input (STDIN via '<') line by line
 **	Each lines is stock in a link (create on the fly) added to input
 **	

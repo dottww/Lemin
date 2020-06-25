@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:43:17 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/25 18:09:09 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 19:19:11 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ static void		increment_sent_values(t_list *path)
 	}
 }
 
+/*
+** ___Description___:
+**	Function test distribution of ants on set of paths (with less and less
+**	path, removing success)
+** ___Return___:
+**	
+*/
+
 t_list	*select_path_to_send_ants(t_list *path, unsigned int ant_qty)
 {
 	t_list			*head;
@@ -58,10 +66,10 @@ t_list	*select_path_to_send_ants(t_list *path, unsigned int ant_qty)
 	head = path;
 	path_len = ((t_path *)path->content)->len;
 	ant_qty_out = 0;
-	path = path->next; // skip start_room
+	path = path->next;
 	while (path)
 	{
-		ant_qty_out += path_len - ((t_path *)path->content)->len + 1; // relation PATH/ANT
+		ant_qty_out += path_len - ((t_path *)path->content)->len + 1;
 		path = path->next;
 	}
 	if (ant_qty_out < ant_qty)
@@ -70,10 +78,15 @@ t_list	*select_path_to_send_ants(t_list *path, unsigned int ant_qty)
 }
 
 /*
-** Description:
-**	Receiving the paths (as parameter)
-**
-**
+** ___Description___:
+**	Having list of paths (sorted from longuest to shortest), based on the
+**	quantity of ants remaining in START, function calculcate the number
+**	and select the paths onto which [used_path] ants will be distributed
+**	(ants ar distributed one by one on the selected paths).
+**	Rounds coincides with the length of the longuest path selected (as 1 ant
+**	is sent on this path).
+** ___Return___:
+**	round: number of step it will take to send all the ants
 */
 
 unsigned long	test_solution(t_antfarm *atf, t_list *paths)
