@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_links.c                                        :+:      :+:    :+:   */
+/*   add_link.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:01:12 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 12:14:04 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 22:42:50 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-/*
-** Description:
-**	
-**
-*/
-
-static int	link_already_exists(t_list *origin, t_list *dest)
+static int	link_exists(t_list *origin, t_list *dest)
 {
 	t_list	*elem;
 
@@ -51,7 +45,7 @@ static int	create_link(t_list *room1, t_list *room2)
 	origin_room = (t_room *)(room1->content);
 	new_link.usage = 0;
 	new_link.room = NULL;
-	if (link_already_exists(origin_room->links, room2))
+	if (link_exists(origin_room->links, room2))
 		return (-1);
 	if (!(tlist_of_a_link = ft_lstnew(&new_link, sizeof(t_link))))
 		return (0);
@@ -76,7 +70,7 @@ static int	create_link(t_list *room1, t_list *room2)
 **	0: if one of the 2 rooms tab[0]/tab[1] does not exist
 */
 
-static int	rooms_exist(t_list *head, t_list **room1,
+static int	room_exist(t_list *head, t_list **room1,
 			t_list **room2, char **tab)
 {
 	t_list	*elem;
@@ -124,7 +118,7 @@ static int	link_checker(t_antfarm *atf, char **tab)
 		return (1);
 	head = atf->rooms;
 	if (!tab[0] || !tab[1] || tab[2]
-		|| !rooms_exist(head, &room1, &room2, tab))
+		|| !room_exist(head, &room1, &room2, tab))
 		return (0);
 	// {ft_printf("link_checker1\n");	return (0);}
 	return (create_link(room1, room2) * create_link(room2, room1));

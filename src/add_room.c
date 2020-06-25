@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_rooms.c                                        :+:      :+:    :+:   */
+/*   add_rooms.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:08:07 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/21 19:54:38 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 19:05:24 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static int		mark_start_end(t_room *room, t_list **alst)
 **
 */
 
-static void		init_pointer_to_end(t_antfarm *atf, t_list *lst, int end)
+static void		init_start_end(t_antfarm *atf, t_list *lst, int end)
 {
 	if (end == 0)
 		atf->start = lst;
@@ -137,7 +137,7 @@ static int		set_room_val(t_room *room, char **tab)
 **	0: otherwise
 */
 
-int				add_room(t_antfarm *atf, t_list **alst)
+int				add_rooms(t_antfarm *atf, t_list **alst)
 {
 	char			**tab;
 	t_room			room;
@@ -157,7 +157,7 @@ int				add_room(t_antfarm *atf, t_list **alst)
 		ft_strdel(&room.name);
 		return (ret_strtab_free(tab, 0));
 	}
-	(room.s_t != -1) ? init_pointer_to_end(atf, new_list, room.s_t) : 0;
+	(room.s_t != -1) ? init_start_end(atf, new_list, room.s_t) : 0;
 	ft_lstappend(&atf->rooms, new_list);
 	return (ret_strtab_free(tab, 1));
 }

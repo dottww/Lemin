@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_paths.c                                      :+:      :+:    :+:   */
+/*   tools_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/31 13:49:27 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/22 20:33:53 by weilin           ###   ########.fr       */
+/*   Created: 2020/06/18 16:23:18 by weilin            #+#    #+#             */
+/*   Updated: 2020/06/26 00:51:29 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		print_steps(t_list *room)
+void			print_antfarm(t_list *alst)
+{
+	while (alst)
+	{
+		ft_putendl(L1);
+		alst = alst->next;
+	}
+}
+
+void			print_all_steps(t_list *room)
 {
 	ft_printf("# %2d: ", ((t_room *)room->content)->path_id);
 	while (room)
@@ -24,14 +33,14 @@ void		print_steps(t_list *room)
 	}
 }
 
-void		print_paths(t_list *path)
+void			print_all_paths(t_list *path)
 {
 	t_list	*room;
 
 	while (path)
 	{
 		room = ((t_path *)path->content)->room;
-		print_steps(room);
+		print_all_steps(room);
 		path = path->next;
 	}
 }

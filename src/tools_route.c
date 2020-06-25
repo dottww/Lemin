@@ -3,19 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   tools_route.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/25 13:44:57 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/26 00:52:33 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
+** Decription:
+**
+** if with the 1st return:
+**	if usage != -1 => usage is 0/1 meaning either the link/edge not used yet
+**  or going in opposite direction than a path taking this linke/edge
+**	+ dst != 0 => room is not the end
+**	+ src->path_id != dst->path_id => src and dst constituting the edge are
+**	  from 2 differents paths and dst room are on a path
+**	+ dst->path_id != 0            => either src and dst are in 2 differents
+**	  paths or src not in any path and dst already in a path
+**	+ !dst->visited => the dst room has not be visited yet
+**	+ is_in_route is TRUE = the link toward adj_room is 1, it means adj_room
+**    is already part of other route, so now should deviate //wei
+** Return:
+**	check if 
+*/
+
+static bool		route_viable(t_list *curr, t_list *curr_link, t_list *end)
+{
+	t_list		*adj_room;
+	t_room		*adj;
+	t_room		*src;
+	int			usage;
+
+	src = (t_room *)curr->content; // room from which links/edges will be inspect
+	adj_room = ((t_link *)curr_link->content)->room; // catching the neighbor room of the edge encapsulate in t_list type
+	adj = (t_room *)adj_room->content;
+	usage = ((t_link *)curr_link->content)->usage; //
+	// if (usage != -1 && adj->s_t != 0 && src->path_id != adj->path_id //pas bon sens && !ISSTART(adj) && !PATH(src, adj)
+	if (!golink(curr_link) && !is_start(adj) && !samepath(src, adj) //pas bon sens && !ISSTART(adj) && !PATH(src, adj)
+	&& !is_visited(adj) && is_in_path(adj) && is_in_route(curr, adj_room)) // && !VISITED(adj) && PATH(adj) && 
+		return (deviation_src_of_adj(adj_room, end));
+	// return (!adj->visited && usage != -1 && adj->s_t != 0 // 1!VISITED(adj) && 1pas bon sens && 1!ISSTART(adj)
+	return (!is_visited(adj) && !golink(curr_link) && !is_start(adj) // 1!VISITED(adj) && 1pas bon sens && 1!ISSTART(adj)
+	&& !(src->deviation && usage == 0)); // 1!(0[[0DV(src)]] && 1!LINK(0src, adj))
+}
+
+/*
 ** Description:
-**	Append a link containing the dest room.
-**	In the dest room are noted the origin room where it comes from and the
+**	Append a link containing the dst room.
+**	In the dst room are noted the origin room where it comes from and the
 **	flag visited is changed to TRUE
 */
 
@@ -34,78 +72,7 @@ static int		add_to_route(t_list **route, t_list *target_room, t_list *current)
 }
 
 /*
-** Decription:
-**
-** if with the 1st return:
-**	if usage != -1 => usage is 0/1 meaning either the link/edge not used yet or going in opposite direction than a path taking this linke/edge
-**	+ dest != 0 => room is not the end
-**	+ src->path_id != dest->path_id => src and dest constituting the edge are from 2 differents paths and dest room are on a path
-**	+ dest->path_id != 0            => either src and dest are in 2 differents paths or src not in any path and dest already in a path
-**	+ !dest->visited => the dest room has not be visited yet
-**	+ going_to_deviate is TRUE = 
-** Return:
-**	
-*/
-
-static bool		link_is_usable(t_list *current, t_list *curr_link, t_list *end)
-{
-	t_list		*adj_room;
-	t_room		*dest;
-	t_room		*src;
-	int			usage;
-
-	src = (t_room *)current->content; // room from which links/edges will be inspect
-	adj_room = ((t_link *)curr_link->content)->room; // catching the neighbor room of the edge encapsulate in t_list type
-	dest = (t_room *)adj_room->content;
-	usage = ((t_link *)curr_link->content)->usage; //
-	if (usage != -1 && dest->s_t != 0 && src->path_id != dest->path_id //pas bon sens && !ISSTART(dest) && !PATH(src, dest)
-	&& !dest->visited && dest->path_id != 0 && going_to_deviate(current, adj_room)) // && !VISITED(dest) && PATH(dest) && 
-		return (deviation_reaches_end(adj_room, end));
-	return (!dest->visited && usage != -1 && dest->s_t != 0 // 1!VISITED(dest) && 1pas bon sens && 1!ISSTART(dest)
-	&& !(src->deviation && usage == 0)); // 1!(0[[0DV(src)]] && 1!LINK(0src, dest))
-}
-
-// (t_room *)RoomA->link: (t_room *)B , usage default:0
-
-// Start-"A-B"-C-End
-// RoomA->link:A-B: -1
-// RoomB->link:B-A: 1
-
-
-// static void		print_rts(t_list *room)
-// {
-// 	// if(0)
-// 	{while (room)
-// 	{
-// 		ft_printf("%s%s"
-// 		, ((t_room *)room->content)->name
-// 		, ((t_room *)room->content)->next ? "-" : "");
-// 		room = ((t_room *)room->content)->next;
-// 	}}
-// }
-
-// static void		print_rt(t_list *rt)
-// {
-// 	t_list	*room;
-
-// 	// if(0)
-// 	{while (rt)
-// 	{
-// 		room = ((t_route *)rt->content)->room;
-// 		print_rts(room);
-// 		rt = rt->next;
-// 	}}
-// 	ft_putchar('\n');
-// }
-
-/*
-** Description:
-**	Function check the usability of the neighbors (var link in the fct)
-**	of the room in parameter route.
-**	If the neighbor is usable, it is added to the queue, and it parent is noted within.
-**	
-** Return:
-**	
+** try to find possible routes to endroom through rooms not visited 
 */
 
 int				complete_route(t_list *route, t_list *end)
@@ -116,17 +83,16 @@ int				complete_route(t_list *route, t_list *end)
 
 	current_room = ((t_route *)route->content)->room; // pointer on the room encapsulated in type t_list
 	link = ((t_room *)current_room->content)->links; // pointer on the list links of the current room, the pointer is an encapsulate list of t_link in t_list struct var (if I understand)
-	while (link) // A, B
+	while (link)
 	{
 		target_room = ((t_link *)link->content)->room;
-		if (link_is_usable(current_room, link, end)) //check path_id
-		// if ((tmp=(link_is_usable(current_room, link, end)))!=0) //check path_id
+		if (route_viable(current_room, link, end))
 		{
 			if (!add_to_route(&route, target_room, current_room))
 				return (0);
 			if (((t_room *)target_room->content)->s_t == 1)
 				return (1);
-			if (going_to_deviate(current_room, target_room))
+			if (is_in_route(current_room, target_room))
 				((t_room *)target_room->content)->deviation = true;
 		}
 		link = link->next;
@@ -135,11 +101,4 @@ int				complete_route(t_list *route, t_list *end)
 		((t_room *)current_room->content)->deviation = false;
 	return (1);
 }
-// (char *)((t_room *)((t_route *)(route->next)->content)->room->next)->name
-
-
-/*
-** routes are all possible routes
-*/
-
 

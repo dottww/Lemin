@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   del_functions.c                                    :+:      :+:    :+:   */
+/*   tools_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:57:28 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 18:00:19 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/25 23:24:19 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void		del_room(void *content, size_t size)
+void		delete_room(void *content, size_t size)
 {
 	t_room	*room;
 
@@ -25,7 +25,7 @@ void		del_room(void *content, size_t size)
 	}
 }
 
-void		del_input(void *content, size_t size)
+void		delete_input(void *content, size_t size)
 {
 	t_input		*input;
 
@@ -37,8 +37,24 @@ void		del_input(void *content, size_t size)
 	}
 }
 
-// void		del_lists(t_list **a, t_list **b)
-// {
-// 	ft_lstdel(a, ft_delcontent);
-// 	ft_lstdel(b, ft_delcontent);
-// }
+int			free_input_lst(t_list **alst, char *exit_msg)
+{
+	ft_lstdel(alst, delete_input);
+	if (exit_msg)
+	{
+		write(2, exit_msg, ft_strlen(exit_msg));
+		ft_putchar('\n');
+	}
+	return (exit_msg ? -1 : 0);
+}
+
+int			print_free(t_antfarm *atf, t_list **input
+			, t_list **pth, char *msg)
+{
+	if (atf->rooms)
+		ft_lstdel(&atf->rooms, delete_room);
+	if (atf->ants)
+		ft_lstdel(&atf->ants, ft_delcontent);
+	ft_lstdel(pth, ft_delcontent);
+	return (free_input_lst(input, msg));
+}

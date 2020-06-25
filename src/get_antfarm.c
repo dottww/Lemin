@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_antfarm.c                                     :+:      :+:    :+:   */
+/*   get_antfarm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/25 13:53:48 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 23:20:46 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 **	0: otherwise
 */
 
-static int		init_ant_qty(t_antfarm *atf, t_list **alst)
+static int		get_ant_qty(t_antfarm *atf, t_list **alst)
 {
 	while (*alst && is_comment(L2))
 		*alst = (*alst)->next;
@@ -70,7 +70,7 @@ static void		init_antfarm_values(t_antfarm *atf)
 	atf->end = NULL;
 	atf->rounds = LONG_MAX; //pending
 	atf->id = 0;
-	atf->option = 0;
+	atf->options = 0;
 	atf->ants = NULL;
 }
 
@@ -111,15 +111,15 @@ static int		init_links(t_antfarm *atf, t_list *alst)
 **	
 */
 
-int				register_rooms(t_antfarm *atf, t_list *alst)
+int				get_antfarm(t_antfarm *atf, t_list *alst)
 {
 	init_antfarm_values(atf);
-	if (!init_ant_qty(atf, &alst))
+	if (!get_ant_qty(atf, &alst))
 	// {ft_printf("here_rr1={%s}\n",L1);return (0);}
 		return (0);
 	while (atf->ant_qty && alst && the_rooms(L1))
 	{
-		if (!add_room(atf, &alst))
+		if (!add_rooms(atf, &alst))
 		// {ft_printf("here_rr2={%s}\n",L1);return (0);}
 			return (0);
 		alst = alst->next;

@@ -3,37 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+         #
+#    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/22 16:48:52 by mdavid           ###   ########.fr        #
+#    Updated: 2020/06/26 00:54:30 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LEM_IN = lem-in
 
+LEM_IN_FILES += add_link
+LEM_IN_FILES += add_room
+LEM_IN_FILES += get_antfarm
+LEM_IN_FILES += get_path
 LEM_IN_FILES += lem_in
-LEM_IN_FILES += get_input
-LEM_IN_FILES += add_rooms
-LEM_IN_FILES += add_links
-LEM_IN_FILES += init_antfarm
-LEM_IN_FILES += get_paths
-LEM_IN_FILES += init_paths
-LEM_IN_FILES += init_ants
-LEM_IN_FILES += add_ants
+LEM_IN_FILES += tools_ant
+LEM_IN_FILES += tools_bfs
+LEM_IN_FILES += tools_exit
+LEM_IN_FILES += tools_input
+LEM_IN_FILES += tools_links
+LEM_IN_FILES += tools_path
+LEM_IN_FILES += tools_print
+LEM_IN_FILES += tools_room
 LEM_IN_FILES += tools_route
-LEM_IN_FILES += deviation
-LEM_IN_FILES += complete_paths
-LEM_IN_FILES += update_links
-LEM_IN_FILES += test_solution
-LEM_IN_FILES += print_solution
-LEM_IN_FILES += start_linked_to_end
-LEM_IN_FILES += print_and_free
-LEM_IN_FILES += print_paths
-LEM_IN_FILES += print_input
-LEM_IN_FILES += del_functions
-LEM_IN_FILES += is_comment
-LEM_IN_FILES += bfs
+LEM_IN_FILES += tools_route2
 
 CCH_DIR = cache/
 SRC_DIR = src/

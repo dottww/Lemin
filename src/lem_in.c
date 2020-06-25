@@ -3,68 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 16:30:33 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 23:29:17 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	get_option(t_antfarm *atf, int ac, char **av)
+void	get_options(t_antfarm *atf, int ac, char **av)
 {
 	if (ac == 2)
 	{
-		if (ft_strequ(av[1], "--paths"))
-			atf->option |= DISPLAY_PATHS;
+		if (ft_strequ(av[1], "--pth"))
+			atf->options |= DISPLAY_PATH;
 		else if (ft_strequ(av[1], "--solution"))
-			atf->option |= ONLY_DISPLAY_SOLUTION;
+			atf->options |= ONLY_DISPLAY_SOLUTION;
 	}
 }
 
 /*
 ** Description:
-**	get_input		: parsing with basic tests on the format of input
-**	register_rooms	: construction of the struct vatiable which contain the graph
-**	get_option		: [TO BE PRECISE, it will probably be remove]
-**	get_paths		: algorithm of multi-paths finding based on BFS
-**	print_input		: print of the input
-**	print_output	: print of the ouput/solution (description of ants action)
+**	read_input		: parsing with basic tests on the format of input
+**	get_antfarm	: construction of the struct vatiable which contain the graph
+**	get_options		: [TO BE PRECISE, it will probably be remove]
+**	get_path		: algorithm of multi-paths finding based on BFS
+**	print_antfarm		: print of the input
+**	print_ant_moves	: print of the ouput/solution (description of ants action)
 */
 
 int		main(int ac, char **av)
 {
 	t_antfarm	atf;
 	t_list		*alst;
-	t_list		*paths;
+	t_list		*pth;
 
 	alst = NULL;
-	paths = NULL;
-	if (!get_input(&alst))
-		return (free_input(&alst, "ERROR1"));
-	// (void)ac;
-	// (void)av;
-	// if(0)
-	{
-	if (!register_rooms(&atf, alst))
-		return (print_and_free(&atf, &alst, &paths, "ERROR2"));
-	get_option(&atf, ac, av);
-	if (!(get_paths(&atf, atf.start, atf.end, &paths)))
-		return (print_and_free(&atf, &alst, &paths, "ERROR3"));
-	init_ants(&atf);
-	if (!atf.option)
-		print_input(alst);
-	print_output(&atf, paths);
-	}
+	pth = NULL;
+	if (!read_input(&alst))
+		return (free_input_lst(&alst, "ERROR1"));
+	if (!get_antfarm(&atf, alst))
+		return (print_free(&atf, &alst, &pth, "ERROR2"));
+	get_options(&atf, ac, av);
+	if (!(get_path(&atf, atf.start, atf.end, &pth)))
+		return (print_free(&atf, &alst, &pth, "ERROR3"));
+	init_ant(&atf);
+	if (!atf.options)
+		print_antfarm(alst);
+	print_ant_moves(&atf, pth);
 	// system("leaks lem-in");
-	// char t='t';
-	// bool try=true;
-	// int tryint=(int)true;
-	// int8_t i8t=(int8_t)true;
-	// ft_printf("szofchar=%zu\n",sizeof(t));
-	// ft_printf("szofbool=%zu\n",sizeof(try));
-	// ft_printf("szofint=%zu\n",sizeof(tryint));
-	// ft_printf("szofint=%lu\n",sizeof(i8t));
-	return (print_and_free(&atf, &alst, &paths, NULL));
+	return (print_free(&atf, &alst, &pth, NULL));
 }
