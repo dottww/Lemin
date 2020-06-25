@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:55:42 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/23 20:17:58 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 13:45:02 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ static void		elem_complete_path(t_list *path, t_list *room) // reconstruction of
 	}
 }
 
-static int		sort_by_len(void *a, void *b)
-{
-	t_path	*path1;
-	t_path	*path2;
+// static int		sort_by_len(void *a, void *b)
+// {
+// 	t_path	*path1;
+// 	t_path	*path2;
 
-	path1 = (t_path *)a;
-	path2 = (t_path *)b;
-	return (path1->len < path2->len);
-}
+// 	path1 = (t_path *)a;
+// 	path2 = (t_path *)b;
+// 	return (path1->len < path2->len);
+// }
 
 void			complete_paths(t_list **paths)
 {
@@ -62,6 +62,6 @@ void			complete_paths(t_list **paths)
 		elem_complete_path(elem, room);
 		elem = elem->next;
 	}
-	ft_lst_mergesort(paths, sort_by_len);
-	elem = *paths;
+	// ft_lst_mergesort(paths, sort_by_len); // reput later
+	// elem = *paths;
 }

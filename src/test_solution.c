@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_solution.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:43:17 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/22 20:33:20 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/25 14:31:10 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void			printpath_update_data(t_antfarm *atf, unsigned long rounds
 	ft_lstrev(paths);
 	if (atf->option & DISPLAY_PATHS)
 		print_paths(*paths);
+	// { ft_printf("HELLO, rds=%lu\n",rounds);	print_paths(*paths);}
 	atf->rounds = rounds;
 }
 
@@ -46,27 +47,37 @@ static void		increment_sent_values(t_list *path)
 	}
 }
 
-static t_list	*get_longest_path(t_list *path, unsigned int ant_qty)
+t_list	*select_path_to_send_ants(t_list *path, unsigned int ant_qty)
 {
 	t_list			*head;
 	unsigned int	ant_qty_out;
 	int				path_len;
-
+// t_list	*room;
+// room = ((t_path *)path->content)->room;
+// static int x=0;
+// int tmp=0;
+// static int y=0;
 	if (!path->next)
 		return (path);
 	head = path;
 	path_len = ((t_path *)path->content)->len;
+// ft_printf("---x=%d---path_len=%d, room =[%s]\n",x++,path_len,((t_room *)room->content)->name);
 	ant_qty_out = 0;
 	path = path->next; // skip start_room
 	while (path)
 	{
+// room = ((t_path *)path->content)->room;
+		// tmp = path_len - ((t_path *)path->content)->len + 1; // relation PATH/ANT
+// ft_printf("---y=%d---ant_before=%d, tmp=%d, ant_after=%d, room =[%s]\n",y++,ant_qty_out,tmp,ant_qty_out+tmp,((t_room *)room->content)->name);
 		ant_qty_out += path_len - ((t_path *)path->content)->len + 1; // relation PATH/ANT
+// ft_printf("---y=%d---path_len=%d, nextpathlen=%d, tmp=%d, ant_qty_out=%d, room =[%s]\n",y++,path_len,((t_path *)path->content)->len,tmp,ant_qty_out,((t_room *)room->content)->name);
 		path = path->next;
 	}
 	if (ant_qty_out < ant_qty)
 		return (head);
-	return (get_longest_path(head->next, ant_qty));
+	return (select_path_to_send_ants(head->next, ant_qty));
 }
+
 
 unsigned long	test_solution(t_antfarm *atf, t_list *paths
 				, unsigned int ant_qty)
@@ -78,7 +89,7 @@ unsigned long	test_solution(t_antfarm *atf, t_list *paths
 	used_path = paths;
 	while (ant_qty > 0)
 	{
-		used_path = get_longest_path(used_path, ant_qty);
+		used_path = select_path_to_send_ants(used_path, ant_qty);
 		increment_sent_values(used_path);
 		ant_qty -= ft_lstlen(used_path);
 		rounds++;

@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:56:12 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/21 15:09:42 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 13:50:48 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			free_input(t_list **alst, char *exit_msg)
 		write(2, exit_msg, ft_strlen(exit_msg));
 		ft_putchar('\n');
 	}
-	return (exit_msg ? 1 : 0);
+	return (exit_msg ? -1 : 0);
 }
 
 int			print_and_free(t_antfarm *atf, t_list **input

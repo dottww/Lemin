@@ -6,12 +6,20 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:25:22 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/23 20:17:46 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 14:01:52 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+static int		sort_by_len(void *a, void *b)
+{
+	t_path	*path1;
+	t_path	*path2;
 
+	path1 = (t_path *)a;
+	path2 = (t_path *)b;
+	return (path1->len < path2->len);
+}
 static bool		find_paths(t_antfarm *atf, t_list **paths)
 {
 	unsigned long	ret;
@@ -28,6 +36,7 @@ static bool		find_paths(t_antfarm *atf, t_list **paths)
 		if (!init_paths(paths, atf->start, atf->option)) //unique id: path_id created on the fly
 			return (false);
 		complete_paths(paths);
+		ft_lst_mergesort(paths, sort_by_len);
 		ret = test_solution(atf, *paths, atf->ant_qty);
 		if (ret >= atf->rounds || ret == 0) // control sequence, if ret is bigger to LONG_MAX (stocked in atf->rounds)
 		{

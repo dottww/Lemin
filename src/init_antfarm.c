@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/22 10:20:52 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 13:53:48 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static int		init_ant_qty(t_antfarm *atf, t_list **alst)
 		*alst = (*alst)->next;
 	if (*alst && ft_isnumber(L2) == 1)
 	{
-		ft_atoi_int(L2, &atf->ant_qty);
+		if (!ft_atoi_int(L2, &atf->ant_qty))
+			return (0);
 		*alst = (*alst)->next;
 		return ((atf->ant_qty > 0) && *alst);
 	}
