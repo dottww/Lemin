@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:49:34 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/23 20:19:09 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/25 18:09:21 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,7 @@ int						add_ant(int id, t_antfarm *antfarm);
 bool					get_paths(t_antfarm *antfarm, t_list *start
 						, t_list *end, t_list **paths);
 bool					bfs(t_list *start, t_list *end, t_list **route);
-unsigned long			test_solution(t_antfarm *antfarm, t_list *paths
-						, unsigned int ant_qty);
+unsigned long			test_solution(t_antfarm *antfarm, t_list *paths);
 void					printpath_update_data(t_antfarm *antfarm, unsigned long rounds
 						, t_list **paths);
 void					complete_paths(t_list **paths);
