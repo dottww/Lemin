@@ -13,10 +13,10 @@
 #include "lem_in.h"
 
 /*
-** Description:
+** ___Description___:
 **	Check if the room where the inner variables values have just being set does not
 **	already exist. name and couple of coordinates are inspected.
-** Return:
+** ___Return___:
 **	1: the room is not already present in the list of rooms (atf->rooms)
 **	0: if the room is repeated.
 */
@@ -39,13 +39,12 @@ static int		room_repeat(t_antfarm *atf, char **tab)
 }
 
 /*
-** Description:
-**	function detects the commands "##start" and "##end".
-**	The detection of these 2 conmmands is traduced by a state variable s_t
-**	s_t in struct variable room, s_t = {-1; 0; 1} if the room is 
-**	{not start or end; start, end}.
-** Return:
-**	1 : there is still link to process and not error raised (2 starts or ends)
+** ___Description___:
+**	Function detects the commands "##start" and "##end".
+**	The commands '##start' and '##end' have to be given once, otherwise error
+**	is risen
+** ___Return___:
+**	1 : the list of input is not finished
 **	0 : if command start/end has been already encounter or if end of list
 **		reached after the specification of command "#start"/"#end"
 */
@@ -80,8 +79,10 @@ static int		mark_start_end(t_room *room, t_list **alst)
 }
 
 /*
-** Description:
-**
+** ___Description___:
+**	Set the value of the pointers atf->start/end: if the current room is
+**	start/end, the pointer atf->start/end is pointing directly on the room
+**	beeing start/end, this guaranty a direct access to these 2 rooms.
 */
 
 static void		init_start_end(t_antfarm *atf, t_list *lst, int end)
@@ -93,11 +94,11 @@ static void		init_start_end(t_antfarm *atf, t_list *lst, int end)
 }
 
 /*
-** Description:
-**	Function check if the 2 last entries of tab are integers (CHECK if negative integers is allowed)
+** ___Description___:
+**	Check if the 2 last entries of tab are integers
 **	if the 2 entries are valid formated coordinates, then they are stocked in room.x/y
-**	The function also initialized a all the other inner variables.
-** Return:
+**	The function also initialized all the other inner variables.
+** ___Return___:
 **	1: if coordinates are valid and if no issue during mem allocation for name
 **	0: if coordinates are not integer, or if memory allocation for room->name
 */
@@ -123,7 +124,7 @@ static int		set_room_val(t_room *room, char **tab)
 }
 
 /*
-** Description:
+** ___Description___:
 **	Creation and initialization of room:
 **	  - s_t: {-1;0;1} for {common room;start room;end room}
 **	  - line has to be made of 3 words corresponding to the name and coord
@@ -131,7 +132,7 @@ static int		set_room_val(t_room *room, char **tab)
 **	  - all the inner variables of room are initialized
 **	  - Check if the room is already present within atf->rooms
 **	  - set pointer atf->start and atf->end if room is start/end
-** Return:
+** ___Return___:
 **	1: if the room is correct, fully initialized and has been add to atf->rooms
 **		or if the line is a comment or not ignored command.
 **	0: otherwise
