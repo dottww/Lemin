@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_route.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 21:58:30 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 23:55:33 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ static bool		route_viable(t_list *current, t_list *curr_link, t_list *end)
 		return (detour_src_of_adj(adj_room, end));
 	return (room_viable(curr_link, adj)	&& !(curr->deviation));
 }
+
+// IN ROUTE VIABLE, NO USE OF USAGE, THERE MAY BE A PROLEM, JUST BELOW HOW IT WAS PREVIOUSLY
+//	if (!golink(curr_link) && !is_start(adj) && !samepath(src, adj) //pas bon sens && !ISSTART(adj) && !PATH(src, adj)
+//	&& !is_visited(adj) && is_in_path(adj) && adj_part_of_path(curr, adj_room)) // && !VISITED(adj) && PATH(adj) && 
+//		return (deviation_src_of_adj(adj_room, end));
+//	// return (!adj->visited && usage != -1 && adj->s_t != 0 // 1!VISITED(adj) && 1pas bon sens && 1!ISSTART(adj)
+//	return (!is_visited(adj) && !golink(curr_link) && !is_start(adj) // 1!VISITED(adj) && 1pas bon sens && 1!ISSTART(adj)
+//	&& !(src->deviation && usage == 0)); // 1!(0[[0DV(src)]] && 1!LINK(0src, adj))
 
 /*
 ** Description:
