@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:49:34 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 16:18:48 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 21:57:19 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,10 @@
 # include "libft.h"
 # include <stdbool.h>
 
-# define ONLY_DISPLAY_SOLUTION	2
-# define DISPLAY_PATH			4
+# define ONLY_SOLUTION	2
+# define SHOW_PATH		4
 # define L1 ((t_input *)(alst->content))->line
 # define L2 ((t_input *)((*alst)->content))->line
-// # define STARTROOM ((t_room *)atf->start->content)
-// # define ENDROOM ((t_room *)atf->end->content)
-// # define NEXTROOM ((t_room *)at_room->next->content)
-// # define ANT ((t_ant *)ant_lst->content)->at_room
-// # define NEXTANT (((t_ant *)ant_lst->next->content)->at_room
-
 
 typedef struct			s_room
 {
@@ -34,9 +28,9 @@ typedef struct			s_room
 	int					y;
 	int					s_t;
 	int					path_id;
+	int					new_path_id; //PATH
 	int					ant_id;
 	int					population;
-	int					new_path_id; //PATH
 	bool				deviation;//BFS route
 	bool				visited;//BFS route
 	bool				dead_end;
@@ -58,7 +52,7 @@ typedef struct			s_antfarm
 	t_list				*ants;
 }						t_antfarm;
 
-typedef struct			s_link // What the point !?!? link is encapsulated in t_list and room also thus 2 lyers of encapsulation !!
+typedef struct			s_link
 {
 	int					usage;
 	t_list				*room;
@@ -123,7 +117,7 @@ void					full_path(t_list **pth);
 void					set_links_usage(t_list *end, t_list **route);
 int						complete_route(t_list *route, t_list *end);
 bool					adj_part_of_path(t_list *current, t_list *adj_room);
-bool					deviation_src_of_adj(t_list *adj_room , t_list *end);
+bool					detour_src_of_adj(t_list *adj_room , t_list *end);
 bool					start_connected_to_end(t_list *start, t_list *end);
 bool					init_unique_path(t_list **pth, t_antfarm *antfarm);
 
@@ -146,10 +140,10 @@ void					delete_room(void *content, size_t size);
 void					delete_input(void *content, size_t size);
 int						is_comment(char *line);
 int						is_start_end(char *line);
-int						is_start(t_room *dst);
-int						is_visited(t_room *dst);
-int						is_in_path(t_room *dst);
-int						samepath(t_room *src, t_room *dst);
-int						golink(t_list *curr_link);
+int						is_start(t_room *room);
+int						is_visited(t_room *room);
+int						is_in_path(t_room *room);
+int						samepath(t_room *src, t_room *room);
+int						link_used(t_list *link);
 
 #endif

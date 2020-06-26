@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 16:27:07 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 21:52:11 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,11 @@ static int		get_ant_qty(t_antfarm *atf, t_list **alst)
 
 static int		the_rooms(char *line)
 {
-	if (line[0] == '#') //command or comment
+	if (line[0] == '#')
 		return (1);
-	else if (ft_strchr(line, '-')) //is a link/edge
+	else if (ft_strchr(line, '-'))
 		return (0);
 	return (1);
-}
-
-/*
-** ___Description___:
-**	Initialization of all the inner variables of t_antfarm struct var
-**	except ant_qty which is initialized by another function just after
-*/
-
-static void		init_antfarm_values(t_antfarm *atf)
-{
-	atf->rooms = NULL;
-	atf->start = NULL;
-	atf->end = NULL;
-	atf->rounds = LONG_MAX;
-	atf->id = 0;
-	atf->options = 0;
-	atf->ants = NULL;
 }
 
 /*
@@ -83,14 +66,12 @@ static void		init_antfarm_values(t_antfarm *atf)
 static int		init_links(t_antfarm *atf, t_list *alst)
 {
 	if (!alst || !add_link(atf, L1))
-	// {ft_printf("init_link0\n");	return (0);}
 		return (0);
 	alst = alst->next;
 	while (alst)
 	{
 		if (is_start_end(L1) || (!is_comment(L1) && !add_link(atf, L1)))
 			return (0);
-		// {ft_printf("init_link1={%s}\n", L1);	return (0);}
 		alst = alst->next;
 	}
 	return (1);
@@ -112,14 +93,11 @@ static int		init_links(t_antfarm *atf, t_list *alst)
 
 int				get_antfarm(t_antfarm *atf, t_list *alst)
 {
-	init_antfarm_values(atf);
 	if (!get_ant_qty(atf, &alst))
-	// {ft_printf("here_rr1={%s}\n",L1);return (0);}
 		return (0);
 	while (atf->ant_qty && alst && the_rooms(L1))
 	{
 		if (!add_rooms(atf, &alst))
-		// {ft_printf("here_rr2={%s}\n",L1);return (0);}
 			return (0);
 		alst = alst->next;
 	}

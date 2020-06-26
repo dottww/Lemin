@@ -6,12 +6,9 @@ B 2 2
 ##end
 End 3 3
 C 4 4
-D 5 5
 Start-A
 Start-B
-Start-D
 A-B
 A-C
 B-End
 C-End
-D-End

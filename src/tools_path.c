@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 19:31:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 00:00:39 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 21:42:36 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool			init_unique_path(t_list **pth, t_antfarm *atf)
 	path.complete = true;
 	if (!(new_path = ft_lstnew(&path, sizeof(t_path))))
 		return (false);
-	if (atf->options & DISPLAY_PATH)
+	if (atf->options & SHOW_PATH)
 	{
 		ft_printf("Initialized 1 path:\n");
 		ft_printf("# 1: End\n");

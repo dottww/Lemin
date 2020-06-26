@@ -6,38 +6,11 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:37:25 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 00:11:03 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 21:50:11 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-// int		malloc_ant(int id, t_antfarm *atf)
-// {
-// 	t_ant	ant;
-// 	t_list	*new_ant;
-
-// 	ant.id = id;
-// 	ant.at_room = atf->start->content;
-// 	if (!(new_ant = ft_lstnew(&ant, sizeof(t_ant))))
-// 		return (0);
-// 	ft_lstprepend(&atf->ants, new_ant);
-// 	return (1);
-// }
-
-// int		init_ant(t_antfarm *atf)
-// {
-// 	int		i;
-
-// 	atf->ants = NULL;
-// 	i = atf->ant_qty + 1;
-// 	while (--i)
-// 	{
-// 		if (!malloc_ant(i, atf))
-// 			return (0);
-// 	}
-// 	return (1);
-// }
 
 static void		move_ants_in_start(t_list *ant_lst, t_antfarm *atf
 				, t_list *pth)
@@ -113,7 +86,7 @@ void			print_ant_moves(t_antfarm *atf, t_list *pth)
 	path = pth->content;
 	((t_room *)atf->start->content)->population = atf->ant_qty;
 	((t_room *)atf->start->content)->ant_id = 1;
-	if (!(atf->options & ONLY_DISPLAY_SOLUTION))
+	if (!(atf->options & ONLY_SOLUTION))
 		ft_putchar('\n');
 	((t_room *)atf->start->content)->population = atf->ant_qty;
 	((t_room *)atf->start->content)->ant_id = 1;

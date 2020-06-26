@@ -6,39 +6,33 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 00:52:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 16:42:19 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 22:28:21 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void		reset_route(t_list *deviation_room
-		, t_list *previous_room, t_list *route, t_list *end_room)
+static void		reset_room(t_room *room)
+{
+	room->visited = false;
+	room->deviation = false;
+	room->previous = NULL;
+}
+
+static void		reset_route(t_list *adj_room
+		, t_list *src_of_adj, t_list *route, t_list *end_room)
 {
 	t_room	*room;
-	t_room	*deviation;
-	t_room	*prev;
-	t_room	*end;
 
-	deviation = (t_room *)deviation_room->content;
-	prev = (t_room *)previous_room->content;
-	end = (t_room *)end_room->content;
 	while (route)
 	{
 		room = (t_room *)((t_route *)route->content)->room->content;
-		room->visited = false;
-		room->deviation = false;
-		room->previous = NULL;
+		reset_room(room);
 		route = route->next;
 	}
-	deviation->visited = false;
-	prev->visited = false;
-	deviation->deviation = false;
-	prev->deviation = false;
-	deviation->previous = NULL;
-	prev->previous = NULL;
-	end->visited = false;
-	end->deviation = false;
+	reset_room((t_room *)adj_room->content);
+	reset_room((t_room *)src_of_adj->content);
+	reset_room((t_room *)end_room->content);
 }
 
 static t_list	*back_to_src_of_adj(t_list *link)
@@ -65,14 +59,14 @@ static t_list	*back_to_src_of_adj(t_list *link)
 **		+ dest->path_id different from 0 ()
 */
 
-bool			deviation_src_of_adj(t_list *adj_room, t_list *end) //wei
+bool			detour_src_of_adj(t_list *adj_room, t_list *end) //wei
 {
 	t_list	*src_of_adj;
 	t_list	*links;
-	t_list	*route;
+	t_list	*tmp_test_route;
 	bool	ret;
 
-	route = NULL;
+	tmp_test_route = NULL;
 	src_of_adj = NULL;
 	links = ((t_room *)adj_room->content)->links;
 	if (!(src_of_adj = back_to_src_of_adj(links)))
@@ -85,11 +79,11 @@ bool			deviation_src_of_adj(t_list *adj_room, t_list *end) //wei
 	{
 		((t_room *)src_of_adj->content)->visited = true;
 		((t_room *)adj_room->content)->visited = true;
-		ret = bfs_route(src_of_adj, end, &route);
+		ret = bfs_route(src_of_adj, end, &tmp_test_route);
 		if (!ret)
 			((t_room *)adj_room->content)->dead_end = true;
-		reset_route(adj_room, src_of_adj, route, end);
-		ft_lstdel(&route, ft_delcontent);
+		reset_route(adj_room, src_of_adj, tmp_test_route, end);
+		ft_lstdel(&tmp_test_route, ft_delcontent);
 	}
 	return (ret);
 }
@@ -129,6 +123,5 @@ bool			adj_part_of_path(t_list *current, t_list *adj_room) //wei
 		link_of_adj = link_of_adj->next;
 	}// curr->deviation are initialized to false, not changed at first
 	return (!curr->deviation && adj_taken_by_another_path // ![[DV(curr)]] && LINK(curr, dest) && PATH(dest) && !PATH(curr && dest) 
-	&& !is_start(adj) && !samepath(curr, adj));
-	// && dest->path_id != 0 && curr->path_id != dest->path_id);
+			&& is_in_path(adj) && !samepath(curr, adj));
 }
