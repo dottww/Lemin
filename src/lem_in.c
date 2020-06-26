@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 16:55:20 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 19:08:16 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	get_options(t_antfarm *atf, int ac, char **av)
 }
 
 /*
-** Description:
+** ___Description___:
 **	read_input		: parsing with basic tests on the format of input
-**	get_antfarm	: construction of the struct vatiable which contain the graph
+**	get_antfarm		: construction of struct variable which containing graph
 **	get_path		: algorithm of multi-paths finding based on BFS
-**	print_antfarm		: print of the input
+**	print_antfarm	: print in the standard output the input
 **	print_ant_moves	: print of the ouput/solution (description of ants action)
 */
 

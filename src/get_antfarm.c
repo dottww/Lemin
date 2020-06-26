@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_antfarm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 16:27:07 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 20:25:22 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 **	Function skip the link in the list input(alst) that are comments.
 **	When the content of the link is not a comment, it is supposedly a number
 **	(for the number of ants). Thus we stock the number in ant_qty. If this is
-**	not a number in the end, nothing is stock in ant_qty.
+**	not a number, nothing is stock in ant_qty and error (0) is returned.
 ** ___Return___:
-**	1: the number of ants is stocked in ant_qty and the number is a positive int
+**	1:  the input line correponding to the number of ants is only preceded by
+**		 comments and ant_qty is a positive int.
 **	0: otherwise
 */
 
@@ -39,10 +40,10 @@ static int		get_ant_qty(t_antfarm *atf, t_list **alst)
 
 /*
 ** ___Description___:
-**	Check if the line (content of the input list)
-**	is either a comment or command and if the line does not have a '-'
-**	within (if there is a '-', the line is either a edge description or a
-**	wrong formated input line)
+**	Check if the line (content of the input list) is either a comment or
+**	command. If it is not a comment/command function check if there is
+**	a '-' within the line, if there is, error (0) is risen (because room
+**	definition is expected).
 ** ___Return___:
 **	0: if the line is a possible link/edge description or a wrong formated line
 **	1: otherwise (a room, a command or a comment)
@@ -50,9 +51,9 @@ static int		get_ant_qty(t_antfarm *atf, t_list **alst)
 
 static int		the_rooms(char *line)
 {
-	if (line[0] == '#') //command or comment
+	if (line[0] == '#')
 		return (1);
-	else if (ft_strchr(line, '-')) //is a link/edge
+	else if (ft_strchr(line, '-'))
 		return (0);
 	return (1);
 }
@@ -75,7 +76,7 @@ static void		init_antfarm_values(t_antfarm *atf)
 }
 
 /*
-** Description:
+** ___Description___:
 **	
 **
 */
@@ -102,12 +103,16 @@ static int		init_links(t_antfarm *atf, t_list *alst)
 **	t_list *alst: list where each link content is a string/line from input
 ** ___Description___:
 **	Initialization of t_antfarm *atf.
-**	The list of input is roamed one time, comment are always skipped,
-**	after possible comments a positive integer is expected and stock in
+**	The list of input is roamed one time, comments are always skipped,
+**	after possible commands (start/end) a positive integer is expected and stock in
 **	ant_qty
 **	Then rooms, commands and comments are expected (rooms are stocked in
 **	atf->rooms), pointers atf->start/end are set.
 **	Comments and commands others than start/end are ignored.
+** ___Return___:
+**	1: 
+**	0:  if any of the input lines is badly formatted or either the room start
+**		or end does not existed
 */
 
 int				get_antfarm(t_antfarm *atf, t_list *alst)

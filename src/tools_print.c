@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   tools_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 16:23:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 00:51:29 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 19:06:42 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** ___Description___:
+**	Function print on the standard input the content of each link of the linked
+**	list, which correspond to the description of the antfarm:
+**	  - number of ants,
+**	  - comments and commands,
+**	  - description of the rooms (name and coordinates),
+**	  - description of the links/edges between rooms.
+*/
 
 void			print_antfarm(t_list *alst)
 {
