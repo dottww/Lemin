@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 22:22:24 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/27 00:23:46 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,7 @@ unsigned long	solution_rounds(t_antfarm *atf, t_list *pth
 	}
 	rounds += ((t_path *)used_path->content)->len - 1;
 	if (atf->options & SHOW_PATH)
-	{
-		if (rounds >= atf->rounds)
-			ft_printf("This solution would take %ld rounds\n", rounds);
-		else
-			ft_printf("This solution would take %ld rounds\n", rounds);
-	}
+		ft_printf("This solution would take %ld rounds\n", rounds);
 	return (rounds);
 }
 

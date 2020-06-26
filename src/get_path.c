@@ -112,7 +112,7 @@ static bool		find_path(t_antfarm *atf, t_list **pth)
 bool			get_path(t_antfarm *atf, t_list *start, t_list *end
 			, t_list **pth)
 {
-	if (start_connected_to_end(start, end)) //wei
+	if (start_connected_to_end(start, end))
 		return (init_unique_path(pth, atf));
 	return (find_path(atf, pth));
 }

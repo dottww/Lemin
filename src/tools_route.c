@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_route.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 23:55:33 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/27 01:09:02 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 static bool		room_viable(t_list *curr_link, t_room *adj)
 {
-	return (!is_visited(adj) && !link_used(curr_link) && !is_start(adj));
+	return (!is_visited(adj) && !go_link(curr_link) && !is_start(adj));
+}
+
+static bool		pending_detour(t_room *curr, int usage)
+{
+	return (curr->deviation && usage == 0);
 }
 
 /*
@@ -48,7 +53,7 @@ static bool		route_viable(t_list *current, t_list *curr_link, t_list *end)
 	usage = ((t_link *)curr_link->content)->usage;
 	if (room_viable(curr_link, adj)	&& adj_part_of_path(current, adj_room))
 		return (detour_src_of_adj(adj_room, end));
-	return (room_viable(curr_link, adj)	&& !(curr->deviation));
+	return (room_viable(curr_link, adj)	&& !pending_detour(curr, usage)); //weib
 }
 
 // IN ROUTE VIABLE, NO USE OF USAGE, THERE MAY BE A PROLEM, JUST BELOW HOW IT WAS PREVIOUSLY
@@ -110,4 +115,3 @@ int				complete_route(t_list *route, t_list *end)
 		((t_room *)current_room->content)->deviation = false;
 	return (1);
 }
-

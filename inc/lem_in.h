@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:49:34 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 21:57:19 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/27 00:30:58 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,6 @@ int						is_start(t_room *room);
 int						is_visited(t_room *room);
 int						is_in_path(t_room *room);
 int						samepath(t_room *src, t_room *room);
-int						link_used(t_list *link);
+int						go_link(t_list *link);
 
 #endif
