@@ -40,17 +40,14 @@ int				init_path(t_list **pth, t_list *start, unsigned int options)
 	while (link)
 	{
 		if (((t_link *)link->content)->usage == -1)
-		{
 			if (!init_path_sub(pth, ((t_link *)link->content)->room))
 				return (0);
-		}
 		link = link->next;
 	}
-	if (options & DISPLAY_PATH)
+	if (options & SHOW_PATH)
 	{
-		ft_printf("Initialized %lu path%s"
-		, ft_lstlen(*pth)
-		, ft_lstlen(*pth) > 1 ? "s:\n" : ":\n");
+		ft_printf("Initialized %lu path%s", ft_lstlen(*pth),
+					ft_lstlen(*pth) > 1 ? "s:\n" : ":\n");
 	}
 	return (1);
 }

@@ -1,6 +1,6 @@
 *.txt
 obj/
-lem-in
+lem-in*
 .map_err/
 .diff*
 .out_checker

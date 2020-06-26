@@ -18,7 +18,7 @@
 		"externalConsole": false,
 		"setupCommands": [
 			{
-"text": "settings set target.input-path maps/valid/map_shortest"
+"text": "settings set target.input-path maps/valid/standard_example"
 			}
 		],
 		"MIMode": "lldb",

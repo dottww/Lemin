@@ -265,40 +265,10 @@
         [
             {
                 "ant_id": "1",
-                "dest": "D"
-            },
-            {
-                "ant_id": "2",
                 "dest": "A"
             },
             {
-                "ant_id": "3",
-                "dest": "K"
-            }
-        ],
-        [
-            {
-                "ant_id": "1",
-                "dest": "E"
-            },
-            {
                 "ant_id": "2",
-                "dest": "G"
-            },
-            {
-                "ant_id": "3",
-                "dest": "4"
-            },
-            {
-                "ant_id": "4",
-                "dest": "D"
-            },
-            {
-                "ant_id": "5",
-                "dest": "A"
-            },
-            {
-                "ant_id": "6",
                 "dest": "K"
             }
         ],
@@ -309,34 +279,14 @@
             },
             {
                 "ant_id": "2",
-                "dest": "H"
-            },
-            {
-                "ant_id": "3",
-                "dest": "M"
-            },
-            {
-                "ant_id": "4",
-                "dest": "E"
-            },
-            {
-                "ant_id": "5",
-                "dest": "G"
-            },
-            {
-                "ant_id": "6",
                 "dest": "4"
             },
             {
-                "ant_id": "7",
-                "dest": "D"
-            },
-            {
-                "ant_id": "8",
+                "ant_id": "3",
                 "dest": "A"
             },
             {
-                "ant_id": "9",
+                "ant_id": "4",
                 "dest": "K"
             }
         ],
@@ -347,46 +297,22 @@
             },
             {
                 "ant_id": "2",
-                "dest": "I"
-            },
-            {
-                "ant_id": "3",
-                "dest": "N"
-            },
-            {
-                "ant_id": "4",
-                "dest": "B"
-            },
-            {
-                "ant_id": "5",
-                "dest": "H"
-            },
-            {
-                "ant_id": "6",
                 "dest": "M"
             },
             {
-                "ant_id": "7",
-                "dest": "E"
+                "ant_id": "3",
+                "dest": "B"
             },
             {
-                "ant_id": "8",
-                "dest": "G"
-            },
-            {
-                "ant_id": "9",
+                "ant_id": "4",
                 "dest": "4"
             },
             {
-                "ant_id": "10",
-                "dest": "D"
-            },
-            {
-                "ant_id": "11",
+                "ant_id": "5",
                 "dest": "A"
             },
             {
-                "ant_id": "12",
+                "ant_id": "6",
                 "dest": "K"
             }
         ],
@@ -397,23 +323,53 @@
             },
             {
                 "ant_id": "2",
-                "dest": "J"
+                "dest": "N"
             },
             {
                 "ant_id": "3",
-                "dest": "O"
-            },
-            {
-                "ant_id": "4",
                 "dest": "C"
             },
             {
+                "ant_id": "4",
+                "dest": "M"
+            },
+            {
                 "ant_id": "5",
-                "dest": "I"
+                "dest": "B"
             },
             {
                 "ant_id": "6",
+                "dest": "4"
+            },
+            {
+                "ant_id": "7",
+                "dest": "A"
+            },
+            {
+                "ant_id": "8",
+                "dest": "K"
+            }
+        ],
+        [
+            {
+                "ant_id": "2",
+                "dest": "O"
+            },
+            {
+                "ant_id": "3",
+                "dest": "End"
+            },
+            {
+                "ant_id": "4",
                 "dest": "N"
+            },
+            {
+                "ant_id": "5",
+                "dest": "C"
+            },
+            {
+                "ant_id": "6",
+                "dest": "M"
             },
             {
                 "ant_id": "7",
@@ -421,34 +377,56 @@
             },
             {
                 "ant_id": "8",
-                "dest": "H"
-            },
-            {
-                "ant_id": "9",
-                "dest": "M"
-            },
-            {
-                "ant_id": "10",
-                "dest": "E"
-            },
-            {
-                "ant_id": "11",
-                "dest": "G"
-            },
-            {
-                "ant_id": "12",
                 "dest": "4"
             },
             {
-                "ant_id": "13",
-                "dest": "D"
-            },
-            {
-                "ant_id": "14",
+                "ant_id": "9",
                 "dest": "A"
             },
             {
-                "ant_id": "15",
+                "ant_id": "10",
+                "dest": "K"
+            }
+        ],
+        [
+            {
+                "ant_id": "2",
+                "dest": "P"
+            },
+            {
+                "ant_id": "4",
+                "dest": "O"
+            },
+            {
+                "ant_id": "5",
+                "dest": "End"
+            },
+            {
+                "ant_id": "6",
+                "dest": "N"
+            },
+            {
+                "ant_id": "7",
+                "dest": "C"
+            },
+            {
+                "ant_id": "8",
+                "dest": "M"
+            },
+            {
+                "ant_id": "9",
+                "dest": "B"
+            },
+            {
+                "ant_id": "10",
+                "dest": "4"
+            },
+            {
+                "ant_id": "11",
+                "dest": "A"
+            },
+            {
+                "ant_id": "12",
                 "dest": "K"
             }
         ],
@@ -458,40 +436,70 @@
                 "dest": "End"
             },
             {
-                "ant_id": "3",
+                "ant_id": "4",
                 "dest": "P"
             },
+            {
+                "ant_id": "6",
+                "dest": "O"
+            },
+            {
+                "ant_id": "7",
+                "dest": "End"
+            },
+            {
+                "ant_id": "8",
+                "dest": "N"
+            },
+            {
+                "ant_id": "9",
+                "dest": "C"
+            },
+            {
+                "ant_id": "10",
+                "dest": "M"
+            },
+            {
+                "ant_id": "11",
+                "dest": "B"
+            },
+            {
+                "ant_id": "12",
+                "dest": "4"
+            },
+            {
+                "ant_id": "13",
+                "dest": "A"
+            },
+            {
+                "ant_id": "14",
+                "dest": "K"
+            }
+        ],
+        [
             {
                 "ant_id": "4",
                 "dest": "End"
             },
             {
-                "ant_id": "5",
-                "dest": "J"
-            },
-            {
                 "ant_id": "6",
-                "dest": "O"
-            },
-            {
-                "ant_id": "7",
-                "dest": "C"
+                "dest": "P"
             },
             {
                 "ant_id": "8",
-                "dest": "I"
+                "dest": "O"
             },
             {
                 "ant_id": "9",
-                "dest": "N"
+                "dest": "End"
             },
             {
                 "ant_id": "10",
-                "dest": "B"
+                "dest": "N"
             },
             {
                 "ant_id": "11",
-                "dest": "H"
+                "dest": "C"
             },
             {
                 "ant_id": "12",
@@ -499,57 +507,37 @@
             },
             {
                 "ant_id": "13",
-                "dest": "E"
+                "dest": "B"
             },
             {
                 "ant_id": "14",
-                "dest": "G"
-            },
-            {
-                "ant_id": "15",
                 "dest": "4"
             },
             {
-                "ant_id": "16",
-                "dest": "D"
+                "ant_id": "15",
+                "dest": "A"
             },
             {
-                "ant_id": "17",
-                "dest": "A"
+                "ant_id": "16",
+                "dest": "K"
             }
         ],
         [
             {
-                "ant_id": "3",
-                "dest": "End"
-            },
-            {
-                "ant_id": "5",
-                "dest": "End"
-            },
-            {
                 "ant_id": "6",
-                "dest": "P"
-            },
-            {
-                "ant_id": "7",
                 "dest": "End"
             },
             {
                 "ant_id": "8",
-                "dest": "J"
-            },
-            {
-                "ant_id": "9",
-                "dest": "O"
+                "dest": "P"
             },
             {
                 "ant_id": "10",
-                "dest": "C"
+                "dest": "O"
             },
             {
                 "ant_id": "11",
-                "dest": "I"
+                "dest": "End"
             },
             {
                 "ant_id": "12",
@@ -557,27 +545,91 @@
             },
             {
                 "ant_id": "13",
-                "dest": "B"
+                "dest": "C"
             },
             {
                 "ant_id": "14",
-                "dest": "H"
-            },
-            {
-                "ant_id": "15",
                 "dest": "M"
             },
             {
+                "ant_id": "15",
+                "dest": "B"
+            },
+            {
                 "ant_id": "16",
-                "dest": "E"
+                "dest": "4"
             },
             {
                 "ant_id": "17",
-                "dest": "G"
+                "dest": "A"
+            }
+        ],
+        [
+            {
+                "ant_id": "8",
+                "dest": "End"
+            },
+            {
+                "ant_id": "10",
+                "dest": "P"
+            },
+            {
+                "ant_id": "12",
+                "dest": "O"
+            },
+            {
+                "ant_id": "13",
+                "dest": "End"
+            },
+            {
+                "ant_id": "14",
+                "dest": "N"
+            },
+            {
+                "ant_id": "15",
+                "dest": "C"
+            },
+            {
+                "ant_id": "16",
+                "dest": "M"
+            },
+            {
+                "ant_id": "17",
+                "dest": "B"
             },
             {
                 "ant_id": "18",
-                "dest": "D"
+                "dest": "A"
+            }
+        ],
+        [
+            {
+                "ant_id": "10",
+                "dest": "End"
+            },
+            {
+                "ant_id": "12",
+                "dest": "P"
+            },
+            {
+                "ant_id": "14",
+                "dest": "O"
+            },
+            {
+                "ant_id": "15",
+                "dest": "End"
+            },
+            {
+                "ant_id": "16",
+                "dest": "N"
+            },
+            {
+                "ant_id": "17",
+                "dest": "C"
+            },
+            {
+                "ant_id": "18",
+                "dest": "B"
             },
             {
                 "ant_id": "19",
@@ -586,136 +638,50 @@
         ],
         [
             {
-                "ant_id": "6",
+                "ant_id": "12",
                 "dest": "End"
             },
             {
-                "ant_id": "8",
-                "dest": "End"
-            },
-            {
-                "ant_id": "9",
+                "ant_id": "14",
                 "dest": "P"
             },
             {
-                "ant_id": "10",
-                "dest": "End"
-            },
-            {
-                "ant_id": "11",
-                "dest": "J"
-            },
-            {
-                "ant_id": "12",
+                "ant_id": "16",
                 "dest": "O"
             },
             {
-                "ant_id": "13",
-                "dest": "C"
-            },
-            {
-                "ant_id": "14",
-                "dest": "I"
-            },
-            {
-                "ant_id": "15",
-                "dest": "N"
-            },
-            {
-                "ant_id": "16",
-                "dest": "B"
-            },
-            {
                 "ant_id": "17",
-                "dest": "H"
+                "dest": "End"
             },
             {
                 "ant_id": "18",
-                "dest": "E"
+                "dest": "C"
             },
             {
                 "ant_id": "19",
-                "dest": "G"
+                "dest": "B"
             },
             {
                 "ant_id": "20",
-                "dest": "D"
+                "dest": "A"
             }
         ],
         [
             {
-                "ant_id": "9",
+                "ant_id": "14",
                 "dest": "End"
             },
             {
-                "ant_id": "11",
-                "dest": "End"
-            },
-            {
-                "ant_id": "12",
+                "ant_id": "16",
                 "dest": "P"
             },
             {
-                "ant_id": "13",
-                "dest": "End"
-            },
-            {
-                "ant_id": "14",
-                "dest": "J"
-            },
-            {
-                "ant_id": "15",
-                "dest": "O"
-            },
-            {
-                "ant_id": "16",
-                "dest": "C"
-            },
-            {
-                "ant_id": "17",
-                "dest": "I"
-            },
-            {
                 "ant_id": "18",
-                "dest": "B"
+                "dest": "End"
             },
             {
                 "ant_id": "19",
-                "dest": "H"
-            },
-            {
-                "ant_id": "20",
-                "dest": "E"
-            }
-        ],
-        [
-            {
-                "ant_id": "12",
-                "dest": "End"
-            },
-            {
-                "ant_id": "14",
-                "dest": "End"
-            },
-            {
-                "ant_id": "15",
-                "dest": "P"
-            },
-            {
-                "ant_id": "16",
-                "dest": "End"
-            },
-            {
-                "ant_id": "17",
-                "dest": "J"
-            },
-            {
-                "ant_id": "18",
                 "dest": "C"
-            },
-            {
-                "ant_id": "19",
-                "dest": "I"
             },
             {
                 "ant_id": "20",
@@ -724,20 +690,12 @@
         ],
         [
             {
-                "ant_id": "15",
-                "dest": "End"
-            },
-            {
-                "ant_id": "17",
-                "dest": "End"
-            },
-            {
-                "ant_id": "18",
+                "ant_id": "16",
                 "dest": "End"
             },
             {
                 "ant_id": "19",
-                "dest": "J"
+                "dest": "End"
             },
             {
                 "ant_id": "20",
@@ -745,10 +703,6 @@
             }
         ],
         [
-            {
-                "ant_id": "19",
-                "dest": "End"
-            },
             {
                 "ant_id": "20",
                 "dest": "End"
@@ -1005,6 +959,30 @@
             }
         }
     ],
-    "paths": [],
-    "rounds": 12
+    "paths": [
+        {
+            "id": 2,
+            "path": [
+                "Start",
+                "A",
+                "B",
+                "C",
+                "End"
+            ]
+        },
+        {
+            "id": 3,
+            "path": [
+                "Start",
+                "K",
+                "4",
+                "M",
+                "N",
+                "O",
+                "P",
+                "End"
+            ]
+        }
+    ],
+    "rounds": 15
 }

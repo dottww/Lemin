@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 16:55:44 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 22:22:24 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void			printpath_update_data(t_antfarm *atf, unsigned long rounds
 		room = room->next;
 	}
 	ft_lstrev(pth);
-	if (atf->options & DISPLAY_PATH)
+	if (atf->options & SHOW_PATH)
 		print_all_paths(*pth);
 	atf->rounds = rounds;
 }
@@ -51,6 +51,7 @@ t_list			*select_path_to_send_ants(t_list *path, unsigned int ant_qty)
 	t_list			*head;
 	unsigned int	path_capacity;
 	int				head_path_len;
+	
 	if (!path->next)
 		return (path);
 	head = path;
@@ -65,9 +66,6 @@ t_list			*select_path_to_send_ants(t_list *path, unsigned int ant_qty)
 	if (path_capacity >= ant_qty)
 		return (select_path_to_send_ants(head->next, ant_qty));
 	return (head);
-	// if (path_capacity < ant_qty)
-	// 	return (head);
-	// return (select_path_to_send_ants(head->next, ant_qty));
 }
 
 unsigned long	solution_rounds(t_antfarm *atf, t_list *pth
@@ -86,7 +84,7 @@ unsigned long	solution_rounds(t_antfarm *atf, t_list *pth
 		rounds++;
 	}
 	rounds += ((t_path *)used_path->content)->len - 1;
-	if (atf->options & DISPLAY_PATH)
+	if (atf->options & SHOW_PATH)
 	{
 		if (rounds >= atf->rounds)
 			ft_printf("This solution would take %ld rounds\n", rounds);
@@ -108,9 +106,9 @@ bool			bfs_route(t_list *start, t_list *end, t_list **route)
 {
 	t_list		*elem;
 	t_route		new_route;
-	bool		found_new_path;
+	bool		found_new_route;
 
-	found_new_path = false;
+	found_new_route = false;
 	if (!(*route = ft_lstnew(&new_route, sizeof(t_route)))) // no initialization of new_route, thus in lstnew, random value will be given to the inner variable of route no ?
 		return (false);
 	else
@@ -123,28 +121,10 @@ bool			bfs_route(t_list *start, t_list *end, t_list **route)
 			return (false);
 		if (((t_room *)end->content)->visited)
 		{
-			found_new_path = true;
+			found_new_route = true;
 			break ;
 		}
 		elem = elem->next;
 	}
-	return (found_new_path);
+	return (found_new_route);
 }
-
-/*
-** Description:
-**	Allocation memory of the 
-** Return:
-**	1: no mem allocation issue for the link new_route route
-**	0: if mem allocation issue for the link
-*/
-
-// static int		malloc_route(t_list **route, t_list *start)
-// {
-// 	t_route		new_route; 
-
-// 	if (!(*route = ft_lstnew(&new_route, sizeof(t_route))))
-// 		return (0);
-// 	((t_route *)(*route)->content)->room = start;
-// 	return (1);
-// }

@@ -1,3 +1,3 @@
 make
-cd Tests_bash
+cd Tbash
 sh check_invalid.sh ../lem-in
