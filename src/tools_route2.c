@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 00:52:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 22:28:21 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/27 00:48:44 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static t_list	*back_to_src_of_adj(t_list *link)
 ** Return:
 **	True if:
 **		src->deviation is false
-**		+ link_used = 1
+**		+ go_link = 1
 **		+ src->path_id different from dest->path_id
 **		+ dest->path_id different from 0 ()
 */
@@ -97,7 +97,7 @@ bool			detour_src_of_adj(t_list *adj_room, t_list *end) //wei
 ** Return:
 **	True if:
 **		src->deviation is false
-**		+ link_used = 1
+**		+ go_link = 1
 **		+ src->path_id different from dest->path_id
 **		+ dest->path_id different from 0 ()
 */
@@ -110,18 +110,18 @@ bool			adj_part_of_path(t_list *current, t_list *adj_room) //wei
 	int		adj_taken_by_another_path;
 
 	adj_taken_by_another_path = 0;
-	curr = (t_room *)current->content; // access to the source room (opening of the encapsulation)
-	adj = (t_room *)adj_room->content; // access to the destination room (opening of the encapsulation)
-	link_of_adj = adj->links; //
+	curr = (t_room *)current->content;
+	adj = (t_room *)adj_room->content;
+	link_of_adj = adj->links;
 	while (link_of_adj)
 	{
-		if (((t_link *)link_of_adj->content)->usage == 1) // dest already visited by curr
+		if (((t_link *)link_of_adj->content)->usage == 1)
 		{
 			adj_taken_by_another_path = 1;
 			break ;
 		}
 		link_of_adj = link_of_adj->next;
-	}// curr->deviation are initialized to false, not changed at first
-	return (!curr->deviation && adj_taken_by_another_path // ![[DV(curr)]] && LINK(curr, dest) && PATH(dest) && !PATH(curr && dest) 
-			&& is_in_path(adj) && !samepath(curr, adj));
+	}
+	return (!curr->deviation && is_in_path(adj) && !samepath(curr, adj)
+			&& adj_taken_by_another_path);
 }
