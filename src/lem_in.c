@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 23:14:48 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/26 23:47:45 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ static void		init_antfarm_values(t_antfarm *atf)
 	atf->options = 0;
 	atf->ants = NULL;
 }
+
+/*
+** ___Description___:
+**	Managing the options available:
+**	  - '--paths' to print the paths of the selected solution
+**	  - '--solution' to print
+*/
 
 static int		get_options(t_antfarm *atf, int ac, char **av)
 {
