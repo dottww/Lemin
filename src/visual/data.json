@@ -1,109 +1,67 @@
 {
-    "ant_qty": 10,
+    "ant_qty": 30,
     "edges": [
         {
             "data": {
-                "id": "StartE",
-                "source": "Start",
-                "target": "E"
+                "id": "startlong0",
+                "source": "start",
+                "target": "long0"
             }
         },
         {
             "data": {
-                "id": "EF",
-                "source": "E",
-                "target": "F"
+                "id": "long0long1",
+                "source": "long0",
+                "target": "long1"
             }
         },
         {
             "data": {
-                "id": "FEnd",
-                "source": "F",
-                "target": "End"
+                "id": "long1end",
+                "source": "long1",
+                "target": "end"
             }
         },
         {
             "data": {
-                "id": "StartG",
-                "source": "Start",
-                "target": "G"
+                "id": "startshort",
+                "source": "start",
+                "target": "short"
             }
         },
         {
             "data": {
-                "id": "GH",
-                "source": "G",
-                "target": "H"
+                "id": "shortend",
+                "source": "short",
+                "target": "end"
             }
         },
         {
             "data": {
-                "id": "HI",
-                "source": "H",
-                "target": "I"
+                "id": "startlonger0",
+                "source": "start",
+                "target": "longer0"
             }
         },
         {
             "data": {
-                "id": "IEnd",
-                "source": "I",
-                "target": "End"
+                "id": "longer0longer1",
+                "source": "longer0",
+                "target": "longer1"
             }
         },
         {
             "data": {
-                "id": "StartA",
-                "source": "Start",
-                "target": "A"
+                "id": "longer1longer2",
+                "source": "longer1",
+                "target": "longer2"
             }
         },
         {
             "data": {
-                "id": "StartB",
-                "source": "Start",
-                "target": "B"
-            }
-        },
-        {
-            "data": {
-                "id": "StartD",
-                "source": "Start",
-                "target": "D"
-            }
-        },
-        {
-            "data": {
-                "id": "AB",
-                "source": "A",
-                "target": "B"
-            }
-        },
-        {
-            "data": {
-                "id": "AC",
-                "source": "A",
-                "target": "C"
-            }
-        },
-        {
-            "data": {
-                "id": "BEnd",
-                "source": "B",
-                "target": "End"
-            }
-        },
-        {
-            "data": {
-                "id": "CEnd",
-                "source": "C",
-                "target": "End"
-            }
-        },
-        {
-            "data": {
-                "id": "DEnd",
-                "source": "D",
-                "target": "End"
+                "id": "longer2end",
+                "source": "longer2",
+                "target": "end"
             }
         }
     ],
@@ -111,105 +69,377 @@
         [
             {
                 "ant_id": "1",
-                "dest": "B"
+                "dest": "short"
             },
             {
                 "ant_id": "2",
-                "dest": "D"
+                "dest": "long0"
             },
             {
                 "ant_id": "3",
-                "dest": "E"
-            },
-            {
-                "ant_id": "4",
-                "dest": "A"
+                "dest": "longer0"
             }
         ],
         [
             {
                 "ant_id": "1",
-                "dest": "End"
+                "dest": "end"
             },
             {
                 "ant_id": "2",
-                "dest": "End"
+                "dest": "long1"
             },
             {
                 "ant_id": "3",
-                "dest": "F"
+                "dest": "longer1"
             },
             {
                 "ant_id": "4",
-                "dest": "C"
+                "dest": "short"
             },
             {
                 "ant_id": "5",
-                "dest": "B"
+                "dest": "long0"
             },
             {
                 "ant_id": "6",
-                "dest": "D"
+                "dest": "longer0"
+            }
+        ],
+        [
+            {
+                "ant_id": "2",
+                "dest": "end"
+            },
+            {
+                "ant_id": "3",
+                "dest": "longer2"
+            },
+            {
+                "ant_id": "4",
+                "dest": "end"
+            },
+            {
+                "ant_id": "5",
+                "dest": "long1"
+            },
+            {
+                "ant_id": "6",
+                "dest": "longer1"
             },
             {
                 "ant_id": "7",
-                "dest": "E"
+                "dest": "short"
             },
             {
                 "ant_id": "8",
-                "dest": "A"
+                "dest": "long0"
+            },
+            {
+                "ant_id": "9",
+                "dest": "longer0"
             }
         ],
         [
             {
                 "ant_id": "3",
-                "dest": "End"
-            },
-            {
-                "ant_id": "4",
-                "dest": "End"
+                "dest": "end"
             },
             {
                 "ant_id": "5",
-                "dest": "End"
+                "dest": "end"
             },
             {
                 "ant_id": "6",
-                "dest": "End"
+                "dest": "longer2"
             },
             {
                 "ant_id": "7",
-                "dest": "F"
+                "dest": "end"
             },
             {
                 "ant_id": "8",
-                "dest": "C"
+                "dest": "long1"
             },
             {
                 "ant_id": "9",
-                "dest": "B"
+                "dest": "longer1"
             },
             {
                 "ant_id": "10",
-                "dest": "D"
+                "dest": "short"
+            },
+            {
+                "ant_id": "11",
+                "dest": "long0"
+            },
+            {
+                "ant_id": "12",
+                "dest": "longer0"
             }
         ],
         [
             {
-                "ant_id": "7",
-                "dest": "End"
+                "ant_id": "6",
+                "dest": "end"
             },
             {
                 "ant_id": "8",
-                "dest": "End"
+                "dest": "end"
             },
             {
                 "ant_id": "9",
-                "dest": "End"
+                "dest": "longer2"
             },
             {
                 "ant_id": "10",
-                "dest": "End"
+                "dest": "end"
+            },
+            {
+                "ant_id": "11",
+                "dest": "long1"
+            },
+            {
+                "ant_id": "12",
+                "dest": "longer1"
+            },
+            {
+                "ant_id": "13",
+                "dest": "short"
+            },
+            {
+                "ant_id": "14",
+                "dest": "long0"
+            },
+            {
+                "ant_id": "15",
+                "dest": "longer0"
+            }
+        ],
+        [
+            {
+                "ant_id": "9",
+                "dest": "end"
+            },
+            {
+                "ant_id": "11",
+                "dest": "end"
+            },
+            {
+                "ant_id": "12",
+                "dest": "longer2"
+            },
+            {
+                "ant_id": "13",
+                "dest": "end"
+            },
+            {
+                "ant_id": "14",
+                "dest": "long1"
+            },
+            {
+                "ant_id": "15",
+                "dest": "longer1"
+            },
+            {
+                "ant_id": "16",
+                "dest": "short"
+            },
+            {
+                "ant_id": "17",
+                "dest": "long0"
+            },
+            {
+                "ant_id": "18",
+                "dest": "longer0"
+            }
+        ],
+        [
+            {
+                "ant_id": "12",
+                "dest": "end"
+            },
+            {
+                "ant_id": "14",
+                "dest": "end"
+            },
+            {
+                "ant_id": "15",
+                "dest": "longer2"
+            },
+            {
+                "ant_id": "16",
+                "dest": "end"
+            },
+            {
+                "ant_id": "17",
+                "dest": "long1"
+            },
+            {
+                "ant_id": "18",
+                "dest": "longer1"
+            },
+            {
+                "ant_id": "19",
+                "dest": "short"
+            },
+            {
+                "ant_id": "20",
+                "dest": "long0"
+            },
+            {
+                "ant_id": "21",
+                "dest": "longer0"
+            }
+        ],
+        [
+            {
+                "ant_id": "15",
+                "dest": "end"
+            },
+            {
+                "ant_id": "17",
+                "dest": "end"
+            },
+            {
+                "ant_id": "18",
+                "dest": "longer2"
+            },
+            {
+                "ant_id": "19",
+                "dest": "end"
+            },
+            {
+                "ant_id": "20",
+                "dest": "long1"
+            },
+            {
+                "ant_id": "21",
+                "dest": "longer1"
+            },
+            {
+                "ant_id": "22",
+                "dest": "short"
+            },
+            {
+                "ant_id": "23",
+                "dest": "long0"
+            },
+            {
+                "ant_id": "24",
+                "dest": "longer0"
+            }
+        ],
+        [
+            {
+                "ant_id": "18",
+                "dest": "end"
+            },
+            {
+                "ant_id": "20",
+                "dest": "end"
+            },
+            {
+                "ant_id": "21",
+                "dest": "longer2"
+            },
+            {
+                "ant_id": "22",
+                "dest": "end"
+            },
+            {
+                "ant_id": "23",
+                "dest": "long1"
+            },
+            {
+                "ant_id": "24",
+                "dest": "longer1"
+            },
+            {
+                "ant_id": "25",
+                "dest": "short"
+            },
+            {
+                "ant_id": "26",
+                "dest": "long0"
+            },
+            {
+                "ant_id": "27",
+                "dest": "longer0"
+            }
+        ],
+        [
+            {
+                "ant_id": "21",
+                "dest": "end"
+            },
+            {
+                "ant_id": "23",
+                "dest": "end"
+            },
+            {
+                "ant_id": "24",
+                "dest": "longer2"
+            },
+            {
+                "ant_id": "25",
+                "dest": "end"
+            },
+            {
+                "ant_id": "26",
+                "dest": "long1"
+            },
+            {
+                "ant_id": "27",
+                "dest": "longer1"
+            },
+            {
+                "ant_id": "28",
+                "dest": "short"
+            },
+            {
+                "ant_id": "29",
+                "dest": "long0"
+            }
+        ],
+        [
+            {
+                "ant_id": "24",
+                "dest": "end"
+            },
+            {
+                "ant_id": "26",
+                "dest": "end"
+            },
+            {
+                "ant_id": "27",
+                "dest": "longer2"
+            },
+            {
+                "ant_id": "28",
+                "dest": "end"
+            },
+            {
+                "ant_id": "29",
+                "dest": "long1"
+            },
+            {
+                "ant_id": "30",
+                "dest": "short"
+            }
+        ],
+        [
+            {
+                "ant_id": "27",
+                "dest": "end"
+            },
+            {
+                "ant_id": "29",
+                "dest": "end"
+            },
+            {
+                "ant_id": "30",
+                "dest": "end"
             }
         ]
     ],
@@ -219,23 +449,7 @@
                 "ant_id": 0,
                 "color": "white",
                 "flag": 0,
-                "id": "Start"
-            }
-        },
-        {
-            "data": {
-                "ant_id": 0,
-                "color": "white",
-                "flag": -1,
-                "id": "A"
-            }
-        },
-        {
-            "data": {
-                "ant_id": 0,
-                "color": "white",
-                "flag": -1,
-                "id": "B"
+                "id": "start"
             }
         },
         {
@@ -243,7 +457,7 @@
                 "ant_id": 0,
                 "color": "white",
                 "flag": 1,
-                "id": "End"
+                "id": "end"
             }
         },
         {
@@ -251,7 +465,7 @@
                 "ant_id": 0,
                 "color": "white",
                 "flag": -1,
-                "id": "C"
+                "id": "long0"
             }
         },
         {
@@ -259,7 +473,7 @@
                 "ant_id": 0,
                 "color": "white",
                 "flag": -1,
-                "id": "D"
+                "id": "long1"
             }
         },
         {
@@ -267,7 +481,7 @@
                 "ant_id": 0,
                 "color": "white",
                 "flag": -1,
-                "id": "E"
+                "id": "short"
             }
         },
         {
@@ -275,7 +489,7 @@
                 "ant_id": 0,
                 "color": "white",
                 "flag": -1,
-                "id": "F"
+                "id": "longer0"
             }
         },
         {
@@ -283,7 +497,7 @@
                 "ant_id": 0,
                 "color": "white",
                 "flag": -1,
-                "id": "G"
+                "id": "longer1"
             }
         },
         {
@@ -291,18 +505,38 @@
                 "ant_id": 0,
                 "color": "white",
                 "flag": -1,
-                "id": "H"
-            }
-        },
-        {
-            "data": {
-                "ant_id": 0,
-                "color": "white",
-                "flag": -1,
-                "id": "I"
+                "id": "longer2"
             }
         }
     ],
-    "paths": [],
-    "rounds": 4
+    "paths": [
+        {
+            "id": 4,
+            "path": [
+                "start",
+                "short",
+                "end"
+            ]
+        },
+        {
+            "id": 5,
+            "path": [
+                "start",
+                "long0",
+                "long1",
+                "end"
+            ]
+        },
+        {
+            "id": 6,
+            "path": [
+                "start",
+                "longer0",
+                "longer1",
+                "longer2",
+                "end"
+            ]
+        }
+    ],
+    "rounds": 12
 }

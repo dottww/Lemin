@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_links.c                                     :+:      :+:    :+:   */
+/*   tools_links.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/21 14:01:32 by bwan-nan          #+#    #+#             */
-/*   Updated: 2020/06/23 15:08:00 by mdavid           ###   ########.fr       */
+/*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
+/*   Updated: 2020/06/25 22:55:10 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_list	*get_link(t_list *src, t_list *dest)
 	return (NULL);
 }
 
-static void		set_usage(t_list *src, t_list *dest, bool is_previous)
+static void		set_link_usage(t_list *src, t_list *dest, bool is_previous)
 {
 	t_list	*link;
 
@@ -63,8 +63,8 @@ void			set_links_usage(t_list *end, t_list **route)
 		previous = ((t_room *)room->content)->previous;
 		if (previous)
 		{
-			set_usage(previous, room, true);
-			set_usage(room, previous, false);
+			set_link_usage(previous, room, true);
+			set_link_usage(room, previous, false);
 		}
 		room = ((t_room *)room->content)->previous;
 	}

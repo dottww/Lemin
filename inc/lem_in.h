@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:49:34 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/25 18:09:21 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/26 15:48:45 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 # include <stdbool.h>
 
 # define ONLY_DISPLAY_SOLUTION	2
-# define DISPLAY_PATHS			4
+# define DISPLAY_PATH			4
 # define L1 ((t_input *)(alst->content))->line
 # define L2 ((t_input *)((*alst)->content))->line
-# define STARTROOM ((t_room *)atf->start->content)
-# define ENDROOM ((t_room *)atf->end->content)
-# define NEXTROOM ((t_room *)position->next->content)
-# define ANT ((t_ant *)ant_troop->content)->position
-# define NEXTANT (((t_ant *)ant_troop->next->content)->position
+// # define STARTROOM ((t_room *)atf->start->content)
+// # define ENDROOM ((t_room *)atf->end->content)
+// # define NEXTROOM ((t_room *)at_room->next->content)
+// # define ANT ((t_ant *)ant_lst->content)->at_room
+// # define NEXTANT (((t_ant *)ant_lst->next->content)->at_room
 
 
 typedef struct			s_room
@@ -50,7 +50,7 @@ typedef struct			s_antfarm
 {
 	int					ant_qty;
 	unsigned long		rounds;
-	unsigned int		option;
+	unsigned int		options;
 	int					id;
 	t_list				*rooms;
 	t_list				*start;
@@ -83,7 +83,7 @@ typedef struct			s_path
 typedef struct			s_ant
 {
 	int					id;
-	t_room				*position;
+	t_room				*at_room;
 }						t_ant;
 
 typedef struct			s_route
@@ -96,61 +96,66 @@ typedef struct			s_input
 	char				*line;
 }						t_input;
 
+
+// pending to clean modifed/cleaned function left in header
+
 /*
 ** ----------------------------- INIT ------------------------------------------
 */
-int						register_rooms(t_antfarm *antfarm, t_list *alst);
-int						init_paths(t_list **paths, t_list *start
-						, unsigned int option);
-int						init_ants(t_antfarm *antfarm);
+int						get_antfarm(t_antfarm *antfarm, t_list *alst);
+int						init_ant(t_antfarm *antfarm);
 /*
 ** ------------------------------ ADD ------------------------------------------
 */
-int						add_room(t_antfarm *antfarm, t_list **alst);
+int						add_rooms(t_antfarm *antfarm, t_list **alst);
 int						add_link(t_antfarm *antfarm, char *line);
-int						add_step(t_list **steps, t_list *room);
-int						add_path(t_list **paths);
-int						add_ant(int id, t_antfarm *antfarm);
+// int						add_step(t_list **steps, t_list *room);
+// int						add_path(t_list **pth);
+// int						add_ant(int id, t_antfarm *antfarm);
 /*
 ** ----------------------------- ALGO -----------------------------------------
 */
-bool					get_paths(t_antfarm *antfarm, t_list *start
-						, t_list *end, t_list **paths);
-bool					bfs(t_list *start, t_list *end, t_list **route);
-unsigned long			test_solution(t_antfarm *antfarm, t_list *paths);
+bool					get_path(t_antfarm *antfarm, t_list *start
+						, t_list *end, t_list **pth);
+bool					bfs_route(t_list *start, t_list *end, t_list **route);
+unsigned long			solution_rounds(t_antfarm *antfarm, t_list *pth
+						, unsigned int ant_qty);
 void					printpath_update_data(t_antfarm *antfarm, unsigned long rounds
-						, t_list **paths);
-void					complete_paths(t_list **paths);
+						, t_list **pth);
+void					full_path(t_list **pth);
 void					set_links_usage(t_list *end, t_list **route);
-// int						init_route(t_list **route, t_list *start);
 int						complete_route(t_list *route, t_list *end);
-bool					going_to_deviate(t_list *current, t_list *room);
-bool					deviation_reaches_end(t_list *deviation_room
-						, t_list *end);
-bool					start_linked_to_end(t_list *start, t_list *end);
-bool					init_the_only_path(t_list **paths, t_antfarm *antfarm);
+bool					is_in_route(t_list *current, t_list *adj_room);
+bool					deviation_src_of_adj(t_list *adj_room , t_list *end);
+bool					start_connected_to_end(t_list *start, t_list *end);
+bool					init_unique_path(t_list **pth, t_antfarm *antfarm);
 /*
 ** ---------------------------- DISPLAY ----------------------------------------
 */
-void					print_paths(t_list *paths);
-void					print_steps(t_list *steps);
-void					print_output(t_antfarm *antfarm, t_list *paths);
-void					print_input(t_list *alst);
-void		print_route(t_list *rt);//DEL LATER
+void					print_all_paths(t_list *pth);
+void					print_all_steps(t_list *steps);
+void					print_ant_moves(t_antfarm *antfarm, t_list *pth);
+void					print_antfarm(t_list *alst);
 
 /*
 ** ---------------------------- TOOLS ------------------------------------------
 */
-int						free_input(t_list **lst, char *exit_msg);
+int						free_input_lst(t_list **lst, char *exit_msg);
 // int						ret_strtab_free(int ret, char **tab);
-int						print_and_free(t_antfarm *antfarm, t_list **input
-						, t_list **paths, char *msg);
+int						print_free(t_antfarm *antfarm, t_list **input
+						, t_list **pth, char *msg);
 void					del_path(void *content, size_t size);
-int						get_input(t_list **alst);
+int						read_input(t_list **alst);
 int						is_comment(char *line);
 int						is_start_end(char *line);
 void					ft_delcontent(void *content, size_t size);
-void					del_room(void *content, size_t size);
-void					del_input(void *content, size_t size);
+void					delete_room(void *content, size_t size);
+void					delete_input(void *content, size_t size);
+int		golink(t_list *curr_link);
+int		is_start(t_room *dst);
+// int		is_start(t_list *curr_link);
+int		samepath(t_room *src, t_room *dst);
+int		is_visited(t_room *dst);
+int		is_in_path(t_room *dst);
 // void					del_route_elem(void *content, size_t size);
 #endif

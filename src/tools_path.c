@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_linked_to_end.c                              :+:      :+:    :+:   */
+/*   tools_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/02 11:58:24 by pimichau          #+#    #+#             */
-/*   Updated: 2020/06/22 20:33:40 by weilin           ###   ########.fr       */
+/*   Created: 2020/06/25 19:31:08 by weilin            #+#    #+#             */
+/*   Updated: 2020/06/26 00:00:39 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
 
 /*
 ** Description:
@@ -20,7 +21,7 @@
 **	FALSE : end is not a neighbor of start
 */
 
-bool		start_linked_to_end(t_list *start, t_list *end)
+bool			start_connected_to_end(t_list *start, t_list *end)
 {
 	t_list	*link;
 	t_list	*dest_room;
@@ -44,7 +45,7 @@ bool		start_linked_to_end(t_list *start, t_list *end)
 **	FALSE : memory allocation issue (lstnew)
 */
 
-bool		init_the_only_path(t_list **paths, t_antfarm *atf)
+bool			init_unique_path(t_list **pth, t_antfarm *atf)
 {
 	t_path	path;
 	t_list	*new_path;
@@ -56,11 +57,61 @@ bool		init_the_only_path(t_list **paths, t_antfarm *atf)
 	path.complete = true;
 	if (!(new_path = ft_lstnew(&path, sizeof(t_path))))
 		return (false);
-	if (atf->option & DISPLAY_PATHS)
+	if (atf->options & DISPLAY_PATH)
 	{
 		ft_printf("Initialized 1 path:\n");
 		ft_printf("# 1: End\n");
 	}
-	ft_lstprepend(paths, new_path);
+	ft_lstprepend(pth, new_path);
 	return (true);
+}
+
+static void		elem_full_path(t_list *path, t_list *room) // reconstruction of path based on usage of link (follow the -1)
+{
+	t_list	*link;
+	t_list	*next_room;
+	int		path_id;
+
+	path_id = ((t_path *)path->content)->id;
+	link = ((t_room *)room->content)->links;
+	if (((t_room *)room->content)->s_t == 1)
+		((t_path *)path->content)->complete = true;
+	while (link)
+	{
+		if (((t_link *)link->content)->usage == -1)
+		{
+			((t_path *)path->content)->len++;
+			next_room = ((t_link *)link->content)->room;
+			((t_room *)room->content)->new_next = next_room;
+			((t_room *)room->content)->new_path_id = path_id;
+			elem_full_path(path, next_room);
+			return ;
+		}
+		link = link->next;
+	}
+}
+
+static int		sort_by_pathlen(void *a, void *b)
+{
+	t_path	*path1;
+	t_path	*path2;
+
+	path1 = (t_path *)a;
+	path2 = (t_path *)b;
+	return (path1->len < path2->len);
+}
+
+void			full_path(t_list **pth)
+{
+	t_list	*room;
+	t_list	*elem;
+
+	elem = *pth; // pointer on pth list
+	while (elem)
+	{
+		room = ((t_path *)elem->content)->room; // catching the first room of the path under processing
+		elem_full_path(elem, room);
+		elem = elem->next;
+	}
+	ft_lst_mergesort(pth, sort_by_pathlen);
 }

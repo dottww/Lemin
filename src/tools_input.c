@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
+/*   tools_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/08 16:35:44 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/25 18:31:19 by mdavid           ###   ########.fr       */
+/*   Created: 2020/06/11 00:06:23 by weilin            #+#    #+#             */
+/*   Updated: 2020/06/26 15:40:00 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-//just a function to test time diff if do atoi when parsing
-int	okint(t_list *alst)
+int				is_comment(char *line)
 {
-	char			**tab;
-	int x;
-	int y;
-	
-	if (!(tab = ft_split_whitespaces(L1, (ft_wd(L1) == 3) ? 3 : 0)))
-		return (0);
-	if (!ft_atoi_int(tab[1], &x) || !ft_atoi_int(tab[2], &y))
-	{
-		ft_strtab_free(tab);
-		return (0);
-	}
-	ft_strtab_free(tab);
-	return (1);
+	return (line[0] == '#');
+}
+
+int				is_start_end(char *line)
+{
+	return (ft_strequ("##start", line) || ft_strequ("##end", line));
 }
 
 /*
@@ -37,7 +29,7 @@ int	okint(t_list *alst)
 **	within the line (if it may be a edge)
 */
 
-int	is_legal_terminal(t_list *alst)
+int				is_legal_terminal(t_list *alst)
 {
 	alst = alst->next;
 	return ((ft_count_c(L1, ' ') == 2 && !ft_strchr(L1, '-')) ? 1 : 0);
@@ -56,7 +48,7 @@ int	is_legal_terminal(t_list *alst)
 **	0: if there is an error
 */
 
-static int		check_input(t_list *alst)
+static int		checkinput(t_list *alst)
 {
 	int					t[2];
 	unsigned long long	ant;
@@ -79,7 +71,6 @@ static int		check_input(t_list *alst)
 		else if ((is_comment(L1) && !ant) || (!is_comment(L1) && ant
 					&& !(((ft_wd(L1) == 1) && ft_count_c(L1, '-') == 1) // one 'word' with one '-'
 					|| ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2)))) // or 3 words with 2 spaces
-					// || ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2 && okint(alst)))))
 			return (0);
 		alst = alst->next;
 	}
@@ -93,7 +84,7 @@ static int		check_input(t_list *alst)
 **	
 */
 
-int				get_input(t_list **alst)
+int				read_input(t_list **alst)
 {
 	char				*gnl;
 	t_list				*new_list;
@@ -115,5 +106,5 @@ int				get_input(t_list **alst)
 		gnl ? ft_strdel(&gnl) : 0;
 	}
 	gnl ? ft_strdel(&gnl) : 0;
-	return ((ret == -1) ? 0 : check_input(*alst));
+	return ((ret == -1) ? 0 : checkinput(*alst));
 }
