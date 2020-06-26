@@ -6,16 +6,33 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 00:06:23 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 15:40:00 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/26 19:23:39 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
+/*
+** ___Description___:
+**	Check if the 1st character of the input line is '#', meaning it can be
+**	a comment (or a command different from '##start' and '##end')
+** ___Return___:
+**	1: if the line is a comment or an ignored command
+**	0: otherwise
+*/
+
 int				is_comment(char *line)
 {
 	return (line[0] == '#');
 }
+
+/*
+** ___Description___:
+**	Function check if the line is exactly '##start' or '##end'.
+** ___Return___:
+**	1: if the input line is '##start' or '##end'.
+**	0: otherwise.
+*/
 
 int				is_start_end(char *line)
 {
@@ -27,6 +44,9 @@ int				is_start_end(char *line)
 **	Check the line after '##start' or '##end'
 **	Function check if there is 2 spaces in the line and there is no '-'
 **	within the line (if it may be a edge)
+** ___Return___:
+**	1: the input line tested has 2 spaces and no '-' within
+**	0: otherwise
 */
 
 int				is_legal_terminal(t_list *alst)
@@ -37,10 +57,13 @@ int				is_legal_terminal(t_list *alst)
 
 /*
 ** ___Description___:
-**	Some check on the line stock in input linked list.
+**	Some checks on the lines stock in input linked list.
+**	The tests does not cover all the cases, it is just basics tests to detect if
+**	there are major invalid format input lines.
 **	The check are:
-**	-if line is different of NULL, not empty, and does not start by 'L'
-**	-if line is '#start' or '##end', and the following line could be a room
+**	-if line is not NULL, not empty, and does not start by 'L'
+**	-if line is '#start' or '##end', and the following line has 3 words
+**	and no '-'
 **	-if the line is a number of type unsigned long long (for the number of ants)
 **	- 
 ** ___Return___:
@@ -79,9 +102,13 @@ static int		checkinput(t_list *alst)
 
 /*
 ** ___Description___:
-**	Read of the input in standard input (STDIN via '<') line by line
+**	Read of the input from standard input (STDIN via '<') line by line.
 **	Each lines is stock in a link (create on the fly) added to input
-**	
+**	list, 
+** ___Return___:
+**	1 : if checks performed by checkinput return there is no major
+**		invalid format in the lines read on the standard input.
+**	0 : error comes up in GNL or mem allocation issue with lstnew.
 */
 
 int				read_input(t_list **alst)
