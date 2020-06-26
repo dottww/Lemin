@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:49:34 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 15:48:45 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/26 16:18:48 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,6 @@ int						init_ant(t_antfarm *antfarm);
 */
 int						add_rooms(t_antfarm *antfarm, t_list **alst);
 int						add_link(t_antfarm *antfarm, char *line);
-// int						add_step(t_list **steps, t_list *room);
-// int						add_path(t_list **pth);
-// int						add_ant(int id, t_antfarm *antfarm);
 /*
 ** ----------------------------- ALGO -----------------------------------------
 */
@@ -125,10 +122,11 @@ void					printpath_update_data(t_antfarm *antfarm, unsigned long rounds
 void					full_path(t_list **pth);
 void					set_links_usage(t_list *end, t_list **route);
 int						complete_route(t_list *route, t_list *end);
-bool					is_in_route(t_list *current, t_list *adj_room);
+bool					adj_part_of_path(t_list *current, t_list *adj_room);
 bool					deviation_src_of_adj(t_list *adj_room , t_list *end);
 bool					start_connected_to_end(t_list *start, t_list *end);
 bool					init_unique_path(t_list **pth, t_antfarm *antfarm);
+
 /*
 ** ---------------------------- DISPLAY ----------------------------------------
 */
@@ -141,21 +139,17 @@ void					print_antfarm(t_list *alst);
 ** ---------------------------- TOOLS ------------------------------------------
 */
 int						free_input_lst(t_list **lst, char *exit_msg);
-// int						ret_strtab_free(int ret, char **tab);
 int						print_free(t_antfarm *antfarm, t_list **input
 						, t_list **pth, char *msg);
-void					del_path(void *content, size_t size);
 int						read_input(t_list **alst);
-int						is_comment(char *line);
-int						is_start_end(char *line);
-void					ft_delcontent(void *content, size_t size);
 void					delete_room(void *content, size_t size);
 void					delete_input(void *content, size_t size);
-int		golink(t_list *curr_link);
-int		is_start(t_room *dst);
-// int		is_start(t_list *curr_link);
-int		samepath(t_room *src, t_room *dst);
-int		is_visited(t_room *dst);
-int		is_in_path(t_room *dst);
-// void					del_route_elem(void *content, size_t size);
+int						is_comment(char *line);
+int						is_start_end(char *line);
+int						is_start(t_room *dst);
+int						is_visited(t_room *dst);
+int						is_in_path(t_room *dst);
+int						samepath(t_room *src, t_room *dst);
+int						golink(t_list *curr_link);
+
 #endif

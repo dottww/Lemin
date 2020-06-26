@@ -55,6 +55,24 @@ int				init_path(t_list **pth, t_list *start, unsigned int options)
 	return (1);
 }
 
+/*
+** ___Parameters___:
+**	*atf: pointer on the struct variable t_antfarm, containing full
+**		  description of the antfarm.
+**	**pth: adress of pointer on t_list struct variable, being list
+**			 of the differents pth and descriptive variable within
+** ___Remarks___:
+**	As pth is a list, the t_path inner variable is at content:
+**	pth: [cnt:path1 & next->]--[cnt:path2 & next->]--{...}--[NULL]
+** ___Description___:
+**	Function manages the BFS algo, followed by the step of path construction
+**	and calculate the number of ants per pth and evaluate the performance
+**	(in how many rounds all the ants will reach the END)
+** ___Return___:
+**	TRUE  : 
+**	FALSE : if rounds != LONG_MAX(initialization value) || ret = 0
+*/
+
 static bool		find_path(t_antfarm *atf, t_list **pth)
 {
 	unsigned long	ret;
@@ -85,11 +103,11 @@ static bool		find_path(t_antfarm *atf, t_list **pth)
 }
 
 /*
-** Description:
+** ___Description___:
 **	Check if the room start has the room end as a neighbor.
 **	If so, only one path is constructed.
 **	Otherwise, function 'find_path()' is called to find multiple pth
-** Return:
+** ___Return___:
 **	TRUE  : if no mem allocation issue in init_unique_path or .....
 **	FLASE : if mem allocation in init_unique_path or ......
 */

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 00:50:30 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 16:55:44 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,6 @@ bool			bfs_route(t_list *start, t_list *end, t_list **route)
 		return (false);
 	else
 		((t_route *)(*route)->content)->room = start; //the only thing inside new_route is a list pointer of rooms, so it's fine
-	// if (!malloc_route(route, start))
-	// 	return (false);
 	((t_room *)start->content)->visited = true; // Why setting visited status variable of start ? multiple bfs will be done, and will begins at start 
 	elem = *route;
 	while (elem)

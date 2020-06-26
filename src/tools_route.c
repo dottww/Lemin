@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 00:52:33 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 16:57:34 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@
 **	+ dst->path_id != 0            => either src and dst are in 2 differents
 **	  paths or src not in any path and dst already in a path
 **	+ !dst->visited => the dst room has not be visited yet
-**	+ is_in_route is TRUE = the link toward adj_room is 1, it means adj_room
+**	+ adj_part_of_path is TRUE = the link toward adj_room is 1, it means adj_room
 **    is already part of other route, so now should deviate //wei
 ** Return:
 **	check if 
-*/
+// */
 
+// **	+ adj_part_of_path is TRUE = the link toward adj_room is 1, it means adj_room
+// **    is already part of other route, so now should deviate //wei
 static bool		route_viable(t_list *curr, t_list *curr_link, t_list *end)
 {
 	t_list		*adj_room;
@@ -43,7 +45,7 @@ static bool		route_viable(t_list *curr, t_list *curr_link, t_list *end)
 	usage = ((t_link *)curr_link->content)->usage; //
 	// if (usage != -1 && adj->s_t != 0 && src->path_id != adj->path_id //pas bon sens && !ISSTART(adj) && !PATH(src, adj)
 	if (!golink(curr_link) && !is_start(adj) && !samepath(src, adj) //pas bon sens && !ISSTART(adj) && !PATH(src, adj)
-	&& !is_visited(adj) && is_in_path(adj) && is_in_route(curr, adj_room)) // && !VISITED(adj) && PATH(adj) && 
+	&& !is_visited(adj) && is_in_path(adj) && adj_part_of_path(curr, adj_room)) // && !VISITED(adj) && PATH(adj) && 
 		return (deviation_src_of_adj(adj_room, end));
 	// return (!adj->visited && usage != -1 && adj->s_t != 0 // 1!VISITED(adj) && 1pas bon sens && 1!ISSTART(adj)
 	return (!is_visited(adj) && !golink(curr_link) && !is_start(adj) // 1!VISITED(adj) && 1pas bon sens && 1!ISSTART(adj)
@@ -92,8 +94,8 @@ int				complete_route(t_list *route, t_list *end)
 				return (0);
 			if (((t_room *)target_room->content)->s_t == 1)
 				return (1);
-			if (is_in_route(current_room, target_room))
-				((t_room *)target_room->content)->deviation = true;
+			if (adj_part_of_path(current_room, target_room))
+				((t_room *)target_room->content)->deviation = true; //weib
 		}
 		link = link->next;
 	}

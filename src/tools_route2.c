@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 00:52:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 00:52:28 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/26 16:42:19 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,9 @@ bool			deviation_src_of_adj(t_list *adj_room, t_list *end) //wei
 
 /*
 ** Description:
-**	If adj_room is already part of other path, such route cannot be created
-**	so go back to previous room
+**	If adj_room is already part of other route, so current bfs_route:curr_adj
+**	cannot be created from so go back to previous room
+**	
 **	by default src->deviation are initialized to false, not changed at first
 ** Return:
 **	True if:
@@ -107,14 +108,14 @@ bool			deviation_src_of_adj(t_list *adj_room, t_list *end) //wei
 **		+ dest->path_id different from 0 ()
 */
 
-bool			is_in_route(t_list *current, t_list *adj_room) //wei
+bool			adj_part_of_path(t_list *current, t_list *adj_room) //wei
 {
 	t_room	*curr;
 	t_room	*adj;
 	t_list	*link_of_adj;
-	int		link_used;
+	int		adj_taken_by_another_path;
 
-	link_used = 0;
+	adj_taken_by_another_path = 0;
 	curr = (t_room *)current->content; // access to the source room (opening of the encapsulation)
 	adj = (t_room *)adj_room->content; // access to the destination room (opening of the encapsulation)
 	link_of_adj = adj->links; //
@@ -122,12 +123,12 @@ bool			is_in_route(t_list *current, t_list *adj_room) //wei
 	{
 		if (((t_link *)link_of_adj->content)->usage == 1) // dest already visited by curr
 		{
-			link_used = 1;
+			adj_taken_by_another_path = 1;
 			break ;
 		}
 		link_of_adj = link_of_adj->next;
 	}// curr->deviation are initialized to false, not changed at first
-	return (!curr->deviation && link_used // ![[DV(curr)]] && LINK(curr, dest) && PATH(dest) && !PATH(curr && dest) 
+	return (!curr->deviation && adj_taken_by_another_path // ![[DV(curr)]] && LINK(curr, dest) && PATH(dest) && !PATH(curr && dest) 
 	&& !is_start(adj) && !samepath(curr, adj));
 	// && dest->path_id != 0 && curr->path_id != dest->path_id);
 }

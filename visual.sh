@@ -20,8 +20,8 @@ if [ "$1" != "" ] ; then
         success=true
     fi
     if [ "$success" == "true" ] ; then
-        php -S localhost:8080/src/visual/ & 
-        open -a "Google Chrome" http://localhost:8080/src/visual/
+        php -S localhost:8082/src/visual/ & 
+        open -a "Google Chrome" http://localhost:8082/src/visual/
     else
         echo "ERROR"
     fi

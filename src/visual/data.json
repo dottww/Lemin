@@ -1,67 +1,263 @@
 {
-    "ant_qty": 30,
+    "ant_qty": 20,
     "edges": [
         {
             "data": {
-                "id": "startlong0",
-                "source": "start",
-                "target": "long0"
+                "id": "StartA",
+                "source": "Start",
+                "target": "A"
             }
         },
         {
             "data": {
-                "id": "long0long1",
-                "source": "long0",
-                "target": "long1"
+                "id": "AB",
+                "source": "A",
+                "target": "B"
             }
         },
         {
             "data": {
-                "id": "long1end",
-                "source": "long1",
-                "target": "end"
+                "id": "BC",
+                "source": "B",
+                "target": "C"
             }
         },
         {
             "data": {
-                "id": "startshort",
-                "source": "start",
-                "target": "short"
+                "id": "CEnd",
+                "source": "C",
+                "target": "End"
             }
         },
         {
             "data": {
-                "id": "shortend",
-                "source": "short",
-                "target": "end"
+                "id": "StartD",
+                "source": "Start",
+                "target": "D"
             }
         },
         {
             "data": {
-                "id": "startlonger0",
-                "source": "start",
-                "target": "longer0"
+                "id": "DE",
+                "source": "D",
+                "target": "E"
             }
         },
         {
             "data": {
-                "id": "longer0longer1",
-                "source": "longer0",
-                "target": "longer1"
+                "id": "EF",
+                "source": "E",
+                "target": "F"
             }
         },
         {
             "data": {
-                "id": "longer1longer2",
-                "source": "longer1",
-                "target": "longer2"
+                "id": "FC",
+                "source": "F",
+                "target": "C"
             }
         },
         {
             "data": {
-                "id": "longer2end",
-                "source": "longer2",
-                "target": "end"
+                "id": "EB",
+                "source": "E",
+                "target": "B"
+            }
+        },
+        {
+            "data": {
+                "id": "AG",
+                "source": "A",
+                "target": "G"
+            }
+        },
+        {
+            "data": {
+                "id": "BG",
+                "source": "B",
+                "target": "G"
+            }
+        },
+        {
+            "data": {
+                "id": "GH",
+                "source": "G",
+                "target": "H"
+            }
+        },
+        {
+            "data": {
+                "id": "StartQ",
+                "source": "Start",
+                "target": "Q"
+            }
+        },
+        {
+            "data": {
+                "id": "QR",
+                "source": "Q",
+                "target": "R"
+            }
+        },
+        {
+            "data": {
+                "id": "HI",
+                "source": "H",
+                "target": "I"
+            }
+        },
+        {
+            "data": {
+                "id": "IJ",
+                "source": "I",
+                "target": "J"
+            }
+        },
+        {
+            "data": {
+                "id": "JEnd",
+                "source": "J",
+                "target": "End"
+            }
+        },
+        {
+            "data": {
+                "id": "RS",
+                "source": "R",
+                "target": "S"
+            }
+        },
+        {
+            "data": {
+                "id": "ST",
+                "source": "S",
+                "target": "T"
+            }
+        },
+        {
+            "data": {
+                "id": "TU",
+                "source": "T",
+                "target": "U"
+            }
+        },
+        {
+            "data": {
+                "id": "UV",
+                "source": "U",
+                "target": "V"
+            }
+        },
+        {
+            "data": {
+                "id": "VP",
+                "source": "V",
+                "target": "P"
+            }
+        },
+        {
+            "data": {
+                "id": "PEnd",
+                "source": "P",
+                "target": "End"
+            }
+        },
+        {
+            "data": {
+                "id": "StartK",
+                "source": "Start",
+                "target": "K"
+            }
+        },
+        {
+            "data": {
+                "id": "K4",
+                "source": "K",
+                "target": "4"
+            }
+        },
+        {
+            "data": {
+                "id": "4M",
+                "source": "4",
+                "target": "M"
+            }
+        },
+        {
+            "data": {
+                "id": "MN",
+                "source": "M",
+                "target": "N"
+            }
+        },
+        {
+            "data": {
+                "id": "NO",
+                "source": "N",
+                "target": "O"
+            }
+        },
+        {
+            "data": {
+                "id": "OP",
+                "source": "O",
+                "target": "P"
+            }
+        },
+        {
+            "data": {
+                "id": "4W",
+                "source": "4",
+                "target": "W"
+            }
+        },
+        {
+            "data": {
+                "id": "WX",
+                "source": "W",
+                "target": "X"
+            }
+        },
+        {
+            "data": {
+                "id": "XY",
+                "source": "X",
+                "target": "Y"
+            }
+        },
+        {
+            "data": {
+                "id": "YZ",
+                "source": "Y",
+                "target": "Z"
+            }
+        },
+        {
+            "data": {
+                "id": "Z1",
+                "source": "Z",
+                "target": "1"
+            }
+        },
+        {
+            "data": {
+                "id": "12",
+                "source": "1",
+                "target": "2"
+            }
+        },
+        {
+            "data": {
+                "id": "23",
+                "source": "2",
+                "target": "3"
+            }
+        },
+        {
+            "data": {
+                "id": "3End",
+                "source": "3",
+                "target": "End"
             }
         }
     ],
@@ -69,377 +265,493 @@
         [
             {
                 "ant_id": "1",
-                "dest": "short"
+                "dest": "D"
             },
             {
                 "ant_id": "2",
-                "dest": "long0"
+                "dest": "A"
             },
             {
                 "ant_id": "3",
-                "dest": "longer0"
+                "dest": "K"
             }
         ],
         [
             {
                 "ant_id": "1",
-                "dest": "end"
+                "dest": "E"
             },
             {
                 "ant_id": "2",
-                "dest": "long1"
+                "dest": "G"
             },
             {
                 "ant_id": "3",
-                "dest": "longer1"
+                "dest": "4"
             },
             {
                 "ant_id": "4",
-                "dest": "short"
+                "dest": "D"
             },
             {
                 "ant_id": "5",
-                "dest": "long0"
+                "dest": "A"
             },
             {
                 "ant_id": "6",
-                "dest": "longer0"
+                "dest": "K"
+            }
+        ],
+        [
+            {
+                "ant_id": "1",
+                "dest": "B"
+            },
+            {
+                "ant_id": "2",
+                "dest": "H"
+            },
+            {
+                "ant_id": "3",
+                "dest": "M"
+            },
+            {
+                "ant_id": "4",
+                "dest": "E"
+            },
+            {
+                "ant_id": "5",
+                "dest": "G"
+            },
+            {
+                "ant_id": "6",
+                "dest": "4"
+            },
+            {
+                "ant_id": "7",
+                "dest": "D"
+            },
+            {
+                "ant_id": "8",
+                "dest": "A"
+            },
+            {
+                "ant_id": "9",
+                "dest": "K"
+            }
+        ],
+        [
+            {
+                "ant_id": "1",
+                "dest": "C"
+            },
+            {
+                "ant_id": "2",
+                "dest": "I"
+            },
+            {
+                "ant_id": "3",
+                "dest": "N"
+            },
+            {
+                "ant_id": "4",
+                "dest": "B"
+            },
+            {
+                "ant_id": "5",
+                "dest": "H"
+            },
+            {
+                "ant_id": "6",
+                "dest": "M"
+            },
+            {
+                "ant_id": "7",
+                "dest": "E"
+            },
+            {
+                "ant_id": "8",
+                "dest": "G"
+            },
+            {
+                "ant_id": "9",
+                "dest": "4"
+            },
+            {
+                "ant_id": "10",
+                "dest": "D"
+            },
+            {
+                "ant_id": "11",
+                "dest": "A"
+            },
+            {
+                "ant_id": "12",
+                "dest": "K"
+            }
+        ],
+        [
+            {
+                "ant_id": "1",
+                "dest": "End"
+            },
+            {
+                "ant_id": "2",
+                "dest": "J"
+            },
+            {
+                "ant_id": "3",
+                "dest": "O"
+            },
+            {
+                "ant_id": "4",
+                "dest": "C"
+            },
+            {
+                "ant_id": "5",
+                "dest": "I"
+            },
+            {
+                "ant_id": "6",
+                "dest": "N"
+            },
+            {
+                "ant_id": "7",
+                "dest": "B"
+            },
+            {
+                "ant_id": "8",
+                "dest": "H"
+            },
+            {
+                "ant_id": "9",
+                "dest": "M"
+            },
+            {
+                "ant_id": "10",
+                "dest": "E"
+            },
+            {
+                "ant_id": "11",
+                "dest": "G"
+            },
+            {
+                "ant_id": "12",
+                "dest": "4"
+            },
+            {
+                "ant_id": "13",
+                "dest": "D"
+            },
+            {
+                "ant_id": "14",
+                "dest": "A"
+            },
+            {
+                "ant_id": "15",
+                "dest": "K"
             }
         ],
         [
             {
                 "ant_id": "2",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "3",
-                "dest": "longer2"
+                "dest": "P"
             },
             {
                 "ant_id": "4",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "5",
-                "dest": "long1"
+                "dest": "J"
             },
             {
                 "ant_id": "6",
-                "dest": "longer1"
+                "dest": "O"
             },
             {
                 "ant_id": "7",
-                "dest": "short"
+                "dest": "C"
             },
             {
                 "ant_id": "8",
-                "dest": "long0"
+                "dest": "I"
             },
             {
                 "ant_id": "9",
-                "dest": "longer0"
+                "dest": "N"
+            },
+            {
+                "ant_id": "10",
+                "dest": "B"
+            },
+            {
+                "ant_id": "11",
+                "dest": "H"
+            },
+            {
+                "ant_id": "12",
+                "dest": "M"
+            },
+            {
+                "ant_id": "13",
+                "dest": "E"
+            },
+            {
+                "ant_id": "14",
+                "dest": "G"
+            },
+            {
+                "ant_id": "15",
+                "dest": "4"
+            },
+            {
+                "ant_id": "16",
+                "dest": "D"
+            },
+            {
+                "ant_id": "17",
+                "dest": "A"
             }
         ],
         [
             {
                 "ant_id": "3",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "5",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "6",
-                "dest": "longer2"
+                "dest": "P"
             },
             {
                 "ant_id": "7",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "8",
-                "dest": "long1"
+                "dest": "J"
             },
             {
                 "ant_id": "9",
-                "dest": "longer1"
+                "dest": "O"
             },
             {
                 "ant_id": "10",
-                "dest": "short"
+                "dest": "C"
             },
             {
                 "ant_id": "11",
-                "dest": "long0"
+                "dest": "I"
             },
             {
                 "ant_id": "12",
-                "dest": "longer0"
+                "dest": "N"
+            },
+            {
+                "ant_id": "13",
+                "dest": "B"
+            },
+            {
+                "ant_id": "14",
+                "dest": "H"
+            },
+            {
+                "ant_id": "15",
+                "dest": "M"
+            },
+            {
+                "ant_id": "16",
+                "dest": "E"
+            },
+            {
+                "ant_id": "17",
+                "dest": "G"
+            },
+            {
+                "ant_id": "18",
+                "dest": "D"
+            },
+            {
+                "ant_id": "19",
+                "dest": "A"
             }
         ],
         [
             {
                 "ant_id": "6",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "8",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "9",
-                "dest": "longer2"
+                "dest": "P"
             },
             {
                 "ant_id": "10",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "11",
-                "dest": "long1"
+                "dest": "J"
             },
             {
                 "ant_id": "12",
-                "dest": "longer1"
+                "dest": "O"
             },
             {
                 "ant_id": "13",
-                "dest": "short"
+                "dest": "C"
             },
             {
                 "ant_id": "14",
-                "dest": "long0"
+                "dest": "I"
             },
             {
                 "ant_id": "15",
-                "dest": "longer0"
+                "dest": "N"
+            },
+            {
+                "ant_id": "16",
+                "dest": "B"
+            },
+            {
+                "ant_id": "17",
+                "dest": "H"
+            },
+            {
+                "ant_id": "18",
+                "dest": "E"
+            },
+            {
+                "ant_id": "19",
+                "dest": "G"
+            },
+            {
+                "ant_id": "20",
+                "dest": "D"
             }
         ],
         [
             {
                 "ant_id": "9",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "11",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "12",
-                "dest": "longer2"
+                "dest": "P"
             },
             {
                 "ant_id": "13",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "14",
-                "dest": "long1"
+                "dest": "J"
             },
             {
                 "ant_id": "15",
-                "dest": "longer1"
+                "dest": "O"
             },
             {
                 "ant_id": "16",
-                "dest": "short"
+                "dest": "C"
             },
             {
                 "ant_id": "17",
-                "dest": "long0"
+                "dest": "I"
             },
             {
                 "ant_id": "18",
-                "dest": "longer0"
+                "dest": "B"
+            },
+            {
+                "ant_id": "19",
+                "dest": "H"
+            },
+            {
+                "ant_id": "20",
+                "dest": "E"
             }
         ],
         [
             {
                 "ant_id": "12",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "14",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "15",
-                "dest": "longer2"
+                "dest": "P"
             },
             {
                 "ant_id": "16",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "17",
-                "dest": "long1"
+                "dest": "J"
             },
             {
                 "ant_id": "18",
-                "dest": "longer1"
+                "dest": "C"
             },
             {
                 "ant_id": "19",
-                "dest": "short"
+                "dest": "I"
             },
             {
                 "ant_id": "20",
-                "dest": "long0"
-            },
-            {
-                "ant_id": "21",
-                "dest": "longer0"
+                "dest": "B"
             }
         ],
         [
             {
                 "ant_id": "15",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "17",
-                "dest": "end"
+                "dest": "End"
             },
             {
                 "ant_id": "18",
-                "dest": "longer2"
+                "dest": "End"
             },
             {
                 "ant_id": "19",
-                "dest": "end"
+                "dest": "J"
             },
             {
                 "ant_id": "20",
-                "dest": "long1"
-            },
-            {
-                "ant_id": "21",
-                "dest": "longer1"
-            },
-            {
-                "ant_id": "22",
-                "dest": "short"
-            },
-            {
-                "ant_id": "23",
-                "dest": "long0"
-            },
-            {
-                "ant_id": "24",
-                "dest": "longer0"
+                "dest": "C"
             }
         ],
         [
             {
-                "ant_id": "18",
-                "dest": "end"
+                "ant_id": "19",
+                "dest": "End"
             },
             {
                 "ant_id": "20",
-                "dest": "end"
-            },
-            {
-                "ant_id": "21",
-                "dest": "longer2"
-            },
-            {
-                "ant_id": "22",
-                "dest": "end"
-            },
-            {
-                "ant_id": "23",
-                "dest": "long1"
-            },
-            {
-                "ant_id": "24",
-                "dest": "longer1"
-            },
-            {
-                "ant_id": "25",
-                "dest": "short"
-            },
-            {
-                "ant_id": "26",
-                "dest": "long0"
-            },
-            {
-                "ant_id": "27",
-                "dest": "longer0"
-            }
-        ],
-        [
-            {
-                "ant_id": "21",
-                "dest": "end"
-            },
-            {
-                "ant_id": "23",
-                "dest": "end"
-            },
-            {
-                "ant_id": "24",
-                "dest": "longer2"
-            },
-            {
-                "ant_id": "25",
-                "dest": "end"
-            },
-            {
-                "ant_id": "26",
-                "dest": "long1"
-            },
-            {
-                "ant_id": "27",
-                "dest": "longer1"
-            },
-            {
-                "ant_id": "28",
-                "dest": "short"
-            },
-            {
-                "ant_id": "29",
-                "dest": "long0"
-            }
-        ],
-        [
-            {
-                "ant_id": "24",
-                "dest": "end"
-            },
-            {
-                "ant_id": "26",
-                "dest": "end"
-            },
-            {
-                "ant_id": "27",
-                "dest": "longer2"
-            },
-            {
-                "ant_id": "28",
-                "dest": "end"
-            },
-            {
-                "ant_id": "29",
-                "dest": "long1"
-            },
-            {
-                "ant_id": "30",
-                "dest": "short"
-            }
-        ],
-        [
-            {
-                "ant_id": "27",
-                "dest": "end"
-            },
-            {
-                "ant_id": "29",
-                "dest": "end"
-            },
-            {
-                "ant_id": "30",
-                "dest": "end"
+                "dest": "End"
             }
         ]
     ],
@@ -449,7 +761,239 @@
                 "ant_id": 0,
                 "color": "white",
                 "flag": 0,
-                "id": "start"
+                "id": "Start"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "A"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "B"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "C"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "D"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "E"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "F"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "G"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "H"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "I"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "J"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "K"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "4"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "M"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "N"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "O"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "P"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "Q"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "R"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "S"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "T"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "U"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "V"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "W"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "X"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "Y"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "Z"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "1"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "2"
+            }
+        },
+        {
+            "data": {
+                "ant_id": 0,
+                "color": "white",
+                "flag": -1,
+                "id": "3"
             }
         },
         {
@@ -457,86 +1001,10 @@
                 "ant_id": 0,
                 "color": "white",
                 "flag": 1,
-                "id": "end"
-            }
-        },
-        {
-            "data": {
-                "ant_id": 0,
-                "color": "white",
-                "flag": -1,
-                "id": "long0"
-            }
-        },
-        {
-            "data": {
-                "ant_id": 0,
-                "color": "white",
-                "flag": -1,
-                "id": "long1"
-            }
-        },
-        {
-            "data": {
-                "ant_id": 0,
-                "color": "white",
-                "flag": -1,
-                "id": "short"
-            }
-        },
-        {
-            "data": {
-                "ant_id": 0,
-                "color": "white",
-                "flag": -1,
-                "id": "longer0"
-            }
-        },
-        {
-            "data": {
-                "ant_id": 0,
-                "color": "white",
-                "flag": -1,
-                "id": "longer1"
-            }
-        },
-        {
-            "data": {
-                "ant_id": 0,
-                "color": "white",
-                "flag": -1,
-                "id": "longer2"
+                "id": "End"
             }
         }
     ],
-    "paths": [
-        {
-            "id": 4,
-            "path": [
-                "start",
-                "short",
-                "end"
-            ]
-        },
-        {
-            "id": 5,
-            "path": [
-                "start",
-                "long0",
-                "long1",
-                "end"
-            ]
-        },
-        {
-            "id": 6,
-            "path": [
-                "start",
-                "longer0",
-                "longer1",
-                "longer2",
-                "end"
-            ]
-        }
-    ],
+    "paths": [],
     "rounds": 12
 }
