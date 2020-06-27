@@ -6,11 +6,22 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 23:55:33 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/27 12:36:26 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** ___Description___:
+**	Check if adjacent (neighbor) room can be add in the queue (list of room),
+**	an adjacent room can be add if it is not start, if the usage of the link
+**	between the current room and the adjacent room is not a part of a path and
+**	and of course if the neighbor has not been visited during the current bfs.
+** ___Return___:
+**	1: if the room can be add to the queue
+**	0: otherwise
+*/
 
 static bool		room_viable(t_list *curr_link, t_room *adj)
 {
