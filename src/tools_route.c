@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/27 12:36:26 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/27 12:42:43 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ static int		add_to_route(t_list **route, t_list *target_room, t_list *current)
 }
 
 /*
-** try to find possible routes to endroom through rooms not visited 
+** ___Description___:
+**	try to find possible routes to endroom through rooms not visited 
 */
 
 int				complete_route(t_list *route, t_list *end)
