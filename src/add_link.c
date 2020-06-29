@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_link.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:01:12 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 20:51:36 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 00:54:50 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 /*
 ** ___Description___:
-**	Check if the room origin, has already the room dest in the list
-**	of it neighbors.
+**	Check if the origin room already has the dest room in its list of links.
 ** ___Return___:
-**	1:  dest room is already register as a neighbor of origin
-**	0:  dest is a neighboring room of origin, not in the list of neighbor
-**		of the latter
+**	1:  dest room is already registered as a neighbor of origin
+**	0:  dest room is not yet registered as a neighbor of origin
 */
 
-static int	link_exists(t_list *origin, t_list *dest)
+static int	link_exists(t_list *originlinks, t_list *dest)
 {
 	t_list	*elem;
 
-	elem = origin;
+	elem = originlinks;
 	while (elem)
 	{
 		if (((t_link *)elem->content)->room == dest)
@@ -38,7 +36,7 @@ static int	link_exists(t_list *origin, t_list *dest)
 
 /*
 ** Description:
-**	Function check if the link exists already (via link_already_exits)
+**	Function check if the link already exists (via link_exists)
 **	by this it means that the dest room (room2)
 ** Return:
 **	-1: room2 is already in the list of links/edges of room1, meaning the link
@@ -67,10 +65,10 @@ static int	create_link(t_list *room1, t_list *room2)
 
 /*
 ** Parameters:
-**	t_list *head: list of roomsm head = atf->rooms
+**	t_list *head: list of rooms' head = atf->rooms
 **	t_list **room1: pointer of type t_list initiate at NULL
 **	t_list **room2: pointer of type t_list initiate at NULL
-**	char **tab: name of the 2 rooms constituting the edge
+**	char **tab: name of the 2 rooms constituting the link/edge
 ** Description:
 **	Check for the existence of the rooms named tab[0] and tab[1].
 **	The name catched in line containing an edge are searched in the list
@@ -114,12 +112,12 @@ static int	room_exist(t_list *head, t_list **room1,
 **	  - call function to check existence of the 2 rooms,
 **	  - call the function to create the link, i.e add the 1st room in the list
 **		of neighbors of the 2nd and the other way around (and check if the link
-**		is already register in the list).
+**		is already registered in the list).
 ** ___Return___:
-**	1: if the line is a comment actually or if no problem during creation of
+**	1: if the line is actually a comment or if no problem during creation of
 **		the link (add of each room in the list of neighbors of the other)
 **	0: At least one of the room in the link description does not exist, or
-**		issue with creation of the link
+**		problem with creation of the link
 */
 
 static int	link_checker(t_antfarm *atf, char **tab)
@@ -136,16 +134,17 @@ static int	link_checker(t_antfarm *atf, char **tab)
 	if (!tab[0] || !tab[1] || tab[2]
 		|| !room_exist(head, &room1, &room2, tab))
 		return (0);
-	return (create_link(room1, room2) * create_link(room2, room1)); // try to repeat a link, 
+	return (create_link(room1, room2) * create_link(room2, room1));
 }
 
 /*
 ** ___Description___:
-**	Ignores commands/comments (Should there be command ? not precise in pdf)
+**	Ignores commands/comments
 **	Verification that the line has only one '-',
-**	The links is added to the list of links/edges of both room.
+**	The links are added to all the rooms in t_list form with t_link as content
 ** ___Return___:
-**	...
+**	1 : if all links can be created successfully
+**	0 : if any of the input lines is badly formatted or link_checker failed
 */
 
 int			add_link(t_antfarm *atf, char *line)
@@ -156,10 +155,8 @@ int			add_link(t_antfarm *atf, char *line)
 	if (line[0] == '#')
 		return (1);
 	if (ft_count_c(line, '-') != 1 || !(tab = ft_strsplit_c(line, '-')))
-	// {ft_printf("addlink2\n");	return (0);}
 		return (0);
 	if (!link_checker(atf, tab))
-	// {ft_printf("addlink3\n");	return (ret_strtab_free(tab, 0));}
 		return (ret_strtab_free(tab, 0));
 	return (ret_strtab_free(tab, 1));
 }

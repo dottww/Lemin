@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_antfarm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 23:24:45 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 00:55:03 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,12 @@ static int		the_rooms(char *line)
 }
 
 /*
-** Description:
-**	
-**
+** ___Description___:
+**	It creates 2 single direction links for each pair of rooms that has link
+**	connecting to each other
+** ___Return___:
+**	1:  if all links can be created successfully
+**	0:  if any of the input lines is badly formatted or add_link failed
 */
 
 static int		init_links(t_antfarm *atf, t_list *alst)
@@ -81,17 +84,17 @@ static int		init_links(t_antfarm *atf, t_list *alst)
 /*
 ** ___Parameters___:
 **	t_antfarm *atf: struct variable representing the graph
-**	t_list *alst: list where each link content is a string/line from input
+**	t_list *alst: list where each link content is a string/line from stdin
 ** ___Description___:
 **	Initialization of t_antfarm *atf.
-**	The list of input is roamed one time, comments are always skipped,
-**	after possible commands (start/end) a positive integer is expected and stock in
+**	The list of input is roamed one time, comments are always skipped, after
+**	possible commands (start/end) a positive integer is expected and stock in
 **	ant_qty
 **	Then rooms, commands and comments are expected (rooms are stocked in
 **	atf->rooms), pointers atf->start/end are set.
 **	Comments and commands others than start/end are ignored.
 ** ___Return___:
-**	1: 
+**	1:  if start/end room both exist and links can be created successfully
 **	0:  if any of the input lines is badly formatted or either the room start
 **		or end does not existed
 */

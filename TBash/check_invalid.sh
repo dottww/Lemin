@@ -33,12 +33,14 @@ run_test()
 	if [ -f "${MAP_PATH}/${map}" ];then
 		if [ "$VALGRIND" -eq 1 ];then
 			printf "with valgrind :      "
-			valgrind -q --leak-check=full --error-exitcode=42 --suppressions=false_pos_valgrind.supp ${LEM_IN_EXEC} < "${MAP_PATH}/${map}" > /dev/null 2> ${TEST_TMP}
+			valgrind -q --leak-check=full --track-origins=yes --show-leak-kinds=all --show-reachable=yes --suppressions=false_pos_valgrind.supp ${LEM_IN_EXEC} < "${MAP_PATH}/${map}" > /dev/null 2> ${TEST_TMP}
+			# valgrind -q --leak-check=full --error-exitcode=42 --suppressions=false_pos_valgrind.supp ${LEM_IN_EXEC} < "${MAP_PATH}/${map}" > /dev/null 2> ${TEST_TMP}
 		else
 			${LEM_IN_EXEC} < "${MAP_PATH}/${map}" > /dev/null 2> ${TEST_TMP}
 		fi
 		local output=`cat -e ${TEST_TMP}`
-		if [ "${output:0:5}" = "ERROR" ]; then
+		if [ ${output} = "ERROR" ]; then
+		# if [ "${output:0:5}" = "ERROR" ]; then
 			print_ok "Good!"
 		else
 			print_error "Booo!"

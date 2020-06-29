@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/29 04:11:31 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 00:29:01 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /*
 ** ___Description___:
 **	Initialization of all the inner variables of t_antfarm struct var
-**	except ant_qty which is initialized by another function just after
+**	except ant_qty which is initialized by another function in get_antfarm
 */
 
-static void		get_antfarm_values(t_antfarm *atf)
+static void		init_atf_values(t_antfarm *atf)
 {
 	atf->rooms = NULL;
 	atf->start = NULL;
@@ -31,15 +31,16 @@ static void		get_antfarm_values(t_antfarm *atf)
 /*
 ** ___Description___:
 **	Managing the options available:
-**	  - '--paths' to print the paths of the selected solution
-**	  - '--solution' to print
+**	  - '--paths' to print when selecting paths solution of the minimum rounds
+**	  - '--solution' to print ant moves without the antfarm
+**	 if any of the two options is specified, antfarm map won't be printed.
 */
 
 static int		get_options(t_antfarm *atf, int ac, char **av)
 {
 	int i;
 	
-	get_antfarm_values(atf);
+	init_atf_values(atf);
 	i = 1;
 	if (ac > 1)
 	{
@@ -62,11 +63,11 @@ static int		get_options(t_antfarm *atf, int ac, char **av)
 
 /*
 ** ___Description___:
+**	get_options		: parsing program options and return usage if needed
 **	read_input		: parsing with basic tests on the format of input
 **	get_antfarm		: construction of struct variable which containing graph
 **	get_path		: algorithm of multi-paths finding based on BFS
-**	print_antfarm	: print in the standard output the input
-**	print_ant_moves	: print of the ouput/solution (description of ants action)
+**	get_ant			: prepare the ant troops and print ant moves in stdout
 */
 
 int				main(int ac, char **av)

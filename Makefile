@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/29 04:04:58 by weilin           ###   ########.fr        #
+#    Created: 2020/06/04 16:25:20 by weilin            #+#    #+#              #
+#    Updated: 2020/06/29 21:27:40 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ INCS += $(LINC_DIR)libft.h
 INCS += $(LINC_DIR)ft_printf.h 
 INCS += $(LINC_DIR)get_next_line.h
 
-# CC = clang
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -g -I$(INC_DIR) -I$(LINC_DIR)
 LEAKS = -fsanitize=address
@@ -63,7 +62,6 @@ debug: $(LIBFT) $(CCH_DIR) $(LEM_IN_OBJ) $(INCS)
 
 $(LIBFT): force
 	@make -C libft all
-#it will call the makefile in the destination
 
 force:
 	@true

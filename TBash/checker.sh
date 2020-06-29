@@ -357,7 +357,7 @@ initialize_dir $DIRS
 if [ $DEBUG -eq 0 ]; then
 	if [ "$OPTION" == "valgrind" ]; then
 		printf "valgrind -q --leak-check=full --error-exitcode=42 --suppressions=false_pos_valgrind.supp $EXEC < $MAP > $OUTPUT\n"
-		valgrind -q --leak-check=full --error-exitcode=42 --suppressions=false_pos_valgrind.supp $EXEC < $MAP > $OUTPUT
+		valgrind -q --leak-check=full --track-origins=yes --show-leak-kinds=all --show-reachable=yes --gen-suppressions=yes --suppressions=false_pos_valgrind.supp $EXEC < $MAP > $OUTPUT
 	else
 		printf "$EXEC < $MAP > $OUTPUT\n"
 		$EXEC < $MAP > $OUTPUT

@@ -6,7 +6,7 @@ fi
 
 MAP_PATH=../maps/valid
 INPUT_DATA=data_valid.txt
-VALGRIND=""
+VALGRIND="valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --show-reachable=yes"
 
 print_ok()
 {
