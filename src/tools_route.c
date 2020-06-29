@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/29 02:39:54 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/29 19:55:30 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static int		add_to_route(t_list **route, t_list *target_room, t_list *current)
 ** try to find possible routes to endroom through rooms not visited 
 */
 
-int				complete_route(t_list *route, t_list *end)
+int				finish_route(t_list *route, t_list *end)
 {
 	t_list	*link;
 	t_list	*target_room;

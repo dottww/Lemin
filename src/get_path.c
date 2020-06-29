@@ -20,7 +20,7 @@ static int		init_path_sub(t_list **pth, t_list *room)
 
 	path.len = 1; // initialization of the length of the path based on the 1st room received (*room)
 	path.id = ++path_id; // definition ofthe path id, here static, thus last value keep in mem and increased at each round
-	path.sent = 0; // number of ants which will be sent
+	path.pending = 0; // number of ants which will be sent
 	path.room = NULL; //
 	path.complete = false; // init of flag saying path reach the end or not (not by default)
 	if (!(new_path = ft_lstnew(&path, sizeof(t_path)))) // allocation of the head link from which the path starts
@@ -46,7 +46,7 @@ static int		init_path(t_antfarm *atf, t_list **pth, t_list **route)
 	if (atf->options & SHOW_PATH)
 		ft_printf("Initialized %lu path%s", ft_lstlen(*pth),
 					ft_lstlen(*pth) > 1 ? "s:\n" : ":\n");
-	full_path(pth);
+	finish_path(pth);
 	return (1);
 }
 
@@ -88,7 +88,7 @@ static bool		find_path(t_antfarm *atf, t_list **pth)
 			*pth = previous_pth;
 			break ;
 		}
-		printpath_update_data(atf, ret, pth);
+		print_path_reset_room(atf, pth, ret);
 		ft_lstdel(&previous_pth, ft_delcontent);
 	}
 	ft_lstdel(&route, ft_delcontent);

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 00:52:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/29 02:52:01 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/29 20:03:20 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,8 @@ bool			detour_src_of_adj(t_list *adj_room, t_list *end) //wei
 	links = ((t_room *)adj_room->content)->links;
 	if (!(src_of_adj = get_src_of_adj(links)))
 		return (false);
-	// if (((t_room *)src_of_adj->content)->s_t == 0)
-	// 	return (false);
-	// if (!(((t_room *)src_of_adj->content)->visited == false //b
-	// ))
-	// 	ft_printf("proof"); //b
-	if (((t_room *)src_of_adj->content)->visited == false //b
-	&& ((t_room *)adj_room->content)->dead_end == false) //b
+	if (((t_room *)src_of_adj->content)->visited == false
+		&& ((t_room *)adj_room->content)->dead_end == false)
 	{
 		((t_room *)src_of_adj->content)->visited = true;
 		((t_room *)adj_room->content)->visited = true;
