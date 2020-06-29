@@ -88,7 +88,12 @@ static int		mark_start_end(t_room *room, t_list **alst)
 static void		init_start_end(t_antfarm *atf, t_list *lst, int end)
 {
 	if (end == 0)
+		// atf->start = lst;
+	{
 		atf->start = lst;
+		((t_room *)atf->start->content)->population = atf->ant_qty;
+		((t_room *)atf->start->content)->ant_id = 1;
+	}
 	else
 		atf->end = lst;
 }

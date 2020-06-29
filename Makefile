@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/26 00:54:30 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/29 04:04:58 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ LEM_IN = lem-in
 
 LEM_IN_FILES += add_link
 LEM_IN_FILES += add_room
+LEM_IN_FILES += get_ant
 LEM_IN_FILES += get_antfarm
 LEM_IN_FILES += get_path
 LEM_IN_FILES += lem_in

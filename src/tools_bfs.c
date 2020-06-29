@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/27 00:23:46 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/29 03:22:52 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,20 @@ void			printpath_update_data(t_antfarm *atf, unsigned long rounds
 				, t_list **pth)
 {
 	t_list	*room;
+	t_room	*rm;
 
 	room = atf->rooms;
 	while (room)
 	{
-		((t_room *)room->content)->next = ((t_room *)room->content)->new_next;
-		((t_room *)room->content)->path_id = ((t_room *)room->content)
-		->new_path_id;
-		((t_room *)room->content)->previous = NULL;
-		((t_room *)room->content)->visited = false;
-		((t_room *)room->content)->deviation = false;
-		((t_room *)room->content)->dead_end = false;
-		((t_room *)room->content)->new_next = NULL;
-		((t_room *)room->content)->new_path_id = 0;
+		rm = (t_room *)room->content;
+		rm->next = rm->new_next;
+		rm->path_id = rm->new_path_id;
+		rm->previous = NULL;
+		rm->visited = false;
+		rm->deviation = false;
+		rm->dead_end = false;
+		rm->new_next = NULL;
+		rm->new_path_id = 0;
 		room = room->next;
 	}
 	ft_lstrev(pth);

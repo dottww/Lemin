@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 00:52:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/27 00:48:44 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/29 02:52:01 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,17 @@ static void		reset_route(t_list *adj_room
 	reset_room((t_room *)end_room->content);
 }
 
-static t_list	*back_to_src_of_adj(t_list *link)
+static t_list	*get_src_of_adj(t_list *link)
 {
 	while (link)
 	{
 		if (((t_link *)link->content)->usage == 1)
-			return (((t_link *)link->content)->room);
+		{
+			if (is_start((t_room *)((t_link *)link->content)->room->content))
+				return (NULL);
+			else
+				return (((t_link *)link->content)->room);
+		}
 		link = link->next;
 	}
 	return (NULL);
@@ -68,12 +73,15 @@ bool			detour_src_of_adj(t_list *adj_room, t_list *end) //wei
 
 	tmp_test_route = NULL;
 	src_of_adj = NULL;
-	links = ((t_room *)adj_room->content)->links;
-	if (!(src_of_adj = back_to_src_of_adj(links)))
-		return (false);
-	if (((t_room *)src_of_adj->content)->s_t == 0)
-		return (false);
 	ret = false;
+	links = ((t_room *)adj_room->content)->links;
+	if (!(src_of_adj = get_src_of_adj(links)))
+		return (false);
+	// if (((t_room *)src_of_adj->content)->s_t == 0)
+	// 	return (false);
+	// if (!(((t_room *)src_of_adj->content)->visited == false //b
+	// ))
+	// 	ft_printf("proof"); //b
 	if (((t_room *)src_of_adj->content)->visited == false //b
 	&& ((t_room *)adj_room->content)->dead_end == false) //b
 	{

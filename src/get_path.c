@@ -30,13 +30,12 @@ static int		init_path_sub(t_list **pth, t_list *room)
 	return (1);
 }
 
-int				init_path(t_list **pth, t_list *start, unsigned int options)
+static int		init_path(t_antfarm *atf, t_list **pth, t_list **route)
 {
-	t_list		*room;
 	t_list		*link;
 
-	room = start;
-	link = ((t_room *)(room->content))->links; //catching all the links of start
+	set_links_usage(atf->end, route);
+	link = ((t_room *)(atf->start->content))->links; //catching all the links of start
 	while (link)
 	{
 		if (((t_link *)link->content)->usage == -1)
@@ -44,11 +43,10 @@ int				init_path(t_list **pth, t_list *start, unsigned int options)
 				return (0);
 		link = link->next;
 	}
-	if (options & SHOW_PATH)
-	{
+	if (atf->options & SHOW_PATH)
 		ft_printf("Initialized %lu path%s", ft_lstlen(*pth),
 					ft_lstlen(*pth) > 1 ? "s:\n" : ":\n");
-	}
+	full_path(pth);
 	return (1);
 }
 
@@ -81,10 +79,8 @@ static bool		find_path(t_antfarm *atf, t_list **pth)
 	{
 		previous_pth = *pth;
 		*pth = NULL;
-		set_links_usage(atf->end, &route);
-		if (!init_path(pth, atf->start, atf->options)) //unique id: path_id created on the fly
+		if (!init_path(atf, pth, &route)) //unique id: path_id created on the fly
 			return (false);
-		full_path(pth);
 		ret = solution_rounds(atf, *pth, atf->ant_qty);
 		if (ret >= atf->rounds || ret == 0) // control sequence, if ret is bigger to LONG_MAX (stocked in atf->rounds)
 		{
