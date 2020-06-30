@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 16:23:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 19:06:42 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 21:13:56 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void			print_antfarm(t_list *alst)
 {
 	while (alst)
 	{
-		ft_putendl(L1);
+		ft_putendl(((t_input *)(alst->content))->line);
 		alst = alst->next;
 	}
 }

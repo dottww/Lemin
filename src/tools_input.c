@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 00:06:23 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 20:56:27 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 21:46:05 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int				is_start_end(char *line)
 int				is_legal_terminal(t_list *alst)
 {
 	alst = alst->next;
-	return ((ft_count_c(L1, ' ') == 2 && !ft_strchr(L1, '-')) ? 1 : 0);
+	return ((ft_count_c(((t_input *)(alst->content))->line, ' ') == 2
+			&& !ft_strchr(((t_input *)(alst->content))->line, '-')) ? 1 : 0);
 }
 
 /*
@@ -72,27 +73,27 @@ int				is_legal_terminal(t_list *alst)
 
 static int		checkinput(t_list *alst)
 {
-	int					t[2];
+	static int			t[2] = {0, 0};
+	char				*line;
 	unsigned long long	ant;
 
-	t[0] = 0;
-	t[1] = 0;
 	ant = 0;
 	if (!alst)
 		return (0);
 	while (alst && t[0] <= 1 && t[1] <= 1)
 	{
-		if (!L1 || ft_strequ(L1, "\0") || L1[0] == 'L')
+		line = ((t_input *)(alst->content))->line;
+		if (!line || ft_strequ(line, "\0") || line[0] == 'L')
 			return (0);
-		else if (ant && ft_strequ("##start", L1))
+		else if (ant && ft_strequ("##start", line))
 			t[0] += is_legal_terminal(alst);
-		else if (ant && ft_strequ("##end", L1))
+		else if (ant && ft_strequ("##end", line))
 			t[1] += is_legal_terminal(alst);
-		else if (ft_isnumber(L1) == 1)
-			ant = ft_atoull(L1);
-		else if ((is_comment(L1) && !ant) || (!is_comment(L1) && ant
-					&& !(((ft_wd(L1) == 1) && ft_count_c(L1, '-') == 1)
-					|| ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2))))
+		else if (ft_isnumber(line) == 1)
+			ant = ft_atoull(line);
+		else if ((is_comment(line) && !ant) || (!is_comment(line) && ant
+					&& !(((ft_wd(line) == 1) && ft_count_c(line, '-') == 1)
+					|| ((ft_wd(line) == 3) && ft_count_c(line, ' ') == 2))))
 			return (0);
 		alst = alst->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:08:07 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 20:59:01 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 21:27:04 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int		mark_start_end(t_room *room, t_list **alst)
 {
 	static int		t[2] = {0, 0};
 
-	if (ft_strequ(L2, "##start"))
+	if (ft_strequ(((t_input *)((*alst)->content))->line, "##start"))
 	{
 		if (t[0] == 1)
 			return (0);
@@ -63,7 +63,7 @@ static int		mark_start_end(t_room *room, t_list **alst)
 			*alst = (*alst)->next;
 		}
 	}
-	else if (ft_strequ(L2, "##end"))
+	else if (ft_strequ(((t_input *)((*alst)->content))->line, "##end"))
 	{
 		if (t[1] == 1)
 			return (0);
@@ -150,9 +150,10 @@ int				add_rooms(t_antfarm *atf, t_list **alst)
 	room.s_t = -1;
 	if (!mark_start_end(&room, alst))
 		return (0);
-	else if ((L2)[0] == '#')
+	else if ((((t_input *)((*alst)->content))->line)[0] == '#')
 		return (1);
-	if (!(tab = ft_split_whitespaces(L2, (ft_wd(L2) == 3) ? 3 : 0)))
+	if (!(tab = ft_split_whitespaces(((t_input *)((*alst)->content))->line
+		, (ft_wd(((t_input *)((*alst)->content))->line) == 3) ? 3 : 0)))
 		return (0);
 	if (!(tab[0] && tab[1] && tab[2] && !tab[3]) || !set_room_val(&room, tab))
 		return (ft_strtab_free_ret(tab, 0));

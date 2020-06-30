@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:49:34 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 21:04:07 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 21:42:14 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 # define ONLY_SOLUTION	2
 # define SHOW_PATH		4
-# define L1 ((t_input *)(alst->content))->line
-# define L2 ((t_input *)((*alst)->content))->line
 
 typedef struct			s_room
 {

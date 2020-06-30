@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_antfarm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 13:34:07 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 21:27:55 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 
 static int		get_ant_qty(t_antfarm *atf, t_list **alst)
 {
-	while (*alst && is_comment(L2))
+	while (*alst && is_comment(((t_input *)((*alst)->content))->line))
 		*alst = (*alst)->next;
-	if (*alst && ft_isnumber(L2) == 1)
+	if (*alst && ft_isnumber(((t_input *)((*alst)->content))->line) == 1)
 	{
-		if (!ft_atoi_int(L2, &atf->ant_qty))
+		if (!ft_atoi_int(((t_input *)((*alst)->content))->line, &atf->ant_qty))
 			return (0);
 		*alst = (*alst)->next;
 		return ((atf->ant_qty > 0) && *alst);
@@ -73,12 +73,14 @@ static int		the_rooms(char *line)
 
 static int		init_links(t_antfarm *atf, t_list *alst)
 {
-	if (!alst || !add_link(atf, L1))
+	if (!alst || !add_link(atf, ((t_input *)(alst->content))->line))
 		return (0);
 	alst = alst->next;
 	while (alst)
 	{
-		if (is_start_end(L1) || (!is_comment(L1) && !add_link(atf, L1)))
+		if (is_start_end(((t_input *)(alst->content))->line)
+			|| (!is_comment(((t_input *)(alst->content))->line)
+			&& !add_link(atf, ((t_input *)(alst->content))->line)))
 			return (0);
 		alst = alst->next;
 	}
@@ -107,7 +109,8 @@ int				get_antfarm(t_antfarm *atf, t_list *alst)
 {
 	if (!get_ant_qty(atf, &alst))
 		return (0);
-	while (atf->ant_qty && alst && the_rooms(L1))
+	while (atf->ant_qty && alst
+			&& the_rooms(((t_input *)(alst->content))->line))
 	{
 		if (!add_rooms(atf, &alst))
 			return (0);
