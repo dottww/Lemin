@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_bfs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/29 19:57:39 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 11:35:57 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,17 @@ unsigned long	solution_rounds(t_antfarm *atf, t_list *pth
 }
 
 /*
-** Description:
-**
-** Return:
-**	TRUE  : 
-**	FALSE : 
+** ___Description___:
+**	Function is the core part of the BFS, the queue (route) is constructed
+**	fisrt and start is placed.
+**	Then, the queue is extended by putting the available neighbors of the
+**	current room (elem) into the queue.
+**	See the corresponding function to know the criteria of avaibility of a
+**	room.
+**	If end room is reached, bfs is finished (find_new_route is set to true).
+** ___Return___:
+**	TRUE  : if a new path/route is found
+**	FALSE : if memory allocation issue or if no new path/route is founded
 */
 
 bool			bfs_route(t_list *start, t_list *end, t_list **route)
