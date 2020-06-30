@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:50:36 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/19 11:50:23 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 17:48:11 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
-char				**ft_strsplit(char const *s, char c);//repeated, remove later
 char				**ft_strsplit_c(char const *s, char c);
 char				**ft_strsplit_wd(char const *s, char c, int wd);
 char				**ft_split_whitespaces(const char *str, int wd);
@@ -110,8 +109,6 @@ size_t				ft_lstlen(t_list *lst);
 void				ft_lst_mergesort(t_list **source,
 					int (*cmp)(void *, void *));
 void				ft_lstrev(t_list **alst);
-//re-check ft_lst_mergesort
-//re-check ft_lstrev
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_int_len(int n);
 int					ft_sqrt(int nb);
