@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 00:52:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/29 20:03:20 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 16:24:16 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,21 @@ static t_list	*get_src_of_adj(t_list *link)
 	return (NULL);
 }
 
-/* //weib
+/*
 ** Description:
-**	When adj_room is already part of other route, it will try to go to
-**	src_of_adj , and see if there is another link in src_of_adj that can
-**	go to end, so that adj itself will be available for curr
+**	If adj_room is already part of another path, and in current bfs_route
+**	the src_of_adj is still not yet parsed, it runs a temporary bfs to see if
+**	it is possible to create a new route from src_of_adj, so by this, we can
+**	have 2 parallel routes: src_of_adj-somewhere_else and curr-adj
 ** Return:
 **	True if:
-**		src->deviation is false
-**		+ go_link = 1
-**		+ src->path_id different from dest->path_id
-**		+ dest->path_id different from 0 ()
+**		src_of_adj is not Start_room
+**		+ src_of_adj is not yet visited by current bfs
+**		+ adj_room is not marked as dead_end
+**		+ src_of_adj has another detouring possibility, if not, adj_room
+**		  will be marked as dead_end, adj is then not viable.
+**	False if:
+**		one of the requirements listed above is false
 */
 
 bool			detour_src_of_adj(t_list *adj_room, t_list *end) //wei
@@ -93,17 +97,26 @@ bool			detour_src_of_adj(t_list *adj_room, t_list *end) //wei
 
 /*
 ** Description:
-**	If adj_room is already part of other route, so current bfs_route:curr_adj
-**	cannot be created from so go back to previous room
+**	Check if adj_room is already part of another path, and the current is not
+**	in the same path of adj_room.
 **	
-**	by default src->deviation are initialized to false, not changed at first
+**	by default curr->deviation are initialized to false, not changed at first
 ** Return:
 **	True if:
-**		src->deviation is false
-**		+ go_link = 1
-**		+ src->path_id different from dest->path_id
-**		+ dest->path_id different from 0 ()
+**		curr->deviation is false
+**		+ adj->path_id different from 0, means it is already part of a path
+**		+ curr->path_id different from adj->path_id
 */
+
+bool			adj_part_of_path(t_list *current, t_list *adj_room) //wei
+{
+	t_room	*curr;
+	t_room	*adj;
+
+	curr = (t_room *)current->content;
+	adj = (t_room *)adj_room->content;
+	return (!curr->deviation && is_in_path(adj) && !samepath(curr, adj));
+}
 
 bool			adj_part_of_path(t_list *current, t_list *adj_room) //wei
 {
