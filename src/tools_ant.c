@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:37:25 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 22:04:02 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 22:30:47 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void		move_ant_from_start(t_list *ant, t_room *start, t_list *pth)
 		start->ant_id++;
 		if (!pth->next || !((t_path *)pth->next->content)->pending)
 			eol = true;
-		ft_printf("S%d-%s%s", dst->ant_id, dst->name, eol ? "" : " ");
+		ft_printf("L%d-%s%s", dst->ant_id, dst->name, eol ? "" : " ");
 		((t_ant *)ant->content)->at_room = dst;
 		path->pending--;
 		pth = pth->next;
