@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 00:06:23 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/29 03:49:11 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 17:54:53 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ static int		checkinput(t_list *alst)
 		else if (ft_isnumber(L1) == 1)
 			ant = ft_atoull(L1);
 		else if ((is_comment(L1) && !ant) || (!is_comment(L1) && ant
-					&& !(((ft_wd(L1) == 1) && ft_count_c(L1, '-') == 1) // one 'word' with one '-'
-					|| ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2)))) // or 3 words with 2 spaces
+					&& !(((ft_wd(L1) == 1) && ft_count_c(L1, '-') == 1)
+					|| ((ft_wd(L1) == 3) && ft_count_c(L1, ' ') == 2))))
 			return (0);
 		alst = alst->next;
 	}

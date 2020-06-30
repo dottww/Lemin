@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 19:31:08 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/29 19:55:38 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 17:51:40 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ bool			init_unique_path(t_list **pth, t_antfarm *atf)
 	return (true);
 }
 
-static void		elem_finish_path(t_list *path, t_list *room) // reconstruction of path based on usage of link (follow the -1)
+static void		elem_finish_path(t_list *path, t_list *room)
 {
 	t_list	*link;
 	t_list	*next_room;
@@ -107,10 +107,10 @@ void			finish_path(t_list **pth)
 	t_list	*room;
 	t_list	*elem;
 
-	elem = *pth; // pointer on pth list
+	elem = *pth;
 	while (elem)
 	{
-		room = ((t_path *)elem->content)->room; // catching the first room of the path under processing
+		room = ((t_path *)elem->content)->room;
 		elem_finish_path(elem, room);
 		elem = elem->next;
 	}

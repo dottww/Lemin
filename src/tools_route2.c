@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_route2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 00:52:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 16:24:16 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 18:19:55 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ static t_list	*get_src_of_adj(t_list *link)
 
 /*
 ** Description:
-**	If adj_room is already part of another path, and in current bfs_route
-**	the src_of_adj is still not yet parsed, it runs a temporary bfs to see if
-**	it is possible to create a new route from src_of_adj, so by this, we can
-**	have 2 parallel routes: src_of_adj-somewhere_else and curr-adj
+**	If adj_part_of_path is true, and in current bfs_route the src_of_adj is
+**	still not yet parsed, it runs a temporary bfs to see if it is possible to
+**	create a new route from src_of_adj, so by this, we can then have 2 parallel
+**	routes: src_of_adj-somewhere_else and curr-adj
 ** Return:
 **	True if:
 **		src_of_adj is not Start_room
@@ -68,7 +68,7 @@ static t_list	*get_src_of_adj(t_list *link)
 **		one of the requirements listed above is false
 */
 
-bool			detour_src_of_adj(t_list *adj_room, t_list *end) //wei
+bool			detour_src_of_adj(t_list *adj_room, t_list *end)
 {
 	t_list	*src_of_adj;
 	t_list	*links;
@@ -108,17 +108,7 @@ bool			detour_src_of_adj(t_list *adj_room, t_list *end) //wei
 **		+ curr->path_id different from adj->path_id
 */
 
-bool			adj_part_of_path(t_list *current, t_list *adj_room) //wei
-{
-	t_room	*curr;
-	t_room	*adj;
-
-	curr = (t_room *)current->content;
-	adj = (t_room *)adj_room->content;
-	return (!curr->deviation && is_in_path(adj) && !samepath(curr, adj));
-}
-
-bool			adj_part_of_path(t_list *current, t_list *adj_room) //wei
+bool			adj_part_of_path(t_list *current, t_list *adj_room)
 {
 	t_room	*curr;
 	t_room	*adj;

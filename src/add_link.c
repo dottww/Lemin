@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_link.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:01:12 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 00:54:50 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 17:54:50 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ static int	link_checker(t_antfarm *atf, char **tab)
 
 	room1 = NULL;
 	room2 = NULL;
-	if (tab[0][0] == '#') //should also test tab[1][0] ???
+	if (tab[0][0] == '#')
 		return (1);
 	head = atf->rooms;
 	if (!tab[0] || !tab[1] || tab[2]
