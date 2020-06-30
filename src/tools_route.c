@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_route.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 22:30:47 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 18:29:38 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 20:34:25 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,15 @@ static bool		route_viable(t_list *current, t_list *curr_link, t_list *end)
 	adj_room = ((t_link *)curr_link->content)->room;
 	adj = (t_room *)adj_room->content;
 	usage = ((t_link *)curr_link->content)->usage;
-	if (room_viable(curr_link, adj)	&& adj_part_of_path(current, adj_room))
+	if (room_viable(curr_link, adj) && adj_part_of_path(current, adj_room))
 		return (detour_src_of_adj(adj_room, end));
-	return (room_viable(curr_link, adj)	&& !pending_detour(curr, usage));
+	return (room_viable(curr_link, adj) && !pending_detour(curr, usage));
 }
 
 /*
 ** ___Description___:
-**	Append a link containing the target_room.
-**	In the target_room are noted the origin room where it comes from and the
+**	Append a link containing the adj_room.
+**	In the adj_room are noted the origin room where it comes from and the
 **	flag visited is changed to TRUE.
 ** ___Remarks___:
 **	Marking the room of origin in each room is convenient for the path
@@ -88,17 +88,17 @@ static bool		route_viable(t_list *current, t_list *curr_link, t_list *end)
 **	0: if memory allocation issue (lstnew).
 */
 
-static int		add_to_route(t_list **route, t_list *target_room, t_list *current)
+static int		add_to_route(t_list **route, t_list *adj_room, t_list *current)
 {
 	t_route		new;
 	t_list		*new_node;
 
 	if (!(new_node = ft_lstnew(&new, sizeof(t_route))))
 		return (0);
-	((t_route *)new_node->content)->room = target_room;
+	((t_route *)new_node->content)->room = adj_room;
 	ft_lstappend(route, new_node);
-	((t_room *)target_room->content)->previous = current;
-	((t_room *)target_room->content)->visited = true;
+	((t_room *)adj_room->content)->previous = current;
+	((t_room *)adj_room->content)->visited = true;
 	return (1);
 }
 
@@ -113,7 +113,7 @@ static int		add_to_route(t_list **route, t_list *target_room, t_list *current)
 ** ___Return___:
 **	1: when all the neighbors of the current room are processed
 **	   or if the room end is reached.
-**	0: if mem allocation issue (in add_route) 
+**	0: if mem allocation issue (in add_route)
 */
 
 int				explore_route(t_list *route, t_list *end)

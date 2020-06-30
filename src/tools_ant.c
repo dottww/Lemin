@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:37:25 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 00:35:53 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 20:36:04 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static t_list	*move_ant_on_the_way(t_list *ant)
 			move_ant_one_step(curr, next);
 			if (!ant->next)
 				eol = true;
-			ft_printf("L%d-%s%s", curr->ant_id,	next->name, eol ? "" : " ");
+			ft_printf("L%d-%s%s", curr->ant_id, next->name, eol ? "" : " ");
 			curr->ant_id = 0;
 			((t_ant *)ant->content)->at_room = next;
 		}

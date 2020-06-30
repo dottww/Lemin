@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_link.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:01:12 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 17:54:50 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 20:59:01 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	link_exists(t_list *originlinks, t_list *dest)
 ** Return:
 **	-1: room2 is already in the list of links/edges of room1, meaning the link
 **	/edge description has been already encountered
-**	0: if mem allocation issue for add a new link/edge to the list of links/edges
+**	0: if mem allocation issue for add a new link/edge to the list of links
 **	1: link/edge has been added to the list.
 */
 
@@ -157,6 +157,6 @@ int			add_link(t_antfarm *atf, char *line)
 	if (ft_count_c(line, '-') != 1 || !(tab = ft_strsplit_c(line, '-')))
 		return (0);
 	if (!link_checker(atf, tab))
-		return (ret_strtab_free(tab, 0));
-	return (ret_strtab_free(tab, 1));
+		return (ft_strtab_free_ret(tab, 0));
+	return (ft_strtab_free_ret(tab, 1));
 }

@@ -6,7 +6,7 @@
 #    By: weilin <weilin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 16:48:33 by weilin            #+#    #+#              #
-#    Updated: 2020/06/19 11:50:32 by weilin           ###   ########.fr        #
+#    Updated: 2020/06/30 20:59:01 by weilin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ LIB_FILES = ft_tolower\
 		ft_lst_mergesort\
 		ft_lstrev\
 		ft_atoi_int\
-		ret_strtab_free\
+		ft_strtab_free_ret\
 		ft_delcontent
 		
 #ft_split_whitespaces might be slow

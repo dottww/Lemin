@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_route2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 00:52:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 18:19:55 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 20:34:15 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,9 @@ bool			detour_src_of_adj(t_list *adj_room, t_list *end)
 ** Description:
 **	Check if adj_room is already part of another path, and the current is not
 **	in the same path of adj_room.
-**	
-**	by default curr->deviation are initialized to false, not changed at first
 ** Return:
 **	True if:
-**		curr->deviation is false
+**		curr->deviation is false (By default it is initialized to false)
 **		+ adj->path_id different from 0, means it is already part of a path
 **		+ curr->path_id different from adj->path_id
 */

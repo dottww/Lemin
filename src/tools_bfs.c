@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_bfs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 18:22:14 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 20:41:34 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_list			*select_path_to_send_ants(t_list *path, unsigned int ant_qty)
 	t_list			*head;
 	unsigned int	path_capacity;
 	int				head_path_len;
-	
+
 	if (!path->next)
 		return (path);
 	head = path;

@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 14:25:09 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/16 02:11:54 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 21:06:40 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	if(!s)
+	if (!s)
 		return (NULL);
 	while (*s)
 	{

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_rooms.c                                         :+:      :+:    :+:   */
+/*   add_room.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 03:08:07 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/25 19:05:24 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 20:59:01 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 /*
 ** ___Description___:
-**	Check if the room where the inner variables values have just being set does not
-**	already exist. name and couple of coordinates are inspected.
+**	Check if room name and coordinates already exist in the atf->rooms
 ** ___Return___:
 **	1: the room is not already present in the list of rooms (atf->rooms)
 **	0: if the room is repeated.
@@ -88,7 +87,6 @@ static int		mark_start_end(t_room *room, t_list **alst)
 static void		init_start_end(t_antfarm *atf, t_list *lst, int end)
 {
 	if (end == 0)
-		// atf->start = lst;
 	{
 		atf->start = lst;
 		((t_room *)atf->start->content)->population = atf->ant_qty;
@@ -100,8 +98,8 @@ static void		init_start_end(t_antfarm *atf, t_list *lst, int end)
 
 /*
 ** ___Description___:
-**	Check if the 2 last entries of tab are integers
-**	if the 2 entries are valid formated coordinates, then they are stocked in room.x/y
+**	Check if the 2 last entries of tab are integers, if yes then they are
+**	stored in room.x and room.y
 **	The function also initialized all the other inner variables.
 ** ___Return___:
 **	1: if coordinates are valid and if no issue during mem allocation for name
@@ -147,7 +145,7 @@ int				add_rooms(t_antfarm *atf, t_list **alst)
 {
 	char			**tab;
 	t_room			room;
-	t_list			*new_list;
+	t_list			*newlst;
 
 	room.s_t = -1;
 	if (!mark_start_end(&room, alst))
@@ -157,13 +155,13 @@ int				add_rooms(t_antfarm *atf, t_list **alst)
 	if (!(tab = ft_split_whitespaces(L2, (ft_wd(L2) == 3) ? 3 : 0)))
 		return (0);
 	if (!(tab[0] && tab[1] && tab[2] && !tab[3]) || !set_room_val(&room, tab))
-		return (ret_strtab_free(tab, 0));
-	if (!room_repeat(atf, tab) || !(new_list = ft_lstnew(&room, sizeof(t_room))))
+		return (ft_strtab_free_ret(tab, 0));
+	if (!room_repeat(atf, tab) || !(newlst = ft_lstnew(&room, sizeof(t_room))))
 	{
 		ft_strdel(&room.name);
-		return (ret_strtab_free(tab, 0));
+		return (ft_strtab_free_ret(tab, 0));
 	}
-	(room.s_t != -1) ? init_start_end(atf, new_list, room.s_t) : 0;
-	ft_lstappend(&atf->rooms, new_list);
-	return (ret_strtab_free(tab, 1));
+	(room.s_t != -1) ? init_start_end(atf, newlst, room.s_t) : 0;
+	ft_lstappend(&atf->rooms, newlst);
+	return (ft_strtab_free_ret(tab, 1));
 }

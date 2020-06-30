@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:50:36 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 17:48:11 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 21:09:58 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char				*ft_strnstr(const char *src, const char *find, size_t len);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 void				ft_strtab_free(char **av);
-int					ret_strtab_free(char **tab, int ret);
+int					ft_strtab_free_ret(char **tab, int ret);
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);

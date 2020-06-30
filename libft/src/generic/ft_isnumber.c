@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 21:02:40 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/08 22:52:52 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 21:08:42 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_isnumber(const char *str)
 	if (!str)
 		return (0);
 	if (str[i] == '+' || str[i] == '-')
-	{	
+	{
 		if (str[i + 1] == '\0')
 			return (0);
 		i++;

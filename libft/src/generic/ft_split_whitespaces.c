@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 14:58:18 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/13 19:46:10 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 21:05:34 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ char		**ft_split_whitespaces(const char *s, int wd)
 	{
 		while (!ft_isprint(s[i]) && s[i] != '\0')
 			i++;
-		if (ft_isprint(s[i]))
-			j = i;
+		j = (ft_isprint(s[i])) ? i : j;
 		while (ft_isprint(s[i]) && s[i] != '\0')
 			i++;
 		end = i;
-		i = ((end != j) && !(mx[count] = ft_strdup_sec(s, j, end))) ? -42 : i;
+		if ((end != j) && !(mx[count] = ft_strdup_sec(s, j, end)))
+			i = -42;
 	}
 	mx[wd] = NULL;
 	i == -42 ? ft_strtab_free(mx) : 0;

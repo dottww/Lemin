@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 00:06:23 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 17:54:53 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 20:56:27 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,14 @@ int				is_legal_terminal(t_list *alst)
 
 /*
 ** ___Description___:
-**	Some checks on the lines stock in input linked list.
-**	The tests does not cover all the cases, it is just basics tests to detect if
-**	there are major invalid format input lines.
-**	The check are:
-**	-if line is not NULL, not empty, and does not start by 'L'
+**	It checks the lines stored in linked list with content of t_input
+**	The tests do not cover all the cases, but basic tests to detect if
+**	there is any major invalid format input lines.
+**	The checks are:
+**	-if line is NULL, empty, or starts by 'L'
 **	-if line is '#start' or '##end', and the following line has 3 words
-**	and no '-'
-**	-if the line is a number of type unsigned long long (for the number of ants)
-**	- 
+**	separated by a space and has no '-'
+**	-if the line is a number (for the number of ants)
 ** ___Return___:
 **	1: if all the input lines passed the basic tests
 **	0: if there is an error
@@ -83,7 +82,7 @@ static int		checkinput(t_list *alst)
 		return (0);
 	while (alst && t[0] <= 1 && t[1] <= 1)
 	{
-		if (!L1 || ft_strequ(L1, "\0") || L1[0] =='L')
+		if (!L1 || ft_strequ(L1, "\0") || L1[0] == 'L')
 			return (0);
 		else if (ant && ft_strequ("##start", L1))
 			t[0] += is_legal_terminal(alst);
@@ -103,12 +102,12 @@ static int		checkinput(t_list *alst)
 /*
 ** ___Description___:
 **	Read of the input from standard input (STDIN via '<') line by line.
-**	Each lines is stock in a link (create on the fly) added to input
-**	list, 
+**	Each lines is stored in a string in t_input (create on the fly) and
+**	added as content of each item of a link list.
 ** ___Return___:
 **	1 : if checks performed by checkinput return there is no major
 **		invalid format in the lines read on the standard input.
-**	0 : error comes up in GNL or mem allocation issue with lstnew.
+**	0 : error from GNL or mem allocation issue with lstnew or checkinput fail
 */
 
 int				read_input(t_list **alst)
@@ -119,7 +118,7 @@ int				read_input(t_list **alst)
 	int					ret;
 
 	gnl = NULL;
-	ret = 0 ;
+	ret = 0;
 	while ((ret = get_next_line(0, &gnl)) > 0)
 	{
 		if (!(new_input.line = ft_strdup(gnl))

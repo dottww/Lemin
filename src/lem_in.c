@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/30 18:22:20 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 20:55:29 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static void		init_atf_values(t_antfarm *atf)
 static int		get_options(t_antfarm *atf, int ac, char **av)
 {
 	int i;
-	
-	init_atf_values(atf);
+
 	i = 1;
+	init_atf_values(atf);
 	if (ac > 1)
 	{
 		while (i < ac)
@@ -52,10 +52,10 @@ static int		get_options(t_antfarm *atf, int ac, char **av)
 				atf->options |= ONLY_SOLUTION;
 			i++;
 		}
-		if(!atf->options)
+		if (!atf->options)
 		{
 			ft_putendl("Usage: ./lem-in [--paths] [--solution] < antfarm_map");
-			return(0);
+			return (0);
 		}
 	}
 	return (1);

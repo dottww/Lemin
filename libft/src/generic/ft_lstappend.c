@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 20:31:48 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/08 20:35:42 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/30 21:06:33 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_lstappend(t_list **alst, t_list *new)
 		while (tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->next = new;
-		// return ;
 	}
 	else
 		*alst = new;
