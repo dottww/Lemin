@@ -6,7 +6,7 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:49:34 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 21:57:19 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/29 19:56:27 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct			s_link
 typedef struct			s_path
 {
 	int					id;
-	unsigned long		sent;
+	unsigned long		pending;
 	int					len;
 	bool				complete;
 	t_list				*room;
@@ -96,44 +96,44 @@ typedef struct			s_input
 /*
 ** ----------------------------- INIT ------------------------------------------
 */
-int						get_antfarm(t_antfarm *antfarm, t_list *alst);
-int						init_ant(t_antfarm *antfarm);
+int						get_antfarm(t_antfarm *atf, t_list *alst);
+int						get_ant(t_antfarm *atf, t_list *alst, t_list *pth);
 /*
 ** ------------------------------ ADD ------------------------------------------
 */
-int						add_rooms(t_antfarm *antfarm, t_list **alst);
-int						add_link(t_antfarm *antfarm, char *line);
+int						add_rooms(t_antfarm *atf, t_list **alst);
+int						add_link(t_antfarm *atf, char *line);
 /*
 ** ----------------------------- ALGO -----------------------------------------
 */
-bool					get_path(t_antfarm *antfarm, t_list *start
+bool					get_path(t_antfarm *atf, t_list *start
 						, t_list *end, t_list **pth);
 bool					bfs_route(t_list *start, t_list *end, t_list **route);
-unsigned long			solution_rounds(t_antfarm *antfarm, t_list *pth
-						, unsigned int ant_qty);
-void					printpath_update_data(t_antfarm *antfarm, unsigned long rounds
-						, t_list **pth);
-void					full_path(t_list **pth);
-void					set_links_usage(t_list *end, t_list **route);
-int						complete_route(t_list *route, t_list *end);
+int						finish_route(t_list *route, t_list *end);
 bool					adj_part_of_path(t_list *current, t_list *adj_room);
 bool					detour_src_of_adj(t_list *adj_room , t_list *end);
+void					finish_path(t_list **pth);
+unsigned long			solution_rounds(t_antfarm *atf, t_list *pth
+						, unsigned int ant_qty);
+void					print_path_reset_room(t_antfarm *atf, t_list **pth
+												, unsigned long rounds);
+void					set_links_usage(t_list *end, t_list **route);
 bool					start_connected_to_end(t_list *start, t_list *end);
-bool					init_unique_path(t_list **pth, t_antfarm *antfarm);
+bool					init_unique_path(t_list **pth, t_antfarm *atf);
 
 /*
 ** ---------------------------- DISPLAY ----------------------------------------
 */
 void					print_all_paths(t_list *pth);
 void					print_all_steps(t_list *steps);
-void					print_ant_moves(t_antfarm *antfarm, t_list *pth);
+void					print_ant_moves(t_antfarm *atf, t_list *pth);
 void					print_antfarm(t_list *alst);
 
 /*
 ** ---------------------------- TOOLS ------------------------------------------
 */
 int						free_input_lst(t_list **lst, char *exit_msg);
-int						print_free(t_antfarm *antfarm, t_list **input
+int						print_free(t_antfarm *atf, t_list **alst
 						, t_list **pth, char *msg);
 int						read_input(t_list **alst);
 void					delete_room(void *content, size_t size);
@@ -144,6 +144,6 @@ int						is_start(t_room *room);
 int						is_visited(t_room *room);
 int						is_in_path(t_room *room);
 int						samepath(t_room *src, t_room *room);
-int						link_used(t_list *link);
+int						go_link(t_list *link);
 
 #endif

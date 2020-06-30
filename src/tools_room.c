@@ -6,16 +6,15 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 22:53:36 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/27 19:14:43 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 09:53:24 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		link_used(t_list *link)
+int		go_link(t_list *link)
 {
-	// return (((t_link *)link->content)->usage == -1);
-	return (((t_link *)link->content)->usage != 0);
+	return (((t_link *)link->content)->usage == -1);
 }
 
 int		is_start(t_room *room)

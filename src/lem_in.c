@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 16:24:56 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 23:47:45 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/29 04:11:31 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **	except ant_qty which is initialized by another function just after
 */
 
-static void		init_antfarm_values(t_antfarm *atf)
+static void		get_antfarm_values(t_antfarm *atf)
 {
 	atf->rooms = NULL;
 	atf->start = NULL;
@@ -39,7 +39,7 @@ static int		get_options(t_antfarm *atf, int ac, char **av)
 {
 	int i;
 	
-	init_antfarm_values(atf);
+	get_antfarm_values(atf);
 	i = 1;
 	if (ac > 1)
 	{
@@ -85,9 +85,7 @@ int				main(int ac, char **av)
 		return (print_free(&atf, &alst, &pth, "ERROR"));
 	if (!(get_path(&atf, atf.start, atf.end, &pth)))
 		return (print_free(&atf, &alst, &pth, "ERROR"));
-	init_ant(&atf);
-	if (!atf.options)
-		print_antfarm(alst);
-	print_ant_moves(&atf, pth);
+	if (!get_ant(&atf, alst, pth))
+		return (print_free(&atf, &alst, &pth, "ERROR"));
 	return (print_free(&atf, &alst, &pth, NULL));
 }

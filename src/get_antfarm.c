@@ -6,7 +6,7 @@
 /*   By: mdavid <mdavid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 02:45:37 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 23:24:45 by mdavid           ###   ########.fr       */
+/*   Updated: 2020/06/30 09:50:55 by mdavid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,12 @@ static int		the_rooms(char *line)
 }
 
 /*
-** Description:
-**	
-**
+** ___Description___:
+**	Function process the links encounter in the input lines stocked in the
+**	parsing structure.
+**	___Return___:
+**	1: if all the remaining lines in alst were links or comments
+**	0: otherwise
 */
 
 static int		init_links(t_antfarm *atf, t_list *alst)

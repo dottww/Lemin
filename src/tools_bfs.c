@@ -6,29 +6,30 @@
 /*   By: weilin <weilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:02:10 by weilin            #+#    #+#             */
-/*   Updated: 2020/06/26 22:22:24 by weilin           ###   ########.fr       */
+/*   Updated: 2020/06/29 19:57:39 by weilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void			printpath_update_data(t_antfarm *atf, unsigned long rounds
-				, t_list **pth)
+void			print_path_reset_room(t_antfarm *atf, t_list **pth
+										, unsigned long rounds)
 {
 	t_list	*room;
+	t_room	*rm;
 
 	room = atf->rooms;
 	while (room)
 	{
-		((t_room *)room->content)->next = ((t_room *)room->content)->new_next;
-		((t_room *)room->content)->path_id = ((t_room *)room->content)
-		->new_path_id;
-		((t_room *)room->content)->previous = NULL;
-		((t_room *)room->content)->visited = false;
-		((t_room *)room->content)->deviation = false;
-		((t_room *)room->content)->dead_end = false;
-		((t_room *)room->content)->new_next = NULL;
-		((t_room *)room->content)->new_path_id = 0;
+		rm = (t_room *)room->content;
+		rm->next = rm->new_next;
+		rm->path_id = rm->new_path_id;
+		rm->previous = NULL;
+		rm->visited = false;
+		rm->deviation = false;
+		rm->dead_end = false;
+		rm->new_next = NULL;
+		rm->new_path_id = 0;
 		room = room->next;
 	}
 	ft_lstrev(pth);
@@ -37,11 +38,11 @@ void			printpath_update_data(t_antfarm *atf, unsigned long rounds
 	atf->rounds = rounds;
 }
 
-static void		increase_sent_values(t_list *path)
+static void		increase_ants_pending(t_list *path)
 {
 	while (path)
 	{
-		((t_path *)path->content)->sent++;
+		((t_path *)path->content)->pending++;
 		path = path->next;
 	}
 }
@@ -60,7 +61,7 @@ t_list			*select_path_to_send_ants(t_list *path, unsigned int ant_qty)
 	path = path->next; // skip start_room
 	while (path)
 	{
-		path_capacity += head_path_len - ((t_path *)path->content)->len + 1; // relation PATH/ANT
+		path_capacity += head_path_len - ((t_path *)path->content)->len + 1;
 		path = path->next;
 	}
 	if (path_capacity >= ant_qty)
@@ -79,18 +80,13 @@ unsigned long	solution_rounds(t_antfarm *atf, t_list *pth
 	while (ant_qty > 0)
 	{
 		used_path = select_path_to_send_ants(used_path, ant_qty);
-		increase_sent_values(used_path);
+		increase_ants_pending(used_path);
 		ant_qty -= ft_lstlen(used_path);
 		rounds++;
 	}
 	rounds += ((t_path *)used_path->content)->len - 1;
 	if (atf->options & SHOW_PATH)
-	{
-		if (rounds >= atf->rounds)
-			ft_printf("This solution would take %ld rounds\n", rounds);
-		else
-			ft_printf("This solution would take %ld rounds\n", rounds);
-	}
+		ft_printf("This solution would take %ld rounds\n", rounds);
 	return (rounds);
 }
 
@@ -117,7 +113,7 @@ bool			bfs_route(t_list *start, t_list *end, t_list **route)
 	elem = *route;
 	while (elem)
 	{
-		if (!complete_route(elem, end)) //construct the queue of rooms, putting them in the queue of room elem under condition of usability
+		if (!finish_route(elem, end)) //construct the queue of rooms, putting them in the queue of room elem under condition of usability
 			return (false);
 		if (((t_room *)end->content)->visited)
 		{
